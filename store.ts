@@ -1,12 +1,20 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
-import { AddCartType } from './types/AddCartType';
+
+type CartItem = {
+  name: string,
+  id: string,
+  image?: string[],
+  description?: string,
+  unit_amount: number,
+  quantity: number,
+}
 
 type CartState = {
   isOpen: boolean,
-  cart: AddCartType,
+  cart: CartItem[],
   toggleCart: () => void
-  addProduct: (item: AddCartType) => void
+  addProduct: (item: CartItem) => void
 }
 
 export const userCartStore = create<CartState>()(
