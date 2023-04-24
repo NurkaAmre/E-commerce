@@ -29,7 +29,9 @@ export default function Checkout() {
       //Set client secret and the payment intent associated with it
       return res.json()
     }).then((data) => {
-      console.log(data)
+      // console.log(data)
+      setClientSecret(data.paymentIntent.client_secret)
+      cartStore.setPaymentIntent(data.paymentIntent.is)
     })
   }, [])
 
