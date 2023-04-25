@@ -1,6 +1,6 @@
-import { it } from 'node:test';
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
+import { AddCartType } from './types/AddCartType';
 
 type CartItem = {
   name: string,

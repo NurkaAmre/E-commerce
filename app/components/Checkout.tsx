@@ -22,7 +22,7 @@ export default function Checkout() {
         payment_intent_id: cartStore.paymentIntent,
       }),
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
       if(res.status === 403){
         return router.push('/api/auth/signin')
       }
