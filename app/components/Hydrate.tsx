@@ -10,7 +10,7 @@ const Hydrate = ({children} : {children: ReactNode}) => {
    }, [])
   return (
    <>
-   {isHydrated ? <body className="px-4 lg:px-48" data-theme={themStore.mode}>{children}</body> : <body></body>}
+   {isHydrated ? <body className="px-4 lg:px-48 font-roboto" data-theme={themStore.mode}>{children}</body> : <body></body>}
    </>
   )
 }
