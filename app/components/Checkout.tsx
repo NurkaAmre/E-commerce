@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import CheckoutForm from "./CheckoutFomr"
 import OrderAnimation from "./orderAnimation"
 import {motion} from 'framer-motion'
+import { useThemeStore } from "@/store"
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
@@ -14,7 +15,17 @@ export default function Checkout() {
   const cartStore = userCartStore()
   const router = useRouter()
   const [clientSecret, setClientSecret] = useState('')
+  const themeStore = useThemeStore()
+  const [stripeTheme, setStripeTheme] = useState<'flat' | 'stripe' | 'night' | 'none'>('stripe')
+
+
   useEffect(() => {
+    //set the theme of stripe
+    if(themeStore.mode === 'light'){
+      setStripeTheme('stripe')
+    } else {
+      setStripeTheme('night')
+    }
     //create a paymentIntent as soon as the page loads up
     fetch('/api/create-payment-intent', {
       method: 'POST',
@@ -40,7 +51,7 @@ export default function Checkout() {
   const options: StripeElementsOptions = {
     clientSecret,
     appearance: {
-      theme: 'night',
+      theme: stripeTheme,
       labels: 'floating',
     }
   }

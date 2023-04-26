@@ -8,6 +8,7 @@ import Cart from "./Cart"
 import { userCartStore } from "@/store"
 import {AiFillShopping} from 'react-icons/ai'
 import { motion, AnimatePresence } from "framer-motion"
+import DarkLight from "./DarkLight"
 
 
 const Nav = ({user}: Session) => {
@@ -28,6 +29,8 @@ const Nav = ({user}: Session) => {
           )}
           </AnimatePresence>
         </li>
+        {/* Dark mode */}
+        <DarkLight />
         {!user && (
           <li className="bg-primary text-white py-2 px-4 rounded-md">
             <button onClick={() => signIn()}>SignIn</button>
