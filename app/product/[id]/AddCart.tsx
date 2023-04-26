@@ -22,8 +22,12 @@ const AddCart = ({
   }
   return (
     <>
-    <button onClick={handleAddToCart} className="my-12 text-white py-2 px-6 font-medium rounded-md bg-teal-700">
-      Add to cart
+    <button 
+    onClick={handleAddToCart} 
+    disabled={added}
+    className="my-4 py-4 px-2 w-full btn-primary rounded-md">
+      {!added && <span>Add to cart</span>}
+      {added && <span>Adding to cart</span>}
     </button>
     </>
   )

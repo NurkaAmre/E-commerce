@@ -6,6 +6,8 @@ import formatPrice from '@/util/PriceFormat';
 import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5';
 import basket from '@/public/shopping-cart.png';
 import {motion, AnimatePresence} from 'framer-motion'
+import Checkout from './Checkout';
+import OrderConfirmed from './OrderConfirmed';
 
 export default function Cart() {
   const cartStore = userCartStore()
@@ -24,12 +26,19 @@ export default function Cart() {
     onClick={() => cartStore.toggleCart()} 
     className='fixed w-full h-screen left-0 top-0 bg-black/25'>
       <motion.div 
+      layout
       onClick={(e) => e.stopPropagation()} 
-      className='bg-white absolute right-0 top-0 w-full h-screen lg:w-2/5 p-12 overflow-y-scroll text-gray-700'>
-        <button onClick={() => cartStore.toggleCart()} className='text-sm font-bold pb-12'>Back to Store</button>
+      className='bg-base-300 absolute right-0 top-0 w-full h-screen lg:w-2/5 p-12 overflow-y-scroll'>
+        {cartStore.onCheckout === 'cart' && (
+        <button onClick={() => cartStore.toggleCart()} className='text-sm font-bold pb-12'>Back to Store</button>)}
+        {cartStore.onCheckout === 'checkout' && (
+        <button onClick={() => cartStore.setCheckout('cart')} className='text-sm font-bold pb-12'>Check your cart</button>)}
+        {/* Card items */}
+          {cartStore.onCheckout === 'cart' && (
+            <>
         {cartStore.cart.map((item) => (
           <motion.div layout key={item.id}
-          className='flex py-4 gap-4'>
+          className='flex p-4 gap-4 bg-base-100 my-4 rounded-lg'>
             <Image className='rounded-md h-24' src={item.image} alt={item.name} width={120} height={120}/>
             <div>
               <h2>{item.name}</h2>
@@ -55,15 +64,22 @@ export default function Cart() {
             </div>
           </motion.div>
         ))}
+        </>
+          )}
         {/* Checkout and Total */}
-        {cartStore.cart.length > 0 && (
+        {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
         <p>Total: {formatPrice(totalPrice)}</p>
-        <button className='py-2 mt-4 bg-teal-700 w-full rounded-md text-white'>Checkout</button> 
+        <button 
+        onClick={() => cartStore.setCheckout('checkout')}
+        className='py-2 mt-4 bg-primary w-full rounded-md text-white'>Checkout</button> 
         </motion.div>
-        )}
+        ) : null}
+        {/* {Checkout form} */}
+        {cartStore.onCheckout === 'checkout' && <Checkout />}
+        {cartStore.onCheckout === 'success' && <OrderConfirmed />}
         <AnimatePresence>
-        {!cartStore.cart.length && (
+        {!cartStore.cart.length && cartStore.onCheckout === 'cart' && (
           <motion.div 
           animate={{scale: 0, rotateZ: 0, opacity: 0.75}}
           initial={{scale: 0.5, rotateZ: -10, opacity: 0}}
