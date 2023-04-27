@@ -14,6 +14,9 @@ module.exports = {
         lobster: ['var(--font-lobster)'],
         roboto: ['var(--font-roboto)'],
       },
+      boxShadow: {
+        custom: '15px -2px 63px 13px rgba(16, 201, 199, 0.908);',
+      },
     },
   },
   plugins: [require('daisyui')],

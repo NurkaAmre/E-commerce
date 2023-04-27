@@ -15,9 +15,9 @@ import DarkLight from "./DarkLight"
 const Nav = ({user}: Session) => {
   const cartStore = userCartStore()
   return (
-    <nav className="flex justify-between items-center py-12">
+    <nav className="flex justify-between items-center bg-blue-950 px-10">
       <Link href={'/'}>
-        <Image src={logo} width={70} height={70} alt="logo"/>
+        <Image src={logo} width={50} height={50} alt="logo"/>
       </Link> 
       <ul className="flex items-center gap-12">
         <li onClick={() => cartStore.toggleCart()} className="flex items-center text-3xl relative cursor-pointer">
