@@ -30,3 +30,14 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.img1 {
+  width: 25%;
+  height: 25%;
+  border: 5px solid #050A30;
+}
+.img2 {
+width: 35%;
+  height: 35%;
+  border: 5px solid #050A30;
+}
