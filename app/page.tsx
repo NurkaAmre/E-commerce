@@ -10,20 +10,21 @@ import Image from 'next/image'
 
 export default function Main (){
   return (
-    <div>
-    <Image src={pattern} alt="pattern"/>
-    <hr className="h-4 bg-gradient-to-r from-gray-300 to-transparent border-transparent w-1/2"/>
-    <div className='flex justify-center flex-row text-lg'>
-      <h1>Modern</h1>
+    <div className='main'>
+    <Image src={pattern} alt="pattern" className='pattern'/>
+    <hr className="h-4 hr bg-gradient-to-r from-gray-300 to-transparent border-transparent w-2/3"/>
+    <div className='heading flex justify-center items-center text-center'>
+      <h1 className='font-bold text-2xl text-center'>Modern</h1>
       <h3>Furniture</h3>
     </div>
-     <hr className="h-4 bg-gradient-to-r from-transparent to-gray-300 border-transparent w-1/2"/>
-    <div className='flex justify-center relative'>
+     <hr className="h-4 hr1 bg-gradient-to-r from-transparent to-gray-300 border-transparent w-2/3"/>
+    <div className='flex justify-center mt-4 relative'>
+    <div className="img2 rounded-full "><Image className=' rounded-full' src={bed} alt='bed'/>
     <div className="img1 rounded-full "><Image className=' rounded-full' src={bed1} alt='bed'/></div>
-    <div className="img2 rounded-full "><Image className=' rounded-full' src={bed} alt='bed'/></div>
-    <div className="img1 rounded-full "><Image className=' rounded-full' src={bed2} alt='bed'/></div>
+    <div className="img3 rounded-full "><Image className=' rounded-full' src={bed2} alt='bed'/></div>
     </div>
-     <Image src={pattern2} alt="pattern2" />
+    </div>
+     <Image src={pattern2} alt="pattern2" className='pattern2'/>
     </div>
   )
 }

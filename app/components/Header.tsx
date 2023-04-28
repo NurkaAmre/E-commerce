@@ -5,7 +5,7 @@ import { AiFillPhone } from "react-icons/ai";
 
 export default function Header() {
   return (
-    <header className="bg-gray-900 py-4 shadow-custom">
+    <header className="py-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <div className="flex items-center ">
           <Link href={'/products'}>

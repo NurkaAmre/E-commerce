@@ -31,13 +31,60 @@ a {
   text-decoration: none;
 }
 
+nav {
+  background: #050A30;
+}
+
+.pattern {
+  width: 45%;
+}
+
+.pattern2 {
+  width: 45%;
+  position: absolute;
+  right: 0;
+}
+
+.main {
+  position: relative;
+}
+
+.hr {
+  position: absolute;
+  top: 7%;
+}
+
+.heading {
+  position: absolute;
+  text-align: center;
+  top: 15%;
+}
+
+.hr1 {
+  position: absolute;
+  right: 0;
+  top: 25%;
+}
+
 .img1 {
-  width: 25%;
-  height: 25%;
+  width: 80%;
+  height:80%;
   border: 5px solid #050A30;
+  position: absolute;
+  top: 10%;
+  left: -75%;
 }
 .img2 {
 width: 35%;
   height: 35%;
   border: 5px solid #050A30;
+  position: relative;
+}
+.img3 {
+  width: 80%;
+  height: 80%;
+  border: 5px solid #050A30;
+  position: absolute;
+  top: 10%;
+  right: -75%;
 }
