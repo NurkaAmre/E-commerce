@@ -4,11 +4,12 @@ import Header from './components/Header'
 import {getServerSession} from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import Hydrate from './components/Hydrate'
-import {Roboto, Lobster_Two} from 'next/font/google'
+import {Roboto, Lobster_Two, Dancing_Script, Castoro } from 'next/font/google'
 
 //Define main font
 const roboto = Roboto({weight: ['400', '500', '700'], subsets: ['latin'], variable: '--font-roboto'})
-
+const dancing_script = Dancing_Script({weight: ['400', '500', '700'], subsets: ['latin'], variable: '--font-dancing'})
+const castoro = Castoro({weight: ['400'], subsets: ['latin'], variable: '--font-castoro'})
 const lobster = Lobster_Two({weight: '700', subsets: ['latin'], variable:'--font-lobster'})
 
 export const metadata = {
@@ -25,7 +26,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions)
   // console.log(session)
   return (
-    <html lang="en" className={`${roboto.variable} ${lobster.variable}`}>
+    <html lang="en" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${dancing_script.variable}`}>
       
         <Hydrate>
         <Nav user={session?.user} expires={session?.expires as string}/>

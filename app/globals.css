@@ -20,7 +20,7 @@
 
 html,
 body {
-  max-width: 100%;
+  min-height: 90vh;
   overflow-x: hidden;
   padding: auto;
 
@@ -40,13 +40,14 @@ nav {
 }
 
 .pattern2 {
-  width: 45%;
+  width: 40%;
   position: absolute;
   right: 0;
 }
 
 .main {
   position: relative;
+  min-height: 90vh;
 }
 
 .hr {
@@ -58,6 +59,14 @@ nav {
   position: absolute;
   text-align: center;
   top: 15%;
+  font-size: 4rem;
+}
+
+.headingsm {
+  position: absolute;
+    text-align: center;
+    top: 19%;
+    font-size: 2rem;
 }
 
 .hr1 {
@@ -87,4 +96,24 @@ width: 35%;
   position: absolute;
   top: 10%;
   right: -75%;
+}
+
+.bt {
+  position: absolute;
+  left: 10%;
+  top: 110%;
+}
+
+.set3, .set1, .set2{
+  width: 300px;
+}
+.margin {
+  margin-top: 16.3%;
+}
+
+.pic-section {
+ background-color: #050A30;
+}
+.motion-images {
+margin-left: 30%;
 }
