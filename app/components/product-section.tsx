@@ -1,0 +1,29 @@
+import bedset from '@/public/bed-icon.png'
+import chair from '@/public/chair-icon.png'
+import sofa from '@/public/sofa.png'
+import kitchen from '@/public/kitchen.png'
+import Image from "next/image"
+
+
+export default function ProductSection() {
+  return(
+    <section className="grid-container">
+    <div className="grid-item">
+      <h3 className='icon-text font-medium font-castoro'>Kitchen Set</h3>
+       <Image src={sofa} alt="bedset" className='icon'/>
+    </div>
+    <div className="grid-item1">
+       <h3 className='icon-text font-medium font-castoro'>Bed Set</h3>
+    <Image src={bedset} alt="bedset" className='icon'/>
+    </div>
+    <div className="grid-item1">
+       <h3 className='icon-text font-medium font-castoro'>Chair</h3>
+     <Image src={chair} alt="bedset" className='icon'/>
+    </div>
+    <div className="grid-item">
+       <h3 className='icon-text font-medium font-castoro'>Sofa</h3>
+       <Image src={kitchen} alt="bedset" className='icon'/>
+    </div>
+    </section>
+  )
+}
