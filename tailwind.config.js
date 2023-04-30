@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         fluid: 'repeat(auto-fit, minmax(20rem, 1fr))',
+        fluid2: 'repeat(auto-fit, minmax(30rem, 2fr))',
       },
       fontFamily: {
         lobster: ['var(--font-lobster)'],
@@ -38,6 +39,6 @@ module.exports = {
   },
   plugins: [require('daisyui')],
   daisyui: {
-    themes: ['lemonade', 'night'],
+    themes: ['lemonade', 'halloween'],
   },
 };

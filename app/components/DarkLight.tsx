@@ -10,7 +10,7 @@ export default function DarkLight(){
   type="checkbox" 
   onClick={() => {
     if(themeStore.mode === 'lemonade'){
-      themeStore.toggleMode('night')
+      themeStore.toggleMode('halloween')
     } else {
       themeStore.toggleMode('lemonade')
     }

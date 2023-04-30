@@ -72,8 +72,8 @@ export const userCartStore = create<CartState>()(
 )
 
 type ThemeState = {
-  mode: 'lemonade' | 'night'
-  toggleMode: (theme: 'lemonade' | 'night') => void
+  mode: 'lemonade' | 'halloween'
+  toggleMode: (theme: 'lemonade' | 'halloween') => void
 }
 export const useThemeStore = create<ThemeState>()(
   persist(

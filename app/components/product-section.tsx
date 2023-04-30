@@ -1,13 +1,13 @@
 import bedset from '@/public/bed-icon.png'
 import chair from '@/public/chair-icon.png'
 import sofa from '@/public/sofa.png'
-import kitchen from '@/public/kitchen.png'
+import kitchen from '@/public/kitchen2.png'
 import Image from "next/image"
 
 
 export default function ProductSection() {
   return(
-    <section className="grid-container">
+    <section className="grid grid-container grid-cols-fluid2 gap-12 mt-8">
     <div className="grid-item">
       <h3 className='icon-text font-medium font-castoro'>Kitchen Set</h3>
        <Image src={sofa} alt="bedset" className='icon'/>

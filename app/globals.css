@@ -35,15 +35,14 @@ a {
 }
 
 nav {
-  background: #161d30;
+  background: #82bd42;
 }
-
-.pattern {
-  width: 45%;
+header{
+  background: #519903;
 }
 
 .pattern2 {
-  width: 40%;
+  /* width: 40%; */
   position: absolute;
   right: 0;
 }
@@ -61,14 +60,13 @@ nav {
 .heading {
   position: absolute;
   text-align: center;
-  top: 10%;
+  letter-spacing: 1rem;
+  top: 8%;
   font-size: 4rem;
 }
 
 .headingsm {
-  position: absolute;
     text-align: center;
-    top: 19%;
     font-size: 2rem;
 }
 
@@ -81,7 +79,7 @@ nav {
 .img1 {
   width: 80%;
   height:80%;
-  border: 5px solid #050A30;
+  border: 5px solid #82bd42;
   position: absolute;
   top: 10%;
   left: -75%;
@@ -89,13 +87,13 @@ nav {
 .img2 {
 width: 35%;
   height: 35%;
-  border: 5px solid #050A30;
+  border: 5px solid #82bd42;
   position: relative;
 }
 .img3 {
   width: 80%;
   height: 80%;
-  border: 5px solid #050A30;
+  border: 5px solid #82bd42;
   position: absolute;
   top: 10%;
   right: -75%;
@@ -110,13 +108,9 @@ width: 35%;
 .set3, .set1, .set2{
   width: 300px;
 }
-.margin {
-  margin-top: 16.3%;
-}
-
 .pic-section {
   display: flex;
- background-color: #EBE7DC;
+ background-color: #82bd42;
  justify-content: center;
  align-items: center;
 }
@@ -129,43 +123,37 @@ width: 35%;
   text-align: center;
 }
 
+.discount-heading{
+    letter-spacing: 1rem;
+    font-size: 4rem;
+}
+
 .bg-discount {
-  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #519903;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  color: #fff;
 }
 .span1 {
-  position: absolute;
   font-size: 2rem;
-  top: 7%;
-  left: 25%;
-  padding-bottom: 1rem;
  }
 .span2 {
-  position: absolute;
   font-size: 3rem;
-  top: 22%;
-  left: 25%;
-  padding-bottom: 1rem;
-  }
-.span3 {
-  position: absolute;
-  font-size: 2rem;
-  top: 55%;
-  left: 25%;
   }
 
 .grid-container {
-  padding: 10rem;
+  padding: 4rem 10rem;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
   justify-content: center;
   align-items: center;
   }
 
 .grid-item {
   background-color: #EBE7DC;
-  width: 600px;
-  height: 350px;
   }
 
 .grid-item1 {
@@ -188,3 +176,23 @@ width: 35%;
  font-size: 3rem;
  font-weight: lighter;
 }
+
+.delivery {
+  min-height: 40vh;
+  background:  #EBE7DC;;
+}
+
+.delivery-text {
+position: relative;
+}
+
+.arrow {
+  position: absolute;
+  width: 400px;
+  top: 15%;
+  left: 15%;
+}
+.font-bold{
+  z-index: 99;
+}
+
