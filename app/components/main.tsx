@@ -1,5 +1,4 @@
 import pattern from '@/public/pattern.png'
-import pattern2 from '@/public/pattern2.png'
 import bed from '@/public/spalniy_gar1.jpeg'
 import bed1 from '@/public/spalniy_gar2.jpeg'
 import bed2 from '@/public/spalniy_gar4.jpeg'
@@ -25,7 +24,6 @@ export default function MainSection (){
     <div className='flex justify-center m-8'>
       <button className='btn-primary font-medium text-white px-4 text-lg text-center rounded-md py-3 w-1/4'>Order</button>
     </div>
-     {/* <Image src={pattern2} alt="pattern2" className='pattern2'/> */}
     </div>
 
    

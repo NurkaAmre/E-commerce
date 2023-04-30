@@ -1,8 +1,6 @@
 import set1 from '@/public/set1.png'
 import set2 from '@/public/set2.jpeg'
 import set3 from '@/public/set5.jpeg'
-import discount from '@/public/discount.png'
-import mypat from '@/public/mypat.svg'
 import Image from 'next/image'
 
 export default function Discount (){

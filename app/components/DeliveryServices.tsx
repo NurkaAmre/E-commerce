@@ -1,5 +1,3 @@
-import Image from "next/image";
-import delivery from '@/public/delivery.gif'
 
 export default function DeliveryServices() {
   return(
