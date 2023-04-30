@@ -21,7 +21,7 @@ export default function Checkout() {
 
   useEffect(() => {
     //set the theme of stripe
-    if(themeStore.mode === 'light'){
+    if(themeStore.mode === 'lemonade'){
       setStripeTheme('stripe')
     } else {
       setStripeTheme('night')

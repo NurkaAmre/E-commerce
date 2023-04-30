@@ -5,8 +5,9 @@ import {signIn, signOut} from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import Cart from "./Cart"
+import logo from '@/public/logo.png'
 import { userCartStore } from "@/store"
-import {AiFillShopping} from 'react-icons/ai'
+import {AiFillShopping, AiFillHeart} from 'react-icons/ai'
 import { motion, AnimatePresence } from "framer-motion"
 import DarkLight from "./DarkLight"
 
@@ -14,9 +15,9 @@ import DarkLight from "./DarkLight"
 const Nav = ({user}: Session) => {
   const cartStore = userCartStore()
   return (
-    <nav className="flex justify-between items-center py-12">
+    <nav className="flex justify-between items-center px-10">
       <Link href={'/'}>
-        <h1 className="font-lobster text-xl">Styled</h1>
+        <Image src={logo} width={50} height={50} alt="logo"/>
       </Link> 
       <ul className="flex items-center gap-12">
         <li onClick={() => cartStore.toggleCart()} className="flex items-center text-3xl relative cursor-pointer">
@@ -28,6 +29,9 @@ const Nav = ({user}: Session) => {
           </motion.span>
           )}
           </AnimatePresence>
+        </li>
+        <li className="flex items-center text-3xl relative cursor-pointer">
+            <AiFillHeart />
         </li>
         {/* Dark mode */}
         <DarkLight />

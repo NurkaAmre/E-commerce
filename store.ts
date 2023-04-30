@@ -72,13 +72,13 @@ export const userCartStore = create<CartState>()(
 )
 
 type ThemeState = {
-  mode: 'light' | 'dark'
-  toggleMode: (theme: 'light' | 'dark') => void
+  mode: 'lemonade' | 'halloween'
+  toggleMode: (theme: 'lemonade' | 'halloween') => void
 }
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
-      mode: 'light',
+      mode: 'lemonade',
       toggleMode: (theme) => set((state) => ({mode: theme})),
     }),
     {name: 'theme-store'}

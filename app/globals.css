@@ -20,11 +20,179 @@
 
 html,
 body {
-  max-width: 100%;
+  min-height: 90vh;
   overflow-x: hidden;
+  padding: auto;
+
+}
+h4 {
+  font-size: 3rem;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
+
+nav {
+  background: #82bd42;
+}
+header{
+  background: #519903;
+}
+
+.pattern2 {
+  /* width: 40%; */
+  position: absolute;
+  right: 0;
+}
+
+.main {
+  position: relative;
+  min-height: 90vh;
+}
+
+.hr {
+  position: absolute;
+  top: 7%;
+}
+
+.heading {
+  position: absolute;
+  text-align: center;
+  letter-spacing: 1rem;
+  top: 8%;
+  font-size: 4rem;
+}
+
+.headingsm {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.hr1 {
+  position: absolute;
+  right: 0;
+  top: 25%;
+}
+
+.img1 {
+  width: 80%;
+  height:80%;
+  border: 5px solid #82bd42;
+  position: absolute;
+  top: 10%;
+  left: -75%;
+}
+.img2 {
+width: 35%;
+  height: 35%;
+  border: 5px solid #82bd42;
+  position: relative;
+}
+.img3 {
+  width: 80%;
+  height: 80%;
+  border: 5px solid #82bd42;
+  position: absolute;
+  top: 10%;
+  right: -75%;
+}
+
+.bt {
+  position: absolute;
+  left: 10%;
+  top: 110%;
+}
+
+.set3, .set1, .set2{
+  width: 300px;
+}
+.pic-section {
+  display: flex;
+ background-color: #82bd42;
+ justify-content: center;
+ align-items: center;
+}
+
+.discount-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.discount-heading{
+    letter-spacing: 1rem;
+    font-size: 4rem;
+}
+
+.bg-discount {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background: #519903;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  color: #fff;
+}
+.span1 {
+  font-size: 2rem;
+ }
+.span2 {
+  font-size: 3rem;
+  }
+
+.grid-container {
+  padding: 4rem 10rem;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  }
+
+.grid-item {
+  background-color: #EBE7DC;
+  }
+
+.grid-item1 {
+  background-color: #85BB50;
+}
+
+.icon {
+  width: 180px;
+  align-items: center;
+  display:flex ;
+  justify-content: center;
+  margin-left: 35%;
+  margin-top: 10%;
+}
+
+.icon-text {
+ text-align: center;
+ color: #fff;
+ margin: 1.5rem;
+ font-size: 3rem;
+ font-weight: lighter;
+}
+
+.delivery {
+  min-height: 40vh;
+  background:  #EBE7DC;;
+}
+
+.delivery-text {
+position: relative;
+}
+
+.arrow {
+  position: absolute;
+  width: 400px;
+  top: 15%;
+  left: 15%;
+}
+.font-bold{
+  z-index: 99;
+}
+
