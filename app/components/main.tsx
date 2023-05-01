@@ -1,4 +1,3 @@
-import pattern from '@/public/pattern.png'
 import bed from '@/public/spalniy_gar1.jpeg'
 import bed1 from '@/public/spalniy_gar2.jpeg'
 import bed2 from '@/public/spalniy_gar4.jpeg'
