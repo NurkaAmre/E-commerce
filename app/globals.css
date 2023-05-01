@@ -54,26 +54,26 @@ header{
 
 .hr {
   position: absolute;
-  top: 7%;
+  top: 5%;
 }
 
 .heading {
-  position: absolute;
   text-align: center;
   letter-spacing: 1rem;
-  top: 8%;
   font-size: 4rem;
 }
 
 .headingsm {
     text-align: center;
     font-size: 2rem;
+    padding-top: 2rem;
+      padding-left: 1rem;
 }
 
 .hr1 {
   position: absolute;
   right: 0;
-  top: 25%;
+  top: 20%;
 }
 
 .img1 {
@@ -192,7 +192,11 @@ position: relative;
   top: 15%;
   left: 15%;
 }
-.font-bold{
-  z-index: 99;
+.delivery-heading {
+  letter-spacing: 1rem;
+  font-size: 3rem;
 }
 
+footer {
+  background: #519903;
+}

@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import SearchBar from "./SearchBar";
-import { AiFillPhone } from "react-icons/ai";
-
+import { FiPhoneCall } from 'react-icons/fi';
 
 export default function Header() {
   return (
@@ -22,7 +21,7 @@ export default function Header() {
         <SearchBar />
         <Link href={'/feedback'} className="flex items-center text-white">
           <h3 className="mr-4 cursor-pointer font-castoro text-lg">FeedBack</h3>
-          <AiFillPhone className="text-white" />
+           <FiPhoneCall className="text-white text-3xl" />
         </Link>
       </div>
     </header>

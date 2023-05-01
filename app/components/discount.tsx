@@ -16,9 +16,9 @@ export default function Discount (){
           <span className='span1'>До</span>
           <span className='span2 underline'>20%</span>
         </div>
-        <button className='btn-primary font-medium text-white px-4 mt-9 rounded-md py-3 w-1/2 text-lg'>Buy Now</button>
+        <button className='btn-primary font-medium text-white px-4 mt-9 rounded-full py-3 w-1/2 text-lg'>Buy Now</button>
       </div>
-      <div className="flex-1 order-0 pic-section">
+      <div className="flex-1 order-2 pic-section">
         <div className='motion-images'>
           <Image src={set1} alt="set1" className='set1'/>
           <Image src={set3} alt="set1" className='set1'/>
