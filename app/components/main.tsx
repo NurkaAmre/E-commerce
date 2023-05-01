@@ -20,7 +20,7 @@ export default function MainSection (){
     </div>
     </div>
     <div className='flex justify-center m-8'>
-      <button className='btn-primary font-medium text-white px-4 text-lg text-center m-5 rounded-md py-3 w-1/4'>Order</button>
+      <button className='btn-primary font-medium text-white px-4 text-lg text-center m-5 rounded-full py-3 w-1/4'>Order</button>
     </div>
     </div>
 

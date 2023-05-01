@@ -7,11 +7,8 @@ export default function Main (){
   return (
     <>
     <MainSection />
-    
-    <ProductSection />
-   
     <Discount />
-   
+    <ProductSection />
     <DeliveryServices />
     </>
   )

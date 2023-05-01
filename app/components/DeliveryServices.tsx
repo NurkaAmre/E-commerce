@@ -16,7 +16,7 @@ export default function DeliveryServices() {
       </div>
       <div>
         <h1 className="font-dancing_script font-medium text-3xl m-5">Fast and Safe</h1>
-        <button className="btn-primary font-medium text-white px-4 text-lg text-center m-5 rounded-md py-3 w-1/2">More details</button>
+        <button className="btn-primary font-medium text-white px-4 text-lg text-center m-5 rounded-full py-3 w-1/2">More details</button>
       </div>
       </div>
      <div className="flex-1 order-0">

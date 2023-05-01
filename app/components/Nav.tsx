@@ -5,7 +5,7 @@ import {signIn, signOut} from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import Cart from "./Cart"
-import logo from '@/public/logo.png'
+import logo from '@/public/logo2.png'
 import { userCartStore } from "@/store"
 import {AiFillShopping, AiFillHeart} from 'react-icons/ai'
 import { motion, AnimatePresence } from "framer-motion"
@@ -36,7 +36,7 @@ const Nav = ({user}: Session) => {
         {/* Dark mode */}
         <DarkLight />
         {!user && (
-          <li className="bg-primary text-white py-2 px-4 rounded-md">
+          <li className="bg-primary text-white py-2 px-4 rounded-full">
             <button onClick={() => signIn()}>SignIn</button>
           </li>
         )}
