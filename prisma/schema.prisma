@@ -23,7 +23,8 @@ model User {
 
 model Address {
   id              Int         @id @default(autoincrement())
-  street          String
+  first_line      String
+  second_line     String?
   zip             Int
   city            String
   province        String
@@ -46,11 +47,11 @@ model Order {
 }
 
 model Product {
-  id          String  @id @default(cuid())
-  name        String
-  description String?
-  unit_amount Float
-  image       String?
-  quantity    Float   @default(0)
-  orders      Order[]
+  id              String  @id @default(cuid())
+  name            String
+  description     String?
+  unit_amount     Float
+  image           String?
+  quantity        Float   @default(0)
+  orders          Order[]
 }
