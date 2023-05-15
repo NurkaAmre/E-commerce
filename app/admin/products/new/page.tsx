@@ -13,6 +13,9 @@ const Page = () => {
       images: JSON.stringify(form.productImages.value.split(',')),
       colours: JSON.stringify(form.productColours.value.split(','))
     }
+    const endpoint = '/api/products';
+    const JSONdata = JSON.stringify(product);
+    const options = {}
        
   }
   return (
