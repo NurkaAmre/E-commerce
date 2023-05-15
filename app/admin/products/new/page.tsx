@@ -1,7 +1,7 @@
 'use client'
 
 const Page = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const product = {
@@ -15,8 +15,17 @@ const Page = () => {
     }
     const endpoint = '/api/products';
     const JSONdata = JSON.stringify(product);
-    const options = {}
-       
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    };
+    const response = await fetch(endpoint, options); 
+    const data = await response.json();
+    console.log(data);
+      
   }
   return (
     <section className="p-5">
