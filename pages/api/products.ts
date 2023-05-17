@@ -10,6 +10,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       name: body.name,
       description: body.description,
       price: body.price,
+      quantity: body.quantity,
       image: body.image,
       colours: body.colours,
       category: body.category,

@@ -8,6 +8,7 @@ const Page = () => {
       name: form.productName.value,
       description: form.productDesc.value,
       price: form.productPrice.value,
+      quantity: form.productQuantity.value,
       category: form.productCategory.value,
       set: form.productSet.value,
       images: JSON.stringify(form.productImages.value.split(',')),
@@ -42,6 +43,10 @@ const Page = () => {
         <div className="flex p-3">
           <label htmlFor="productPrice">Price:</label>
           <input className="border-2 border-grey-200" type="number" name="productPrice" id="productPrice" />
+        </div>
+        <div className="flex p-3">
+          <label htmlFor="productQuantity">Quanntity:</label>
+          <input className="border-2 border-grey-200" type="number" name="productQuantity" id="productQuantity" />
         </div>
         <div className="flex p-3">
           <label htmlFor="productCategory">Category:</label>
