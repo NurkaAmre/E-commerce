@@ -1,14 +1,16 @@
 'use client'
+import * as React from 'react';
 
 const Page = () => {
+  const [notice, setNotice] = React.useState<string>('');
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const product = {
       name: form.productName.value,
       description: form.productDesc.value,
-      price: form.productPrice.value,
-      quantity: form.productQuantity.value,
+      price: parseInt(form.productPrice.value),
+      quantity: parseInt(form.productQuantity.value),
       category: form.productCategory.value,
       set: form.productSet.value,
       images: JSON.stringify(form.productImages.value.split(',')),
@@ -25,7 +27,7 @@ const Page = () => {
     };
     const response = await fetch(endpoint, options); 
     const data = await response.json();
-    console.log(data);
+    setNotice(data.message);
       
   }
   return (
@@ -68,6 +70,9 @@ const Page = () => {
           <button className="border-2 border-grey-200" type="submit">Create</button>
         </div>
       </form>
+      <p>
+        {notice}
+      </p>
     </section>
   )
 }
