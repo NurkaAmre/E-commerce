@@ -1,4 +1,4 @@
-import Nav from "../components/AdminNav";
+import Nav from "../../components/AdminNav";
 import "@/styles/admin.css";
 
 export default function Layout({children}: {children: React.ReactNode}) {
