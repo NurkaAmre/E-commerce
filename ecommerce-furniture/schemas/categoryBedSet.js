@@ -1,6 +1,6 @@
 export default {
-  name: 'category',
-  title: 'Category',
+  name: 'categoryBedSet',
+  title: 'CategoryBedset',
   type: 'document',
   fields: [
     {
@@ -41,11 +41,19 @@ export default {
       title: 'Description',
       type: 'string',
     },
-     {
-      name: 'colors',
-      title: 'Colors',
+      {
+      name: 'color',
+      title: 'Color',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'image' }],
+      options: {
+        hotspot: true,
+      }
+    },
+     {
+      name: 'country',
+      title: 'country',
+      type: 'string',
     },
   ]
 }

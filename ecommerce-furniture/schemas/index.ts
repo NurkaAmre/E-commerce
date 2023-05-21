@@ -1,5 +1,8 @@
 import product from './product';
 import banner from './banner';
-import category from './category'
+import kitchenSet from './categoryKitchenSet'
+import bedSet from './categoryBedSet'
+import sofa from './categorySofa'
+import chair from './categoryChair'
 
-export const schemaTypes = [product, banner, category]
+export const schemaTypes = [product, banner, kitchenSet, bedSet, sofa, chair]
