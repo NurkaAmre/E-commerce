@@ -16,7 +16,7 @@ export default async function Category ({params}: {params: {name: string}}) {
       <div>
         {products?.map((product: any) => (
           <div key={product._id} className="border border-red-600 p-4">
-            <h3>{product.name}</h3>
+            <h3>Name: {product.name}</h3>
             <Image src={product.imagesURL[0]} alt={product.name} width={200} height={200} />
             <p>Quantity: {product.quantity}</p>
             <p>Price: {product.price}</p>
