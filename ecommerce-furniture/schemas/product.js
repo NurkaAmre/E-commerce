@@ -4,8 +4,8 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'image',
-      title: 'Image',
+      name: 'images',
+      title: 'Images',
       type: 'array',
       of: [{ type: 'image' }],
       options: {
@@ -35,6 +35,22 @@ export default {
       name: 'details',
       title: 'Details',
       type: 'string',
-    }
+    },
+    {
+      name: 'quanitity',
+      title: 'Quanitity',
+      type: 'number',
+    },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+    },
+    {
+      name: 'set',
+      title: 'Set',
+      type: 'reference',
+      to: [{ type: 'set' }]
+    },
   ]
 }
