@@ -8,7 +8,8 @@ export default async function Category ({params}: {params: {name: string}}) {
     dataset: "production",
     useCdn: true,
   })
-  const query = `*[_type == "product" && category == "${category}"]{_id, name, price, quantity, details, slug, quantity, "imagesURL": images[].asset->url}`
+  const query = `*[_type == "product" && category == "${category}"]
+                {_id, name, price, quantity, details, slug, quantity, "imagesURL": images[].asset->url}`
   const products = await client.fetch(query);
   return (
     <div>
