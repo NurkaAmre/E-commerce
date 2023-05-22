@@ -37,8 +37,8 @@ export default {
       type: 'string',
     },
     {
-      name: 'quanitity',
-      title: 'Quanitity',
+      name: 'quantity',
+      title: 'Quantity',
       type: 'number',
     },
     {
