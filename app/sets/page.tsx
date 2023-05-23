@@ -1,17 +1,12 @@
+import SanityClient from "@/sanity/client";
 import { SetType } from "@/types/SetType";
-import { createClient } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Sets () {
-  const client = createClient({
-    projectId: "mp896dw0",
-    dataset: "production",
-    useCdn: true,
-  })
   const query = `*[_type == "set"]
                 {_id, name, slug, price, description, "imageUrl": image.asset->url}`
-  const sets = await client.fetch(query);
+  const sets = await SanityClient.fetch(query);
   return (
       <div>
         {/* {console.log(sets)} */}
