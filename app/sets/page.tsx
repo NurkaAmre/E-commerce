@@ -10,7 +10,7 @@ export default async function Sets () {
   const sets = await client.fetch(query);
   return (
       <div>
-        {console.log(sets)}
+        {/* {console.log(sets)} */}
           <h1>Sets</h1>
       </div>
   )
