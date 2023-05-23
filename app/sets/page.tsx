@@ -1,3 +1,4 @@
+import { SetType } from "@/types/SetType";
 import { createClient } from "next-sanity";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +17,7 @@ export default async function Sets () {
         {/* {console.log(sets)} */}
           <h1>Sets</h1>
           <div className="flex flex-wrap">
-            {sets.map((set: any) => (
+            {sets.map((set: SetType) => (
               <Link href={`/sets/${set.slug.current}`} key={set._id}>
                 <div className="p-4">
                   <h2>{set.name}</h2>
