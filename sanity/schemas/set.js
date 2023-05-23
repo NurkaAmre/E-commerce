@@ -1,13 +1,12 @@
 export default {
-  name: 'product',
-  title: 'Product',
+  name: 'set',
+  title: 'Set',
   type: 'document',
   fields: [
     {
       name: 'image',
       title: 'Image',
-      type: 'array',
-      of: [{ type: 'image' }],
+      type: 'image',
       options: {
         hotspot: true,
       }
@@ -15,6 +14,11 @@ export default {
     {
       name: 'name',
       title: 'Name',
+      type: 'string',
+    },
+    {
+      name: 'category',
+      title: 'Category',
       type: 'string',
     },
     {
@@ -32,9 +36,9 @@ export default {
       type: 'number',
     },
     {
-      name: 'details',
-      title: 'Details',
-      type: 'string',
-    }
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+    },
   ]
 }

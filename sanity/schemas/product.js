@@ -1,11 +1,11 @@
 export default {
-  name: 'categoryBedSet',
-  title: 'CategoryBedset',
+  name: 'product',
+  title: 'Product',
   type: 'document',
   fields: [
     {
-      name: 'image',
-      title: 'Image',
+      name: 'images',
+      title: 'Images',
       type: 'array',
       of: [{ type: 'image' }],
       options: {
@@ -32,28 +32,25 @@ export default {
       type: 'number',
     },
     {
-      name: 'size',
-      title: 'Size',
+      name: 'details',
+      title: 'Details',
       type: 'string',
     },
     {
-      name: 'description',
-      title: 'Description',
+      name: 'quanitity',
+      title: 'Quanitity',
+      type: 'number',
+    },
+    {
+      name: 'category',
+      title: 'Category',
       type: 'string',
     },
-      {
-      name: 'color',
-      title: 'Color',
-      type: 'array',
-      of: [{ type: 'image' }],
-      options: {
-        hotspot: true,
-      }
-    },
-     {
-      name: 'country',
-      title: 'country',
-      type: 'string',
+    {
+      name: 'set',
+      title: 'Set',
+      type: 'reference',
+      to: [{ type: 'set' }]
     },
   ]
 }
