@@ -16,7 +16,7 @@ export default async function Set ({params}: {params: {slug: string}}) {
         <p>{SetDetails.description}</p>
         <h2>Products:</h2>
         <div className="flex">
-          {SetDetails.products.map((product) => (
+          {SetDetails.products?.map((product) => (
             <div className="flex flex-col p-2 border border-red-500">
               <h2>Product: {product.name}</h2>
               <h3>Price: {product.price}</h3>
