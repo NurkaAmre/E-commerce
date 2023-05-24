@@ -40,5 +40,11 @@ export default {
       title: 'Description',
       type: 'text',
     },
+    {
+      name: 'products',
+      title: 'Products',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'product' }] }]
+    }
   ]
 }
