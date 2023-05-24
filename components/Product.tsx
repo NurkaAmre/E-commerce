@@ -8,6 +8,7 @@ export default function Product({
   image, 
   unit_amount,
   id,
+
   description,
   metadata,
  }: ProductType ){

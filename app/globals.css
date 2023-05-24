@@ -200,3 +200,41 @@ position: relative;
 footer {
   background: #519903;
 }
+ .icon {
+   height: 2.5rem;
+   width: 2.5rem;
+   top: 0;
+   color: #8bda36c2;
+ }
+
+ .icon:hover {
+   color: #87e32bc2;
+ }
+
+
+ /* .product-card {
+   position: relative;
+
+ }
+
+ .product-details {
+   position: absolute;
+   justify-content: center;
+   transform: translate(0%, -95%);
+   background: rgba(19, 28, 39, 0.8);
+   padding: 10px;
+   visibility: hidden;
+   opacity: 0;
+   transition: opacity 0.5s;
+   border-bottom-right-radius: 15px;
+   border-bottom-left-radius: 15px;
+   width: auto;
+   color: #fff;
+ }
+
+ .product-card:hover .product-details {
+   visibility: visible;
+   opacity: 1;
+ }
+
+ */
