@@ -1,9 +1,11 @@
-export type SetType = {
+export type ProductType = {
   _id: string;
   name: string;
+  details: string;
   description: string;
-  imageUrl: string;
+  imagesUrls: string[];
   price: number;
+  quantity: number;
   slug: {
     current: string;
   };
