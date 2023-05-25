@@ -45,12 +45,6 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'string',
-    },
-    {
-      name: 'set',
-      title: 'Set',
-      type: 'reference',
-      to: [{ type: 'set' }]
-    },
+    }
   ]
 }

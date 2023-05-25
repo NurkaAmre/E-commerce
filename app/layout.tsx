@@ -2,8 +2,6 @@ import './globals.css'
 import Nav from '../components/Nav'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import {getServerSession} from 'next-auth/next'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import Hydrate from '../components/Hydrate'
 import {Roboto, Lobster_Two, Dancing_Script, Castoro } from 'next/font/google'
 
@@ -23,14 +21,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  //Fetch the user
-  const session = await getServerSession(authOptions)
-  // console.log(session)
   return (
     <html lang="en" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${dancing_script.variable}`}>
       
         <Hydrate>
-        <Nav user={session?.user} expires={session?.expires as string}/>
+        <Nav />
         <Header />
         {children}
         <Footer />
