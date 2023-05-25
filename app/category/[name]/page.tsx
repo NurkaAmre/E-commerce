@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { createClient } from "next-sanity";
 import { AiFillHeart } from "react-icons/ai";
+import ProductType from "@/types/ProductType";
 
 
 export default async function Category ({params}: {params: {name: string}}) {
@@ -11,13 +12,13 @@ export default async function Category ({params}: {params: {name: string}}) {
     dataset: "production",
     useCdn: true,
   })
-  const query = `*[_type == "product" && category == "${category}"]
-                {_id, name, price, quantity, details, type, description, slug, quantity, "imagesURL": images[].asset->url}`
+  const query = `*[_type == "product" && "${category}" in category[]->name.current]
+                {_id, name, price, quantity, details, type, description, slug, quantity, "imagesURL": images[].asset->url, "category": category[]->name.current}`;
   const products = await client.fetch(query);
   return (
     <main className="p-20">
       <div className="text-gray-700 grid grid-cols-fluid gap-16 mt-6">
-        {products?.map((product: any) => (
+        {products?.map((product: ProductType) => (
           <Link href={`/product/${product.slug.current}`} key={product._id}>
             <div className="relative group">
               <Image

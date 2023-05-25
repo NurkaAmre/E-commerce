@@ -1,18 +1,14 @@
-import { Metadata } from "next";
-import { type } from "os"
-
 export type ProductType = {
-  name: string,
-  image: string,
-  unit_amount: number | null,
-  id: string,
-  quantity?: number | 1,
-  description: string | null,
-  metadata: MetadataType,
-}
-
-type MetadataType = {
-  features: string
+  _id: string;
+  name: string;
+  details: string;
+  description: string;
+  imagesURL: string[];
+  price: number;
+  quantity: number;
+  slug: {
+    current: string;
+  };
 }
 
 export default ProductType;
