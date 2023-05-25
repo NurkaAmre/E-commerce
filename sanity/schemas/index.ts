@@ -1,5 +1,6 @@
 import product from './product';
+import category from './category';
 import banner from './banner';
-import set from './set';
 
-export const schemaTypes = [product, banner, set]
+
+export const schemaTypes = [product, banner, category]
