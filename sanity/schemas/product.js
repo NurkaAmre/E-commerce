@@ -4,18 +4,20 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'images',
-      title: 'Images',
-      type: 'array',
-      of: [{ type: 'image' }],
-      options: {
-        hotspot: true,
-      }
-    },
-    {
       name: 'name',
       title: 'Name',
       type: 'string',
+    },
+    {
+      name: 'type',
+      title: 'Type',
+      type: 'string',
+    },
+    {
+      name: 'category',
+      title: 'Category',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'category' } }]
     },
     {
       name: 'slug',
@@ -27,8 +29,28 @@ export default {
       }
     },
     {
+      name: 'images',
+      title: 'Images',
+      type: 'array',
+      of: [{ type: 'image' }],
+      options: {
+        hotspot: true,
+      }
+    },
+    {
+      name: 'colors',
+      title: 'Colors',
+      type: 'array',
+      of: [{ type: 'string' }],
+    },
+    {
       name: 'price',
       title: 'Price',
+      type: 'number',
+    },
+    {
+      name: 'quantity',
+      title: 'Quantity',
       type: 'number',
     },
     {
@@ -37,14 +59,9 @@ export default {
       type: 'string',
     },
     {
-      name: 'quantity',
-      title: 'Quantity',
-      type: 'number',
-    },
-    {
-      name: 'category',
-      title: 'Category',
-      type: 'string',
+      name: 'description',
+      title: 'Description',
+      type: 'text',
     }
   ]
 }
