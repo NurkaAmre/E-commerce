@@ -45,7 +45,6 @@ export default async function ProductDetails({ params }: { params: { slug: strin
   }`;
 
   const product = await SanityClient.fetch(query);
-  console.log(product)
 
   return (
     <div>
@@ -54,10 +53,25 @@ export default async function ProductDetails({ params }: { params: { slug: strin
           <div className="image-container">
             <Image src={product.imagesURL[1]} alt={product.name} width={250} height={250} />
           </div>
-          <div className="small-images-container">
-            <Image src={product.imagesURL[2]} alt={product.name} width={100} height={100} />
-            <Image src={product.imagesURL[3]} alt={product.name} width={100} height={100} />
-            <Image src={product.imagesURL[4]} alt={product.name} width={100} height={100} />
+          <div className="small-images-container carousel w-full">
+            {product.imagesURL.map((imageURL: string, index: number) => {
+              if (index !== 0) {
+                return (
+                  <div id={`item${index}`} className="carousel-item w-full">
+                    <Image src={imageURL} alt={product.name} width={100} height={100} />
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <div className="flex justify-center w-full py-2 gap-2">
+          {product.imagesURL.map((imageURL: string, index: number) => {
+              if (index !== 0) {
+                return (
+                  <a href={`#item${index}`} className="btn btn-xs">{index}</a> 
+                );
+              }
+            })}
           </div>
         </div>
 
@@ -101,10 +115,6 @@ export default async function ProductDetails({ params }: { params: { slug: strin
         </div>
 
       </div>
-      {/* <Image src={products[0].imagesURL[0]} alt={products.name} width={400} height={400} /> */}
-
     </div>
-
-
   );
 }
