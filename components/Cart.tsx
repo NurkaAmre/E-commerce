@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { userCartStore } from '@/store';
-import formatPrice from '@/util/PriceFormat';
 import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5';
 import basket from '@/public/shopping-cart.png';
 import {motion, AnimatePresence} from 'framer-motion'
@@ -59,7 +58,7 @@ export default function Cart() {
                   unit_amount: item.unit_amount,
                   })}><IoAddCircle /></button>
               </div>
-              <p className='text-sm'>{formatPrice(item.unit_amount)}</p>
+              <p className='text-sm'>{item.unit_amount}</p>
             </div>
           </motion.div>
         ))}
@@ -68,7 +67,7 @@ export default function Cart() {
         {/* Checkout and Total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
-        <p>Total: {formatPrice(totalPrice)}</p>
+        <p>Total: {totalPrice}</p>
         <button 
         onClick={() => cartStore.setCheckout('checkout')}
         className='py-2 mt-4 bg-primary w-full rounded-md text-white'>Checkout</button> 
