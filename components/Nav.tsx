@@ -8,9 +8,10 @@ import { userCartStore } from "@/store"
 import {AiFillShopping, AiFillHeart} from 'react-icons/ai'
 import { motion, AnimatePresence } from "framer-motion"
 import DarkLight from "./DarkLight"
+import { signIn, signOut } from "next-auth/react"
 
 
-const Nav = () => {
+const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
   return (
     <nav className="flex justify-between items-center px-10">
@@ -35,6 +36,16 @@ const Nav = () => {
         <DarkLight />
       </ul>
       <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
+      {user && (
+        <div className="flex items-center gap-4">
+          <Image src={user.image} width={50} height={50} alt="user" className="rounded-full"/>
+          <span className="text-xl font-bold">{user.name}</span>
+          <button onClick={() => { signOut() }}>LogOut</button>
+        </div>
+      )}
+      {!user && (
+        <button onClick={() => { signIn() }}>Login</button>
+      )}
     </nav>
   )
 }
