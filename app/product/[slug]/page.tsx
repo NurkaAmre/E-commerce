@@ -41,6 +41,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
     details,
     type,
     description,
+    discount,
     "imagesURL": images[].asset->url
   }`;
 
@@ -105,8 +106,9 @@ export default async function ProductDetails({ params }: { params: { slug: strin
                 <span className="plus" ><AiOutlinePlus /></span>
               </p>
             </div>
-            <p className="price">{product.price}&#x20B8;</p>
-            <p className="price-old">100000&#x20B8;</p>
+            {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
+            {(product.discount) ? <p className="price">{((product.discount / 100) * product.price)}&#x20B8;</p> : null}
+            {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart">В корзину</button>
