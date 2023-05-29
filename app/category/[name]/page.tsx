@@ -26,9 +26,9 @@ export default async function Category ({params}: {params: {name: string}}) {
                 alt={product.name}
                 width={400}
                 height={400}
-                className="object-cover rounded-lg transition-transform transform group-hover:scale-110 relative"
+                className="object-cover rounded-lg transition-transform transform group-hover:scale-110"
               />
-              <span className="absolute right-10 top-3">
+              <span className="absolute right-10 top-3 transition-transform transform group-hover:scale-110">
                 <AiFillHeart className="icon" />
               </span>
               <div className="absolute flex gap-24 items-center py-4 px-10 top-80 ml-10 justify-center bg-gray-600 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity product-details">
