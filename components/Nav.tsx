@@ -8,12 +8,14 @@ import { userCartStore } from "@/store"
 import {AiFillShopping, AiFillHeart} from 'react-icons/ai'
 import { motion, AnimatePresence } from "framer-motion"
 import DarkLight from "./DarkLight"
+import { signIn, signOut } from "next-auth/react"
+import UserOptions from "./UserOptions"
 
 
-const Nav = () => {
+const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
   return (
-    <nav className="flex justify-between items-center px-10">
+    <nav className="flex justify-between items-center px-10 relative">
       <Link href={'/'}>
         <Image src={logo} width={50} height={50} alt="logo"/>
       </Link> 
@@ -35,6 +37,12 @@ const Nav = () => {
         <DarkLight />
       </ul>
       <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
+      {user && (
+        <UserOptions user={user} />
+      )}
+      {!user && (
+        <button onClick={() => { signIn() }}>Login</button>
+      )}
     </nav>
   )
 }

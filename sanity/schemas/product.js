@@ -49,6 +49,11 @@ export default {
       type: 'number',
     },
     {
+      name: 'discount',
+      title: 'Discount',
+      type: 'number',
+    },
+    {
       name: 'quantity',
       title: 'Quantity',
       type: 'number',

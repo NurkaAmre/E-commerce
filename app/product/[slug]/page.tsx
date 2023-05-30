@@ -30,6 +30,7 @@
 import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import SanityClient from "@/sanity/client";
+import discountPrice from "@/util/discountPrice";
 
 export default async function ProductDetails({ params }: { params: { slug: string } }) {
   const slug = params.slug;
@@ -41,11 +42,11 @@ export default async function ProductDetails({ params }: { params: { slug: strin
     details,
     type,
     description,
+    discount,
     "imagesURL": images[].asset->url
   }`;
 
   const product = await SanityClient.fetch(query);
-  console.log(product)
 
   return (
     <div>
@@ -54,10 +55,25 @@ export default async function ProductDetails({ params }: { params: { slug: strin
           <div className="image-container">
             <Image src={product.imagesURL[1]} alt={product.name} width={250} height={250} />
           </div>
-          <div className="small-images-container">
-            <Image src={product.imagesURL[2]} alt={product.name} width={100} height={100} />
-            <Image src={product.imagesURL[3]} alt={product.name} width={100} height={100} />
-            <Image src={product.imagesURL[4]} alt={product.name} width={100} height={100} />
+          <div className="small-images-container carousel w-full">
+            {product.imagesURL.map((imageURL: string, index: number) => {
+              if (index !== 0) {
+                return (
+                  <div id={`item${index}`} className="carousel-item w-full">
+                    <Image src={imageURL} alt={product.name} width={100} height={100} />
+                  </div>
+                );
+              }
+            })}
+          </div>
+          <div className="flex justify-center w-full py-2 gap-2">
+          {product.imagesURL.map((imageURL: string, index: number) => {
+              if (index !== 0) {
+                return (
+                  <a href={`#item${index}`} className="btn btn-xs">{index}</a> 
+                );
+              }
+            })}
           </div>
         </div>
 
@@ -91,8 +107,9 @@ export default async function ProductDetails({ params }: { params: { slug: strin
                 <span className="plus" ><AiOutlinePlus /></span>
               </p>
             </div>
-            <p className="price">{product.price}&#x20B8;</p>
-            <p className="price-old">100000&#x20B8;</p>
+            {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
+            {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount)}&#x20B8;</p> : null}
+            {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart">В корзину</button>
@@ -101,10 +118,6 @@ export default async function ProductDetails({ params }: { params: { slug: strin
         </div>
 
       </div>
-      {/* <Image src={products[0].imagesURL[0]} alt={products.name} width={400} height={400} /> */}
-
     </div>
-
-
   );
 }
