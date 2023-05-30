@@ -2,14 +2,29 @@ import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 import ProductType from './types/ProductType';
 
+type CartItem = {
+  id: string;
+  name: string;
+  details: string;
+  description: string;
+  imagesURL: string[];
+  price: number;
+  discount?: number;
+  quantity: number;
+  cartQuantity: number
+  slug: {
+    current: string;
+  }; 
+}
+
 type CartState = {
   isOpen: boolean,
-  cart: ProductType[],
+  cart: CartItem[],
+  onCheckout: string,
   toggleCart: () => void
   clearCart: () => void
   addProduct: (item: ProductType) => void
   removeProduct: (item: ProductType) => void
-  onCheckout: string,
   setCheckout: (val: string) => void
 }
 
@@ -26,22 +41,22 @@ export const userCartStore = create<CartState>()(
         if(existingItem){
           const updatedCart = state.cart.map((cartItem) => {
             if(cartItem.id === item.id){
-              return {...cartItem, quantity: cartItem.quantity + 1}
+              return {...cartItem, cartQuantity: cartItem.cartQuantity + 1}
             }
             return cartItem
           })
           return {cart: updatedCart}
         } else {
-          return {cart: [...state.cart, {...item, quantity: 1}]}
+          return {cart: [...state.cart, {...item, cartQuantity: 1}]}
         }
       }),
       removeProduct: (item) => set((state) => {
         //check if the item exists and remove quantity -1
         const existingItem = state.cart.find((cartItem) => cartItem.id === item.id)
-        if(existingItem && existingItem.quantity > 1){
+        if(existingItem && existingItem.cartQuantity > 1){
           const updatedCart = state.cart.map((cartItem) => {
             if(cartItem.id === item.id){
-              return {...cartItem, quantity: cartItem.quantity - 1}
+              return {...cartItem, cartQuantity: cartItem.cartQuantity - 1}
             }
             return cartItem
           })

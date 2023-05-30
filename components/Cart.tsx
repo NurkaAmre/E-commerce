@@ -11,7 +11,7 @@ export default function Cart() {
   const cartStore = userCartStore()
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + item.price * item.quantity
+    return acc + item.price * item.cartQuantity
   }, 0)
 
   return (
@@ -41,8 +41,9 @@ export default function Cart() {
               <h2>{item.name}</h2>
               {/* Update quantity of a product */}
               <div className='flex gap-2'>
-                <h2>Quantity: {item.quantity}</h2>
+                 <h2>Quantity: </h2>
                  <button onClick={() => cartStore.removeProduct(item)}><IoRemoveCircle /></button>
+                 <h2>{item.cartQuantity}</h2>
                  <button onClick={() => cartStore.addProduct(item)}><IoAddCircle /></button>
               </div>
               <p className='text-sm'>{item.price}</p>
