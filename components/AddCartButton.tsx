@@ -1,20 +1,14 @@
 'use client'
 import { userCartStore } from "@/store"
-import { AddCartType } from "@/types/AddCartType"
+import ProductType from "@/types/ProductType";
 import { useState } from "react"
 
-const AddCart = ({
-  name, 
-  id, 
-  image, 
-  unit_amount,
-  quantity,
-} : AddCartType) => {
+const AddCartButton = (product : ProductType) => {
   const cartStore = userCartStore();
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
-    cartStore.addProduct({ id, name, unit_amount, quantity, image})
+    cartStore.addProduct(product)
     setAdded(true)
     setTimeout(() => {
       setAdded(false)
@@ -22,15 +16,15 @@ const AddCart = ({
   }
   return (
     <>
-    <button 
+    <button
     onClick={handleAddToCart} 
     disabled={added}
-    className="my-4 py-4 px-2 w-full btn-primary rounded-md">
-      {!added && <span>Add to cart</span>}
+    className="add-to-cart">
+      {!added && <span>В корзину</span>}
       {added && <span>Adding to cart</span>}
     </button>
     </>
   )
 }
 
-export default AddCart;
+export default AddCartButton;

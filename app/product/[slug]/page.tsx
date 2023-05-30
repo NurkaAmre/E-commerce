@@ -31,11 +31,12 @@ import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import SanityClient from "@/sanity/client";
 import discountPrice from "@/util/discountPrice";
+import AddCartButton from "@/components/AddCartButton";
 
 export default async function ProductDetails({ params }: { params: { slug: string } }) {
   const slug = params.slug;
   const query = `*[_type == "product" && slug.current == '${slug}'][0]{
-    _id,
+    "id": _id,
     name,
     price,
     quantity,
@@ -50,7 +51,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
 
   return (
     <div>
-      <div key={product._id} className="product-detail-container">
+      <div key={product.id} className="product-detail-container">
         <div className="product-image">
           <div className="image-container">
             <Image src={product.imagesURL[1]} alt={product.name} width={250} height={250} />
@@ -112,7 +113,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
             {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
           </div>
           <div className="buttons">
-            <button type="button" className="add-to-cart">В корзину</button>
+            <AddCartButton { ...product } />
             <button type="button" className="buy-now">Купить</button>
           </div>
         </div>
