@@ -1,11 +1,11 @@
 import './globals.css'
 import Nav from '../components/Nav'
-import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Hydrate from '../components/Hydrate'
-import {Roboto, Lobster_Two, Dancing_Script, Castoro } from 'next/font/google'
+import { Roboto, Lobster_Two, Dancing_Script, Castoro } from 'next/font/google'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+
 
 //Define main font
 const roboto = Roboto({weight: ['400', '500', '700'], subsets: ['latin'], variable: '--font-roboto'})
@@ -28,7 +28,6 @@ export default async function RootLayout({
     <html lang="en" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${dancing_script.variable}`}>
         <Hydrate>
         <Nav user={session?.user} />
-        <Header />
         {children}
         <Footer />
         </Hydrate>

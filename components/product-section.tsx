@@ -10,19 +10,19 @@ export default function ProductSection() {
     <section className="grid grid-container grid-cols-fluid2 gap-12 mt-8">
     <div className="grid-item">
       <h3 className='icon-text font-medium font-castoro'>Kitchen Set</h3>
-       <Image src={sofa} alt="bedset" className='icon'/>
+        <Image src={sofa} alt="bedset" className='icons' />
     </div>
     <div className="grid-item1">
        <h3 className='icon-text font-medium font-castoro'>Bed Set</h3>
-    <Image src={bedset} alt="bedset" className='icon'/>
+        <Image src={bedset} alt="bedset" className='icons' />
     </div>
     <div className="grid-item1">
        <h3 className='icon-text font-medium font-castoro'>Chair</h3>
-     <Image src={chair} alt="bedset" className='icon'/>
+        <Image src={chair} alt="bedset" className='icons' />
     </div>
     <div className="grid-item">
        <h3 className='icon-text font-medium font-castoro'>Sofa</h3>
-       <Image src={kitchen} alt="bedset" className='icon'/>
+        <Image src={kitchen} alt="bedset" className='icons' />
     </div>
     </section>
   )

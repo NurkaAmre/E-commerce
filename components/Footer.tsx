@@ -7,19 +7,9 @@ import Link from 'next/link';
 function Footer() {
   return (
     <footer>
-      <nav className="text-white">
-         <div>
-          <form className="flex justify-center align-middle text-center p-5 gap-14">
-             <p className='font-medium font-castoro text-xl pr-5 pt-2'>Подписаться на рассылку:</p>
-            <label htmlFor="email" className="sr-only">Email:</label>
-            <input type="email" name="email" id="email" className="bg-white border-2 w-1/5 text-gray-800 outline-none rounded-full py-2 px-4 mr-2" placeholder="Enter your email" />
-            <button type="submit" className="btn-primary font-medium text-white px-4 text-lg text-center rounded-full py-3 w-1/7">Subscribe</button>
-          </form>
-        </div>
-      </nav>
-      <div className="text-white flex justify-evenly items-center py-4">
+      <div className="text-white flex justify-evenly font-castoro items-center py-10">
   
-         <div className="text-white py-4">
+        <div className="text-white py-8">
           <h2 className='font-bold'>Режим работы call-центра</h2>
           <p>ежедневно с 11:00 до 00:00</p>
           <h2 className='font-bold'>Доставка заказов</h2>

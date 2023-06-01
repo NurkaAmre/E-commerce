@@ -1,37 +1,9 @@
-// import Image from "next/image"
-// import {SearchParamTypes} from "@/types/SearchParamTypes"
-// import formatPrice from "@/util/PriceFormat"
-// import AddCart from "./AddCart"
-
-// export default async function Product({searchParams}: SearchParamTypes) {
-//   return (
-//   <div className="flex flex-col 2xl:flex-row items-center justify-between gap-16">
-//     <Image
-//     src={searchParams.image}
-//     alt={searchParams.name}
-//     width={600}
-//     height={600}
-//     className="w-full rounded-lg"
-//     />
-//     <div className="font-medium">
-//       <h2 className="text-2xl py-2">{searchParams.name}</h2>
-//       <p className="py-2">{searchParams.description}</p>
-//       <p className="py-2">{searchParams.features}</p>
-//       <div className="flex gap-2">
-//         <p className="font-bold text-primary">
-//           {searchParams.unit_amount  && formatPrice(searchParams.unit_amount)}
-//         </p>
-//       </div>
-//       <AddCart {...searchParams}/>
-//     </div>
-//   </div>
-//   )
-// }
 import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import SanityClient from "@/sanity/client";
 import discountPrice from "@/util/discountPrice";
-import sale from '@/public/icons8-sale-64.png'
+import Product from "@/components/Product";
+import Category from "@/app/category/[name]/page";
 
 export default async function ProductDetails({ params }: { params: { slug: string } }) {
   const slug = params.slug;
@@ -71,7 +43,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
           {product.imagesURL.map((imageURL: string, index: number) => {
               if (index !== 0) {
                 return (
-                  <a href={`#item${index}`} className="btn btn-xs">{index}</a> 
+                  <a href={`#item${index}`} className="justify-center btn btn-xs">{index}</a> 
                 );
               }
             })}
@@ -95,11 +67,11 @@ export default async function ProductDetails({ params }: { params: { slug: strin
             </div>
           </div>
           <div className="product-desc">
-            <h6 className="text-xl">{product.description}</h6>
+            <h6 className="text-xl font-castoro">{product.description}</h6>
           </div>
           <h3>Характеристики</h3>
           <hr />
-          <p>{product.details}</p>
+          <p className="font-roboto">{product.details}</p>
           <div className="flex gap-10 mt-5">
             <div className="quantity">
               <p className="quantity-desc">
@@ -123,6 +95,16 @@ export default async function ProductDetails({ params }: { params: { slug: strin
         </div>
 
       </div>
+      {/* <div className="maylike-products-wrapper">
+        <h2> You may also Like</h2>
+        <div className="marquee">
+          <div className="may-like-product-container">
+            {product.map((item) => (
+              <Product key={item._id} product={item} />
+            ))}
+          </div>
+        </div>
+      </div> */}
     </div>
   );
 }
