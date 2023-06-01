@@ -374,8 +374,13 @@ footer {
   font-size: 26px;
 }
 
-/* h1 {
-  color: rgb(176, 63, 63);
-  font-size: 3em;
-  text-transform: uppercase;
-} */
+.discount {
+  font-weight: bold;
+  color: #fff;
+  font-size: 1rem;
+  background: #519903;
+  width: 3rem;
+  height: 3rem;
+  margin-top: 2%;
+  border-radius: 50%;
+}

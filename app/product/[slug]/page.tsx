@@ -31,6 +31,7 @@ import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import SanityClient from "@/sanity/client";
 import discountPrice from "@/util/discountPrice";
+import sale from '@/public/icons8-sale-64.png'
 
 export default async function ProductDetails({ params }: { params: { slug: string } }) {
   const slug = params.slug;
@@ -110,6 +111,10 @@ export default async function ProductDetails({ params }: { params: { slug: strin
             {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
             {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount)}&#x20B8;</p> : null}
             {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
+            <div className="discount">
+              <p className="pl-1">-{product.discount}%</p>
+              {/* <Image src={sale} alt="sale" width={50} height={50} /> */}
+            </div>
           </div>
           <div className="buttons">
             <button type="button" className="add-to-cart">В корзину</button>
