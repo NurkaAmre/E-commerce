@@ -1,6 +1,4 @@
-import bed from '@/public/spalniy_gar1.jpeg'
-import bed1 from '@/public/spalniy_gar2.jpeg'
-import bed2 from '@/public/spalniy_gar4.jpeg'
+
 import Image from 'next/image'
 
 export default function MainSection (){
@@ -14,12 +12,6 @@ export default function MainSection (){
     </div>
         <hr className="h-2 bg-gradient-to-r from-gray-300 to-transparent border-transparent w-2/4" />
 
-    <div className='flex justify-center rounded-img relative mt-10'>
-    <div className="img2 rounded-full "><Image className=' rounded-full' src={bed} alt='bed'/>
-    <div className="img1 rounded-full "><Image className=' rounded-full' src={bed1} alt='bed'/></div>
-    <div className="img3 rounded-full "><Image className=' rounded-full' src={bed2} alt='bed'/></div>
-    </div>
-    </div>
     <div className='flex justify-center m-8'>
           <button className='btn-primary btn font-medium text-white px-4 text-lg text-center m-5 rounded-full py-3 w-1/5'>Заказать</button>
     </div>
