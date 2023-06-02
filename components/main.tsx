@@ -5,14 +5,20 @@ import sofa from '@/public/set1.png'
 export default function MainSection (){
   return (
     <>
-      <div className="grid grid-cols-2 main ">
-        <div className="main-section-text p-4">
-          <h2>Мебель в минималистическом стиле</h2>
-          <p>
+      <div className="grid grid-cols-2 main font-cormorant ">
+        <div className="main-section-left p-4">
+          <div className='heading'>
+            <h2 ><span className='highLight text-7xl'>М</span>ебельный магазин</h2>
+            <h2><span className='highLight text-7xl'>И</span>нтерьер</h2>
+          </div>
+          <p className='headingsm'>
             Обустройте свою гостиную с нашей стильной мебелью. Изысканные диваны, удобные кресла и функциональные столики создадут атмосферу уюта и комфорта.
           </p>
+          <button className='btn-primary btn align-middle font-medium text-white px-4 mt-9 rounded-full py-3 text-lg w-1/2'>Заказать</button>
         </div>
-        <div className="main-section p-4">Section 2</div>
+        <div className="main-section-right p-4">
+          <Image src={sofa} alt='sofa' className='absolute top-3rem left-4rem' width={800} height={600} />
+        </div>
 
       </div>
 
