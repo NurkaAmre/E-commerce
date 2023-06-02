@@ -1,30 +1,27 @@
-import bed from '@/public/spalniy_gar1.jpeg'
-import bed1 from '@/public/spalniy_gar2.jpeg'
-import bed2 from '@/public/spalniy_gar4.jpeg'
+
 import Image from 'next/image'
+import sofa from '@/public/set1.png'
 
 export default function MainSection (){
   return (
     <>
-    <div className="main min-h-screen flex justify-center flex-col align-middle text-center bg-[url('../public/pattern_left.png'),_url('../public/pattern_right.png')] bg-[position:top_left,_bottom_right] bg-no-repeat">
-    <hr className="h-4 hr bg-gradient-to-r from-gray-300 to-transparent border-transparent w-2/3"/>
-    <div className='flex justify-center items-center text-center mt-20'>
-      <h1 className='font-bold text-2xl heading '>Modern</h1>
-      <h3 className='font-medium headingsm font-castoro'>Furniture</h3>
-    </div>
-     <hr className="h-4 hr1 bg-gradient-to-r from-transparent to-gray-300 border-transparent w-2/3"/>
-    <div className='flex justify-center rounded-img relative mt-10'>
-    <div className="img2 rounded-full "><Image className=' rounded-full' src={bed} alt='bed'/>
-    <div className="img1 rounded-full "><Image className=' rounded-full' src={bed1} alt='bed'/></div>
-    <div className="img3 rounded-full "><Image className=' rounded-full' src={bed2} alt='bed'/></div>
-    </div>
-    </div>
-    <div className='flex justify-center m-8'>
-      <button className='btn-primary font-medium text-white px-4 text-lg text-center m-5 rounded-full py-3 w-1/4'>Order</button>
-    </div>
-    </div>
+      <div className="grid grid-cols-2 main font-cormorant ">
+        <div className="main-section-left">
+          <div className='heading'>
+            <h2 ><span className='highLight text-7xl'>М</span>ебельный магазин</h2>
+            <h2><span className='highLight text-7xl'>И</span>нтерьер</h2>
+          </div>
+          <p className='headingsm'>
+            Обустройте свою гостиную с нашей стильной мебелью. Изысканные диваны, удобные кресла и функциональные столики создадут атмосферу уюта и комфорта.
+          </p>
+          <button className='btn-primary btn align-middle font-medium text-white mt-6 rounded-full py-3 w-1/2 mr-10'>Заказать</button>
+        </div>
+        <div className="main-section-right p-4">
+          <Image src={sofa} alt='sofa' className='absolute top-3rem left-4rem' width={800} height={600} />
+        </div>
 
-   
+      </div>
+
     </>
   )
 }

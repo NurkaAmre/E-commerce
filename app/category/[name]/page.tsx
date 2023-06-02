@@ -1,20 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import { createClient } from "next-sanity";
 import { AiFillHeart } from "react-icons/ai";
 import ProductType from "@/types/ProductType";
+import SanityClient from "@/sanity/client";
 
 
 export default async function Category ({params}: {params: {name: string}}) {
   const category = params.name;
-  const client = createClient({
-    projectId: "mp896dw0",
-    dataset: "production",
-    useCdn: true,
-  })
   const query = `*[_type == "product" && "${category}" in category[]->name.current]
                 {_id, name, price, quantity, details, type, description, slug, quantity, "imagesURL": images[].asset->url, "category": category[]->name.current}`;
-  const products = await client.fetch(query);
+  const products = await SanityClient.fetch(query);
   return (
     <main className="p-20">
       <div className="text-gray-700 grid grid-cols-fluid gap-16 mt-6">
