@@ -17,7 +17,7 @@ export default function MainSection (){
           <button className='btn-primary btn align-middle font-medium text-white mt-6 rounded-full py-3 w-1/2 mr-10'>Заказать</button>
         </div>
         <div className="main-section-right p-4">
-          <Image src={sofa} alt='sofa' className='absolute top-3rem left-4rem' width={800} height={600} />
+          <Image src={sofa} alt='sofa' className='absolute top-4rem left-4rem' width={800} height={600} />
         </div>
 
       </div>
