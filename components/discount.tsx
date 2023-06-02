@@ -1,7 +1,14 @@
 import bed from '@/public/spalniy_gar1.jpeg'
 import bed1 from '@/public/spalniy_gar7.jpeg'
 import bed2 from '@/public/spalniy_gar4.jpeg'
+import chair1 from '@/public/chair.jpg'
+import chair2 from '@/public/chair1.jpg'
+import chair3 from '@/public/chair2.jpg'
+import chair4 from '@/public/chair3.jpg'
+import chair5 from '@/public/chair6.jpg'
+import chair6 from '@/public/chair5.jpg'
 import Image from 'next/image'
+
 
 export default function Discount (){
   return (
@@ -20,9 +27,15 @@ export default function Discount (){
         </div> */}
         <div className=" marquee">
           <div className=' justify-center rounded-img relative ml-10 maylike-products-container track flex flex-col discount-img'>
-            <div className="img2 image-container items-center rounded-full "><Image className=' rounded-full' src={bed} alt='bed' /></div>
-            <div className="img1 image-container items-center rounded-full "><Image className=' rounded-full' src={bed1} alt='bed' /></div>
-            <div className="img3 image-container items-center rounded-full "><Image className=' rounded-full' src={bed2} alt='bed' /></div>
+            <div className="img2 image-container items-center  "><Image className=' rounded-lg' src={bed} alt='bed' /></div>
+            <div className="img1 image-container items-center "><Image className=' rounded-lg' src={bed1} alt='bed' /></div>
+            <div className="img3 image-container items-center  "><Image className=' rounded-lg' src={bed2} alt='bed' /></div>
+            <div className="img2 image-container items-center  "><Image className=' rounded-lg' src={chair1} alt='bed' /></div>
+            <div className="img1 image-container items-center "><Image className=' rounded-lg' src={chair2} alt='bed' /></div>
+            <div className="img3 image-container items-center "><Image className=' rounded-lg' src={chair3} alt='bed' /></div>
+            <div className="img2 image-container items-center  "><Image className=' rounded-lg' src={chair4} alt='bed' /></div>
+            <div className="img1 image-container items-center  "><Image className=' rounded-lg' src={chair5} alt='bed' /></div>
+            <div className="img3 image-container items-center  "><Image className=' rounded-lg' src={chair6} alt='bed' /></div>
           </div>
         </div>
 
