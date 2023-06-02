@@ -6,7 +6,7 @@ import Image from 'next/image'
 export default function Discount (){
   return (
     <> 
-      <section className='flex flex-wrap p-24'>
+      <section className='flex flex-wrap'>
       <div className="flex-1 order-0 discount-section">
           <h1 className='font-bold discount-heading text-2xl m-3 '>Найдите свою</h1>
           <h3 className='font-medium font-castoro p-2 text-4xl'>Мебель</h3>
@@ -19,7 +19,7 @@ export default function Discount (){
           <button className='btn-primary btn font-medium text-white px-4 mt-9 rounded-full py-3 text-lg w-1/2'>Купить</button>
         </div>
         <div className="flex-1 order-2 marquee">
-          <div className=' justify-center rounded-img relative mt-10 ml-10 maylike-products-container track flex flex-col'>
+          <div className=' justify-center rounded-img relative ml-10 maylike-products-container track flex flex-col'>
             <div className="img2 image-container items-center rounded-full "><Image className=' rounded-full' src={bed} alt='bed' /></div>
             <div className="img1 image-container items-center rounded-full "><Image className=' rounded-full' src={bed1} alt='bed' /></div>
             <div className="img3 image-container items-center rounded-full "><Image className=' rounded-full' src={bed2} alt='bed' /></div>
