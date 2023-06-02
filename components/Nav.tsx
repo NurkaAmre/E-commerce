@@ -16,7 +16,7 @@ import { FiPhoneCall } from 'react-icons/fi';
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
   return (
-    <nav className="flex justify-between items-center px-10 py-4 font-castoro relative">
+    <nav className="flex justify-between text-gray-600 items-center px-10 py-4 font-castoro relative">
       <Link href={'/'}>
         <Image src={logo} width={50} height={50} alt="logo"/>
       </Link>
@@ -32,7 +32,7 @@ const Nav = ({ user }:  any) => {
         </Link>
       </div>
       <SearchBar />
-      <Link href={'/feedback'} className="flex items-center text-white">
+      <Link href={'/feedback'} className="flex items-center ">
         <h3 className="mr-4 cursor-pointer nav-text">Обратный Звонок</h3>
         <FiPhoneCall className="nav-icon text-3xl" />
       </Link>
@@ -41,7 +41,7 @@ const Nav = ({ user }:  any) => {
           <AiFillShopping className="cursor-pointer nav-icon " />
           <AnimatePresence>
           {cartStore.cart.length > 0 && (
-          <motion.span animate={{scale: 1}} initial={{scale: 0}} className="bg-primary text-white text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
+              <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="bg-primary text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
             {cartStore.cart.length}
           </motion.span>
           )}
