@@ -5,7 +5,7 @@ import sofa from '@/public/set1.png'
 export default function MainSection (){
   return (
     <>
-      <div className="grid grid-cols-2 main font-cormorant ">
+      <div className="grid grid-cols-2 main font-cormorant mt-20">
         <div className="main-section-left">
           <div className='heading'>
             <h2 ><span className='highLight text-7xl'>М</span>ебельный магазин</h2>

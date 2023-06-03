@@ -3,42 +3,58 @@
 import { signIn } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { AiFillShopping, AiFillHeart } from 'react-icons/ai'
+import { useState } from "react"
+import { AiFillShopping, AiFillHeart, AiOutlineMenu } from 'react-icons/ai'
 import { FiPhoneCall } from 'react-icons/fi';
 import { motion, AnimatePresence } from "framer-motion"
 import { userCartStore } from "@/store"
 import UserOptions from "./UserOptions"
+import SearchBar from "./SearchBar";
 import Cart from "./Cart"
 import logo from '@/public/logo2.png'
-import SearchBar from "./SearchBar";
 
 
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
+  const [showMenu, setShowMenu] = useState(false)
+  const menuButtonClick = () => {
+    setShowMenu(!showMenu)
+  }
   return (
-    <nav className="flex justify-between text-gray-600 items-center px-10 py-4 font-castoro relative">
-      <Link href={'/'}>
+    <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 font-castoro w-full z-20">
+      <button className="md:hidden text-3xl" onClick={menuButtonClick}><AiOutlineMenu></AiOutlineMenu></button>
+      <Link href={'/'} className="hidden md:block">
         <Image src={logo} width={70} height={70} alt="logo" />
       </Link>
-      <div className="flex items-center">
+      <ul className="hidden md:flex">
         <Link href={'/category'}>
-          <h3 className="nav-text mr-6 cursor-pointer">Товары</h3>
+          <li className="mr-6 cursor-pointer whitespace-nowrap group">
+            Товары
+            <ul className="hidden absolute group-hover:flex flex-col gap-1 bg-gray-400 z-40 border-2 border-red-500">
+              <li><Link href={'/category/chairs'} className="hover:text-white">Chairs</Link></li>
+              <li><Link href={'/category/kitchens'} className="hover:text-white">Kitchens</Link></li>
+              <li><Link href={'/category/sofas'} className="hover:text-white">Sofas</Link></li>
+            </ul>
+          </li>
         </Link>
         <Link href={'/aboutus'}>
-          <h3 className="nav-text mr-6  cursor-pointer ">О Компании</h3>
+          <li className="mr-6 cursor-pointer whitespace-nowrap">О Компании</li>
         </Link>
         <Link href={'/sale'}>
-          <h3 className="nav-text mr-6  cursor-pointer ">Акции</h3>
+          <li className="mr-6 cursor-pointer whitespace-nowrap">Акции</li>
         </Link>
-      </div>
+      </ul>
+
       <SearchBar />
-      <Link href={'/feedback'} className="flex items-center ">
-        <h3 className="mr-4 cursor-pointer nav-text">Обратный Звонок</h3>
-        <FiPhoneCall className="nav-icon text-3xl" />
+
+      <Link href={'/feedback'} className="hidden lg:flex">
+        <h3 className="mr-4 cursor-pointer whitespace-nowrap">Обратный Звонок</h3>
+        <FiPhoneCall className="text-3xl" />
       </Link>
+
       <ul className="flex items-center gap-6">
-        <li onClick={() => cartStore.toggleCart()} className="flex items-center text-3xl relative cursor-pointer">
-          <AiFillShopping className="cursor-pointer nav-icon " />
+        <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl">
+          <AiFillShopping />
           <AnimatePresence>
           {cartStore.cart.length > 0 && (
               <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="bg-primary text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
@@ -47,15 +63,19 @@ const Nav = ({ user }:  any) => {
           )}
           </AnimatePresence>
         </li>
-        <li className="flex items-center text-3xl relative cursor-pointer">
-          <AiFillHeart className=" cursor-pointer  nav-icon " />
+        <li className="cursor-pointer text-3xl">
+          <AiFillHeart />
         </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
         {user && (
-          <UserOptions user={user} />
+          <li className="cursor-pointer w-10">
+            <UserOptions user={user} />
+          </li>
         )}
         {!user && (
-          <button className=" nav-text" onClick={() => { signIn() }}>Логин</button>
+          <li>
+            <button className="cursor-pointer" onClick={() => { signIn() }}>Логин</button>
+          </li>
         )}
       </ul>
 
