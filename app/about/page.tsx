@@ -53,7 +53,7 @@ const AboutUs = () => {
       <h2 className="section-title text-center">Отзывы наших клиентов</h2>
       <div className='grid grid-container grid-cols-fluid3 gap-4'>
         <div className="testimonial-card">
-          <FaUserCircle className='text-gray-500 text-4xl' />
+          <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>
             <p className="client-name">Name of Client</p>
             <div className="review-stars text-red-500">
@@ -69,7 +69,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="testimonial-card">
-          <FaUserCircle className='text-gray-500 text-4xl' />
+          <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>
             <p className="client-name">Name of Client</p>
             <div className="review-stars text-red-500">
@@ -85,7 +85,7 @@ const AboutUs = () => {
           </p>
         </div>
         <div className="testimonial-card">
-          <FaUserCircle className='text-gray-500 text-4xl' />
+          <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>
             <p className="client-name">Name of Client</p>
             <div className="review-stars text-red-500">
