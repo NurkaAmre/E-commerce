@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Cart from "./Cart"
 import logo from '@/public/logo2.png'
+import logo1 from '@/public/logo.svg'
 import { userCartStore } from "@/store"
 import { AiFillShopping, AiFillHeart } from 'react-icons/ai'
 import SearchBar from "./SearchBar";
@@ -18,7 +19,7 @@ const Nav = ({ user }:  any) => {
   return (
     <nav className="flex justify-between text-gray-600 items-center px-10 py-4 font-castoro relative">
       <Link href={'/'}>
-        <Image src={logo} width={50} height={50} alt="logo"/>
+        <Image src={logo1} width={70} height={70} alt="logo" />
       </Link>
       <div className="flex items-center">
         <Link href={'/category'}>
