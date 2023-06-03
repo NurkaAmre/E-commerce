@@ -3,7 +3,6 @@
 import Image from "next/image"
 import Link from "next/link"
 import Cart from "./Cart"
-import logo from '@/public/logo2.png'
 import logo1 from '@/public/logo.svg'
 import { userCartStore } from "@/store"
 import { AiFillShopping, AiFillHeart } from 'react-icons/ai'
