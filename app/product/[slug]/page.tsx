@@ -2,8 +2,6 @@ import Image from "next/image";
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import SanityClient from "@/sanity/client";
 import discountPrice from "@/util/discountPrice";
-import Product from "@/components/Product";
-import Category from "@/app/category/[name]/page";
 
 export default async function ProductDetails({ params }: { params: { slug: string } }) {
   const slug = params.slug;
