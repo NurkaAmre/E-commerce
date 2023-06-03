@@ -25,7 +25,7 @@ const Nav = ({ user }:  any) => {
         <Link href={'/category'}>
           <h3 className="nav-text mr-6 cursor-pointer">Товары</h3>
         </Link>
-        <Link href={'/aboutus'}>
+        <Link href={'/about'}>
           <h3 className="nav-text mr-6  cursor-pointer ">О Компании</h3>
         </Link>
         <Link href={'/sale'}>
