@@ -1,19 +1,24 @@
-import bed from '@/public/spalniy_gar1.jpeg'
-import bed1 from '@/public/spalniy_gar7.jpeg'
-import bed2 from '@/public/spalniy_gar4.jpeg'
-import chair1 from '@/public/chair.jpg'
-import chair2 from '@/public/chair1.jpg'
-import chair3 from '@/public/chair2.jpg'
-import chair4 from '@/public/chair3.jpg'
-import chair5 from '@/public/chair6.jpg'
-import chair6 from '@/public/chair5.jpg'
 import Image from 'next/image'
+import SanityClient from '@/sanity/client';
 
-
-export default function Discount (){
+export default async function Discount (){
+  const query = `*[_type == "product" && defined(discount)]
+                {
+                  _id,
+                  name,
+                  price,
+                  quantity,
+                  details,
+                  type,
+                  description,
+                  discount,
+                  "imagesURL": images[].asset->url
+                }[0...20]`;
+  const products = await SanityClient.fetch(query);
+  
   return (
     <> 
-      <section className='discount-section '>
+      <section className='discount-section'>
         {/* <div className="flex-1 order-0 discount-section">
           <h1 className='font-bold discount-heading text-2xl m-3 '>Найдите свою</h1>
           <h3 className='font-medium font-castoro p-2 text-4xl'>Мебель</h3>
@@ -25,17 +30,12 @@ export default function Discount (){
         </div>
           <button className='btn-primary btn font-medium text-white px-4 mt-9 rounded-full py-3 text-lg w-1/2'>Купить</button>
         </div> */}
-        <div className=" marquee">
-          <div className=' justify-center rounded-img relative ml-10 maylike-products-container track flex flex-col discount-img'>
-            <div className="img2 image-container items-center  "><Image className=' rounded-lg' src={bed} alt='bed' /></div>
-            <div className="img1 image-container items-center "><Image className=' rounded-lg' src={bed1} alt='bed' /></div>
-            <div className="img3 image-container items-center  "><Image className=' rounded-lg' src={bed2} alt='bed' /></div>
-            <div className="img2 image-container items-center  "><Image className=' rounded-lg' src={chair1} alt='bed' /></div>
-            <div className="img1 image-container items-center "><Image className=' rounded-lg' src={chair2} alt='bed' /></div>
-            <div className="img3 image-container items-center "><Image className=' rounded-lg' src={chair3} alt='bed' /></div>
-            <div className="img2 image-container items-center  "><Image className=' rounded-lg' src={chair4} alt='bed' /></div>
-            <div className="img1 image-container items-center  "><Image className=' rounded-lg' src={chair5} alt='bed' /></div>
-            <div className="img3 image-container items-center  "><Image className=' rounded-lg' src={chair6} alt='bed' /></div>
+        <div className="marquee">
+          <div className='justify-center rounded-img relative ml-10 maylike-products-container track flex flex-col discount-img'>
+            {products.map((product) => (
+              <Image className='border-2 border-red-500 m-4' src={product.imagesURL[1]} width={200} height={200} alt='bed' />
+            ))}
+
           </div>
         </div>
 
