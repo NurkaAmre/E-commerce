@@ -3,8 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import Cart from "./Cart"
-import logo from '@/public/logo2.png'
-import logo1 from '@/public/logo.svg'
+import logo1 from '@/public/Logo.svg'
 import { userCartStore } from "@/store"
 import { AiFillShopping, AiFillHeart } from 'react-icons/ai'
 import SearchBar from "./SearchBar";
@@ -25,7 +24,7 @@ const Nav = ({ user }:  any) => {
         <Link href={'/category'}>
           <h3 className="nav-text mr-6 cursor-pointer">Товары</h3>
         </Link>
-        <Link href={'/aboutus'}>
+        <Link href={'/about'}>
           <h3 className="nav-text mr-6  cursor-pointer ">О Компании</h3>
         </Link>
         <Link href={'/sale'}>
