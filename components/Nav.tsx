@@ -44,7 +44,7 @@ const Nav = ({ user }:  any) => {
             </ul>
           </li>
           <li className="mr-6 cursor-pointer whitespace-nowrap">
-            <Link href={'/aboutus'}>О Компании</Link>
+            <Link href={'/about'}>О Компании</Link>
           </li>
           <li className="mr-6 cursor-pointer whitespace-nowrap">
             <Link href={'/sale'}>Акции</Link>
@@ -108,7 +108,7 @@ const Nav = ({ user }:  any) => {
             )}
           </li>
           <li className="mr-6 cursor-pointer whitespace-nowrap">
-            <Link href={'/aboutus'}>О Компании</Link>
+            <Link href={'/about'}>О Компании</Link>
           </li>
           <li className="mr-6 cursor-pointer whitespace-nowrap">
             <Link href={'/sale'}>Акции</Link>
