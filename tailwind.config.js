@@ -11,6 +11,7 @@ module.exports = {
         fluid: 'repeat(auto-fit, minmax(20rem, 1fr))',
         fluid2: 'repeat(auto-fit, minmax(30rem, 2fr))',
         fluid3: 'repeat(auto-fit, minmax(12.5rem, 1fr))',
+        fluid4: 'repeat(auto-fit, minmax(30rem, 1fr))',
       },
       fontFamily: {
         lobster: ['var(--font-lobster)'],

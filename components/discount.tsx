@@ -33,7 +33,7 @@ export default async function Discount (){
         <div className="marquee">
           <div className='justify-center rounded-img relative ml-10 maylike-products-container track flex flex-col discount-img'>
             {products.map((product) => (
-              <Image className='border-2 border-red-500 m-4' src={product.imagesURL[1]} width={200} height={200} alt='bed' />
+              <Image className='border-2 border-red-500 m-4 rounded-full' src={product.imagesURL[1]} width={200} height={200} alt='bed' />
             ))}
 
           </div>

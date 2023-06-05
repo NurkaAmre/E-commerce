@@ -21,7 +21,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
 
   return (
     <div>
-      <div key={product._id} className="product-detail-container">
+      <div key={product._id} className="product-detail-container mt-[4rem]">
         <div className="product-image">
           <div className="image-container">
             <Image src={product.imagesURL[1]} alt={product.name} width={250} height={250} />

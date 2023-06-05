@@ -7,10 +7,10 @@ import about from '@/public/about-1.jpg'
 
 const AboutUs = () => {
   return (
-    <section className='about-us '>
+    <section className='about-us'>
       <div className='about-section'>
         <div className='flex-1 order-0 '>
-          <Image src={about} alt='about' className='mt-6' />
+          <Image src={about} alt='about' className='mt-[6.5rem]' />
         </div>
         <div className='flex-1 order-0'>
 

@@ -25,7 +25,7 @@ const Nav = ({ user }:  any) => {
   }
   return (
     <>
-    <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 font-castoro w-full z-20">
+      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-castoro w-full z-20">
       <button className="md:hidden text-3xl" onClick={menuButtonClick}>
         <AiOutlineMenu></AiOutlineMenu>
       </button>

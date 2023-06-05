@@ -3,7 +3,7 @@ import delivery from "@/public/delivery.gif"
 
 export default function DeliveryServices() {
   return(
-    <section className="w-4/5 mx-auto my-20 flex flex-col md:flex-row max-w-[1000px]">
+    <section className="w-4/5 mx-auto my-20 flex flex-col md:flex-row">
       <div className="bg-[#d2c6b1a7] md:w-1/2 py-20 text-center">
         <div>
           <h1 className="font-bold delivery-heading text-2xl">Доставка</h1>
