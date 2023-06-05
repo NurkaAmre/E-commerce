@@ -9,13 +9,13 @@ const AboutUs = () => {
   return (
     <section className='about-us'>
       <div className='about-section'>
-        <div className='flex-1 order-0 '>
+        <div className='flex-1 order-0 about-img'>
           <Image src={about} alt='about' className='mt-[6.5rem]' />
         </div>
-        <div className='flex-1 order-0'>
+        <div className='flex-1 order-0 about-text'>
 
           <h2 className="section-title">О нас</h2>
-          <p className="section-description  ">
+          <p className="section-description  text-[1rem] md:text-[2rem] ">
             Добро пожаловать в нашу мебельную компанию! Мы лидирующий производитель и магазин мебели в Казахстане. У нас широкий выбор стильной и качественной мебели. Мы гордимся производством собственной мебели с использованием передовых технологий и высококачественных материалов. Наша цель - создавать функциональные и эстетически привлекательные предметы мебели, отражающие последние тенденции в дизайне интерьера. Мы также предлагаем мебель из Турции, известную своим элегантным и качественным дизайном. Наша команда профессионалов поможет вам выбрать идеальные решения для вашего дома или офиса. Мы ценим каждого клиента и предлагаем высокий уровень обслуживания. Спасибо за выбор нашей компании. Мы готовы предложить вам лучшую мебель и надежное обслуживание, чтобы помочь вам создать прекрасный и функциональный интерьер, который впечатлит вас и ваших гостей.
             <br /><br />
             С уважением,<br />
@@ -25,7 +25,7 @@ const AboutUs = () => {
       </div>
 
       <h1 className="section-title text-center">Наши услуги</h1>
-      <div className='grid grid-container grid-cols-fluid3 gap-5'>
+      <div className='gap-3 about-cards grid grid-cols-2 w-6/4 mx-auto md:grid-cols-2'>
         <div className="service-card">
           <AiFillCustomerService className='text-white text-6xl' />
           <h3 className="service-title">Профессиональное консультирование</h3>
@@ -51,7 +51,7 @@ const AboutUs = () => {
 
 
       <h2 className="section-title text-center">Отзывы наших клиентов</h2>
-      <div className='grid grid-container grid-cols-fluid3 gap-4'>
+      <div className='gap-3 about-cards grid grid-cols-2 w-6/4 mx-auto md:grid-cols-2'>
         <div className="testimonial-card">
           <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>

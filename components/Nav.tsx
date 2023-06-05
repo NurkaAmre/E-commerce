@@ -59,7 +59,7 @@ const Nav = ({ user }:  any) => {
       </Link>
 
       <ul className="flex items-center gap-6">
-        <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl">
+          <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
           {cartStore.cart.length > 0 && (

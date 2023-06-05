@@ -14,7 +14,7 @@ export default async function Category ({params}: {params: {name: string}}) {
     <main className="p-20 mt-[4rem]">
       <div className="text-gray-700 grid grid-cols-fluid gap-16 mt-6">
         {products?.map((product: ProductType) => (
-          <Link href={`/product/${product.slug.current}`} key={product._id}>
+          <Link href={`/product/${product.slug.current}`} key={product.id}>
             <div className="relative group">
               <Image
                 src={product.imagesURL[0]}

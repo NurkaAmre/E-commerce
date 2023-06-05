@@ -9,10 +9,9 @@ import OrderConfirmed from './OrderConfirmed';
 
 export default function Cart() {
   const cartStore = userCartStore()
-  // console.log(cartStore.isOpen)
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + item.unit_amount * item.quantity
+    return acc + item.price * item.cartQuantity
   }, 0)
 
   return (
@@ -22,7 +21,7 @@ export default function Cart() {
     animate={{opacity: 1}}
     exit={{opacity: 0}}
     onClick={() => cartStore.toggleCart()} 
-    className='fixed w-full h-screen left-0 top-0 bg-black/25'>
+    className='fixed w-full h-screen left-0 top-0 bg-black/25 z-40'>
       <motion.div 
       layout
       onClick={(e) => e.stopPropagation()} 
@@ -37,28 +36,17 @@ export default function Cart() {
         {cartStore.cart.map((item) => (
           <motion.div layout key={item.id}
           className='flex p-4 gap-4 bg-base-100 my-4 rounded-lg'>
-            <Image className='rounded-md h-24' src={item.image} alt={item.name} width={120} height={120}/>
+            <Image className='rounded-md h-24' src={item.imagesURL[0]} alt={item.name} width={120} height={120}/>
             <div>
               <h2>{item.name}</h2>
               {/* Update quantity of a product */}
               <div className='flex gap-2'>
-                <h2>Quantity: {item.quantity}</h2>
-                 <button onClick={() => cartStore.removeProduct({
-                  id: item.id, 
-                  image: item.image,
-                  name: item.name,
-                  quantity: item.quantity, 
-                  unit_amount: item.unit_amount,
-                 })}><IoRemoveCircle /></button>
-                 <button onClick={() => cartStore.addProduct({
-                  id: item.id, 
-                  image: item.image,
-                  name: item.name,
-                  quantity: item.quantity, 
-                  unit_amount: item.unit_amount,
-                  })}><IoAddCircle /></button>
+                 <h2>Quantity: </h2>
+                 <button onClick={() => cartStore.removeProduct(item)}><IoRemoveCircle /></button>
+                 <h2>{item.cartQuantity}</h2>
+                 <button onClick={() => cartStore.addProduct(item)}><IoAddCircle /></button>
               </div>
-              <p className='text-sm'>{item.unit_amount}</p>
+              <p className='text-sm'>{item.price}</p>
             </div>
           </motion.div>
         ))}
