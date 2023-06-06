@@ -78,7 +78,7 @@ type FavStateType = {
   isOpen: boolean,
   favList: ProductType[],
   toggleProduct: (item: ProductType) => void
-  toggleFav: () => void
+  toggleFavList: () => void
   clearList: () => void
 }
 
@@ -95,7 +95,7 @@ export const userFavStore = create<FavStateType>()(
           return {favList: [...state.favList, item]}
         }
       }),
-      toggleFav: () => set((state) => ({isOpen: !state.isOpen})),
+      toggleFavList: () => set((state) => ({isOpen: !state.isOpen})),
       clearList() {
         set((state) => ({favList: []}))
       },

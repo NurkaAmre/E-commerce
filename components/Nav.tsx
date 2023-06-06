@@ -12,9 +12,11 @@ import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
 import logo from '@/public/logo.svg'
+import FavList from "./FavList"
 
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
+  const favListStore = userFavStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
   const [showPopup, setShowPopup] = useState(false);
@@ -95,17 +97,18 @@ const Nav = ({ user }:  any) => {
           <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
-          {cartStore.cart.length > 0 && (
+            {cartStore.cart.length > 0 && (
               <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="bg-primary text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
-            {cartStore.cart.length}
-          </motion.span>
-          )}
+                {cartStore.cart.length}
+              </motion.span>
+            )}
           </AnimatePresence>
         </li>
-        <li className="cursor-pointer text-3xl">
-          <AiFillHeart />
-        </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
+        <li className="cursor-pointer text-3xl" onClick={() => favListStore.toggleFavList()}>
+          <AiFillHeart />
+          {favListStore.isOpen && <FavList userFavList={favListStore.favList} />}
+        </li>
         {user && (
           <li className="cursor-pointer w-10">
             <UserOptions user={user} />

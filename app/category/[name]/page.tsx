@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AiFillHeart } from "react-icons/ai";
 import ProductType from "@/types/ProductType";
 import SanityClient from "@/sanity/client";
+import LikeButton from "@/components/LikeButton";
 
 
 export default async function Category ({params}: {params: {name: string}}) {
@@ -23,9 +24,7 @@ export default async function Category ({params}: {params: {name: string}}) {
                 height={400}
                 className="object-cover rounded-lg transition-transform transform group-hover:scale-110"
               />
-              <span className="absolute right-10 top-3 transition-transform transform group-hover:scale-110">
-                <AiFillHeart className="icon" />
-              </span>
+              <LikeButton product={product}/>
               <div className="absolute flex gap-24 items-center py-4 px-10 top-80 ml-10 justify-center bg-gray-600 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity product-details">
                 <h3 className="text-white text-xl font-semibold">{product.name}</h3>
                 <h2 className="text-white text-lg">{product.price}&#x20B8;</h2>
