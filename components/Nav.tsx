@@ -11,7 +11,7 @@ import { userCartStore } from "@/store"
 import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
-import logo from '@/public/logo2.png'
+import logo from '@/public/logo.svg'
 
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
@@ -37,10 +37,11 @@ const Nav = ({ user }:  any) => {
       <ul className="hidden md:flex">
           <li className="mr-6 cursor-pointer whitespace-nowrap group">
             <Link href={'#'}>Товары</Link>
-            <ul className="hidden absolute group-hover:flex flex-col gap-1 bg-gray-400 z-40 border-2 border-red-500">
-              <li><Link href={'/category/chairs'} className="hover:text-white">Chairs</Link></li>
-              <li><Link href={'/category/kitchens'} className="hover:text-white">Kitchens</Link></li>
-              <li><Link href={'/category/sofas'} className="hover:text-white">Sofas</Link></li>
+            <ul className="hidden absolute pr-[0.8rem] pl-[0.8rem] text-white pt-[0.3rem] pb-[0.3rem] group-hover:flex flex-col gap-1 hidden-category z-40">
+              <li><Link href={'/category/chairs'} className="li-hover">Кухня</Link></li>
+              <li><Link href={'/category/kitchens'} className="li-hover">Стул</Link></li>
+              <li><Link href={'/category/sofas'} className="li-hover">Диван</Link></li>
+              <li><Link href={'/category/sofas'} className="li-hover">Спальня</Link></li>
             </ul>
           </li>
           <li className="mr-6 cursor-pointer whitespace-nowrap">
@@ -101,9 +102,10 @@ const Nav = ({ user }:  any) => {
             <Link href={'#'} onClick={categoriesButtonClick}>Товары</Link>
             {showCategoriesMenu && (
               <ul className="flex flex-col ml-8">
-                <li><Link href={'/category/chairs'} className="hover:text-white">Chairs</Link></li>
-                <li><Link href={'/category/kitchens'} className="hover:text-white">Kitchens</Link></li>
-                <li><Link href={'/category/sofas'} className="hover:text-white">Sofas</Link></li>
+                  <li><Link href={'/category/chairs'} className="li-hover">Кухня</Link></li>
+                  <li><Link href={'/category/kitchens'} className="li-hover">Стул</Link></li>
+                  <li><Link href={'/category/sofas'} className="li-hover">Диван</Link></li>
+                  <li><Link href={'/category/sofas'} className="li-hover">Спальня</Link></li>
               </ul>
             )}
           </li>
