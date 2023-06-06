@@ -38,7 +38,26 @@ const Nav = ({ user }:  any) => {
   };
 
   const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
+    if (e.key === "Backspace") {
+      if (phoneNumber.length > 0 && phoneNumber !== "+7 (___) (___) (__) (__)") {
+        const newValue = phoneNumber.replace(/\d(?![\s\S]*\d)/m, "_");
+        setPhoneNumber(newValue);
+      }
+      return;
+    }
+
+    if (e.key.match(/[^\d]/)) {
+      return;
+    }
+
+    if (phoneNumber.length === 0) {
+      const newValue = `+7 (${e.key}__) (___) (__) (__)`;
+      setPhoneNumber(newValue);
+    } else {
+      const newValue = phoneNumber.replace("_", e.key);
+      setPhoneNumber(newValue);
+    }
+    
   };
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -175,9 +194,9 @@ const Nav = ({ user }:  any) => {
                 className="border hover:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent w-full border-gray-300 rounded-full p-2 mb-4"
               />
               <input
-                type="text"
+                type="tel"
                 value={phoneNumber}
-                onChange={handlePhoneNumberChange}
+                onKeyDown={handlePhoneNumberChange}
                 placeholder="Телефон"
                 className="border hover:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent w-full border-gray-300 rounded-full p-2 mb-4"
               />
