@@ -155,8 +155,14 @@ const Nav = ({ user }:  any) => {
       )}
 
       {showPopup && (
-        <div className="fixed top-[20%] left-[35%] w-[30%] h-[50%] flex items-center justify-center z-50">
-          <div className="bg-gray-950 bg-opacity-75 p-10 relative w-4/2 rounded-md popup">
+        <div 
+          className="fixed flex items-center justify-center top-0 left-0 right-0 bottom-0 backdrop-blur-sm z-50"
+          onClick={closePopup}
+        >
+          <div 
+            className="bg-gray-950 bg-opacity-75 p-10 w-[350px] relative rounded-md"
+            onClick={(e) => { e.stopPropagation() }}
+          >
             <h2 className="text-2xl font-bold mb-4 font-lobster text-white">Заказать звонок</h2>
             <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
             <form onSubmit={handleSubmit}>
