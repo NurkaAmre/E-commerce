@@ -17,12 +17,42 @@ const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
+
   const menuButtonClick = () => {
     setShowMobileMenu(!showMobileMenu)
   }
   const categoriesButtonClick = () => {
     setShowCategoriesMenu(!showCategoriesMenu)
   }
+  const openPopup = () => {
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setPhoneNumber(e.target.value);
+  };
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Perform any necessary action with the phone number (e.g., send it to the server)
+    // You can access the phone number value with the phoneNumber variable
+    // Reset the phone number input
+    setPhoneNumber("");
+    setName("")
+    // Close the popup window
+    closePopup();
+  };
+
   return (
     <>
       <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-castoro w-full z-20">
@@ -38,10 +68,10 @@ const Nav = ({ user }:  any) => {
           <li className="mr-6 cursor-pointer whitespace-nowrap group">
             <Link href={'#'}>Товары</Link>
             <ul className="hidden absolute pr-[0.8rem] pl-[0.8rem] text-white pt-[0.3rem] pb-[0.3rem] group-hover:flex flex-col gap-1 hidden-category z-40">
-              <li><Link href={'/category/chairs'} className="li-hover">Кухня</Link></li>
-              <li><Link href={'/category/kitchens'} className="li-hover">Стул</Link></li>
+              <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
+              <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
               <li><Link href={'/category/sofas'} className="li-hover">Диван</Link></li>
-              <li><Link href={'/category/sofas'} className="li-hover">Спальня</Link></li>
+              <li><Link href={'/category/beds'} className="li-hover">Спальня</Link></li>
             </ul>
           </li>
           <li className="mr-6 cursor-pointer whitespace-nowrap">
@@ -54,9 +84,11 @@ const Nav = ({ user }:  any) => {
 
       <SearchBar />
 
-      <Link href={'/feedback'} className="hidden lg:flex">
-        <h3 className="mr-4 cursor-pointer whitespace-nowrap">Обратный Звонок</h3>
-        <FiPhoneCall className="text-3xl" />
+        <Link href={'#'} className="hidden lg:flex ">
+          <h3 className="mr-4 mt-2 cursor-pointer whitespace-nowrap" onClick={openPopup}>Обратный Звонок</h3>
+          <div className="phone-anim relative" onClick={openPopup}>
+            <FiPhoneCall className="text-xl phone-icon text-white absolute top-[0.7rem] left-[0.5rem]" />
+          </div>
       </Link>
 
       <ul className="flex items-center gap-6">
@@ -102,10 +134,10 @@ const Nav = ({ user }:  any) => {
             <Link href={'#'} onClick={categoriesButtonClick}>Товары</Link>
             {showCategoriesMenu && (
               <ul className="flex flex-col ml-8">
-                  <li><Link href={'/category/chairs'} className="li-hover">Кухня</Link></li>
-                  <li><Link href={'/category/kitchens'} className="li-hover">Стул</Link></li>
+                  <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
+                  <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
                   <li><Link href={'/category/sofas'} className="li-hover">Диван</Link></li>
-                  <li><Link href={'/category/sofas'} className="li-hover">Спальня</Link></li>
+                  <li><Link href={'/category/beds'} className="li-hover">Спальня</Link></li>
               </ul>
             )}
           </li>
@@ -117,7 +149,44 @@ const Nav = ({ user }:  any) => {
           </li>
         </ul>
       </nav>
-    )}
+      )}
+
+      {showPopup && (
+        <div className="fixed top-[20%] left-[35%] w-[30%] h-[50%] flex items-center justify-center">
+          <div className="bg-gray-950 bg-opacity-75 p-10 relative w-4/2 rounded-md popup">
+            <h2 className="text-2xl font-bold mb-4 font-lobster text-white">Заказать звонок</h2>
+            <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
+            <form onSubmit={handleSubmit}>
+
+              <input
+                type="text"
+                value={name}
+                onChange={handleNameChange}
+                placeholder="Имя"
+                className="border hover:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent w-full border-gray-300 rounded-full p-2 mb-4"
+              />
+              <input
+                type="text"
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
+                placeholder="Телефон"
+                className="border hover:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent w-full border-gray-300 rounded-full p-2 mb-4"
+              />
+              <div>
+                <button
+                  type="submit"
+                  className="bg-blue-400 popup-btn w-full text-white font-light font-lobster rounded-full"
+                >
+                  Перезвоните мне
+                </button>
+              </div>
+              <Link href="tel:+77087179128" className="mt-[2rem] text-center">
+                <span className="text-white text-2xl underline md:text-3xl sm:text-xl">+7 708 717 91 28</span>
+              </Link>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   )
 }

@@ -392,6 +392,18 @@ background: #d2c6b1a7;
   transition: transform 0.5s ease;
 
 }
+.popup-btn {
+  background: #8CCCC1;
+  border: 2px solid #DFDFD4;
+  color: #fff;
+  padding: 0.5rem 2rem;
+}
+
+.popup-btn:hover {
+  background: transparent;
+  border: 2px solid #8CCCC1;
+
+}
 .btn {
   background: #8CCCC1;
   border: 2px solid #DFDFD4;
@@ -560,6 +572,56 @@ background: #d2c6b1a7;
   margin-bottom: 3rem;
 }
 
+.phone-anim {
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 1;
+  background-color: #8CCCC1;
+  border-radius: 50%;
+  animation: pulse 1s cubic-bezier(0, 0, 0, 0) 0.3s infinite;
+}
+
+.phone-icon {
+  text-shadow: 0 2px 10px #d1e0ca;
+  animation: changeSize 1s cubic-bezier(0, 0, 0, 0) 0s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #459bc986;
+  }
+
+  25% {
+    box-shadow: 0 0 0 10px #13a8cd86;
+  }
+
+  50% {
+    box-shadow: 0 0 0 20px #23c0cc74;
+  }
+
+}
+
+@keyframes changeSize {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.2);
+  }
+
+  50% {
+    transform: scale(0.8);
+  }
+
+  75% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
 .section-title {
   font-size: 3rem;
   color: #324d67;
