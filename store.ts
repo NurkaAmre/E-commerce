@@ -74,6 +74,36 @@ export const userCartStore = create<CartState>()(
   )
 )
 
+type FavStateType = {
+  isOpen: boolean,
+  favList: ProductType[],
+  toggleProduct: (item: ProductType) => void
+  toggleFavList: () => void
+  clearList: () => void
+}
+
+export const userFavStore = create<FavStateType>()(
+  persist(
+    (set) => ({
+      isOpen: false,
+      favList: [],
+      toggleProduct: (item) => set((state) => {
+        const existingItem = state.favList.find(favItem => favItem.id === item.id)
+        if(existingItem){
+          return {favList: state.favList.filter(favItem => favItem.id !== item.id)}
+        } else {
+          return {favList: [...state.favList, item]}
+        }
+      }),
+      toggleFavList: () => set((state) => ({isOpen: !state.isOpen})),
+      clearList() {
+        set((state) => ({favList: []}))
+      },
+    }),
+    {name: 'fav-store'}
+  )
+)
+
 type ThemeState = {
   mode: 'lemonade' | 'halloween'
   toggleMode: (theme: 'lemonade' | 'halloween') => void
