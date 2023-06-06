@@ -66,7 +66,7 @@ const Nav = ({ user }:  any) => {
 
       <ul className="hidden md:flex">
           <li className="mr-6 cursor-pointer whitespace-nowrap group">
-            <Link href={'#'}>Товары</Link>
+            <button role="list">Товары</button>
             <ul className="hidden absolute pr-[0.8rem] pl-[0.8rem] text-white pt-[0.3rem] pb-[0.3rem] group-hover:flex flex-col gap-1 hidden-category z-40">
               <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
               <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
@@ -84,12 +84,12 @@ const Nav = ({ user }:  any) => {
 
       <SearchBar />
 
-        <Link href={'#'} className="hidden lg:flex ">
+        <button role="form" className="hidden lg:flex ">
           <h3 className="mr-4 mt-2 cursor-pointer whitespace-nowrap" onClick={openPopup}>Обратный Звонок</h3>
           <div className="phone-anim relative" onClick={openPopup}>
             <FiPhoneCall className="text-xl phone-icon text-white absolute top-[0.7rem] left-[0.5rem]" />
           </div>
-      </Link>
+      </button>
 
       <ul className="flex items-center gap-6">
           <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
@@ -152,7 +152,7 @@ const Nav = ({ user }:  any) => {
       )}
 
       {showPopup && (
-        <div className="fixed top-[20%] left-[35%] w-[30%] h-[50%] flex items-center justify-center">
+        <div className="fixed top-[20%] left-[35%] w-[30%] h-[50%] flex items-center justify-center z-50">
           <div className="bg-gray-950 bg-opacity-75 p-10 relative w-4/2 rounded-md popup">
             <h2 className="text-2xl font-bold mb-4 font-lobster text-white">Заказать звонок</h2>
             <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
