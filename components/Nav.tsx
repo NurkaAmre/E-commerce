@@ -96,7 +96,7 @@ const Nav = ({ user }:  any) => {
           <AiFillShopping />
           <AnimatePresence>
           {cartStore.cart.length > 0 && (
-              <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="bg-primary text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
+                <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="add-cart-point text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
             {cartStore.cart.length}
           </motion.span>
           )}
