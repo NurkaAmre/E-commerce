@@ -7,14 +7,16 @@ import { useState } from "react"
 import { AiFillShopping, AiFillHeart, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { FiPhoneCall } from 'react-icons/fi';
 import { motion, AnimatePresence } from "framer-motion"
-import { userCartStore } from "@/store"
+import { userCartStore, userFavStore } from "@/store"
 import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
 import logo from '@/public/logo.svg'
+import FavList from "./FavList"
 
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
+  const favListStore = userFavStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
   const [showPopup, setShowPopup] = useState(false);
@@ -36,7 +38,26 @@ const Nav = ({ user }:  any) => {
   };
 
   const handlePhoneNumberChange = (e) => {
-    setPhoneNumber(e.target.value);
+    if (e.key === "Backspace") {
+      if (phoneNumber.length > 0 && phoneNumber !== "+7 (___) (___) (__) (__)") {
+        const newValue = phoneNumber.replace(/\d(?![\s\S]*\d)/m, "_");
+        setPhoneNumber(newValue);
+      }
+      return;
+    }
+
+    if (e.key.match(/[^\d]/)) {
+      return;
+    }
+
+    if (phoneNumber.length === 0) {
+      const newValue = `+7 (${e.key}__) (___) (__) (__)`;
+      setPhoneNumber(newValue);
+    } else {
+      const newValue = phoneNumber.replace("_", e.key);
+      setPhoneNumber(newValue);
+    }
+    
   };
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -66,7 +87,7 @@ const Nav = ({ user }:  any) => {
 
       <ul className="hidden md:flex">
           <li className="mr-6 cursor-pointer whitespace-nowrap group">
-            <Link href={'#'}>Товары</Link>
+            <button role="list">Товары</button>
             <ul className="hidden absolute pr-[0.8rem] pl-[0.8rem] text-white pt-[0.3rem] pb-[0.3rem] group-hover:flex flex-col gap-1 hidden-category z-40">
               <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
               <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
@@ -84,28 +105,25 @@ const Nav = ({ user }:  any) => {
 
       <SearchBar />
 
-        <Link href={'#'} className="hidden lg:flex ">
+        <button role="form" className="hidden lg:flex ">
           <h3 className="mr-4 mt-2 cursor-pointer whitespace-nowrap" onClick={openPopup}>Обратный Звонок</h3>
           <div className="phone-anim relative" onClick={openPopup}>
             <FiPhoneCall className="text-xl phone-icon text-white absolute top-[0.7rem] left-[0.5rem]" />
           </div>
-      </Link>
+      </button>
 
       <ul className="flex items-center gap-6">
           <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
-          {cartStore.cart.length > 0 && (
-                <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="add-cart-point text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
-            {cartStore.cart.length}
-          </motion.span>
-          )}
+
           </AnimatePresence>
         </li>
-        <li className="cursor-pointer text-3xl">
-          <AiFillHeart />
-        </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
+        <li className="cursor-pointer text-3xl" onClick={() => favListStore.toggleFavList()}>
+          <AiFillHeart />
+          {favListStore.isOpen && <FavList userFavList={favListStore.favList} />}
+        </li>
         {user && (
           <li className="cursor-pointer w-10">
             <UserOptions user={user} />
@@ -152,8 +170,14 @@ const Nav = ({ user }:  any) => {
       )}
 
       {showPopup && (
-        <div className="fixed top-[20%] left-[35%] w-[30%] h-[50%] flex items-center justify-center">
-          <div className="bg-gray-950 bg-opacity-75 p-10 relative w-4/2 rounded-md popup">
+        <div 
+          className="fixed flex items-center justify-center top-0 left-0 right-0 bottom-0 backdrop-blur-sm z-50"
+          onClick={closePopup}
+        >
+          <div 
+            className="bg-gray-950 bg-opacity-75 p-10 w-[350px] relative rounded-md"
+            onClick={(e) => { e.stopPropagation() }}
+          >
             <h2 className="text-2xl font-bold mb-4 font-lobster text-white">Заказать звонок</h2>
             <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
             <form onSubmit={handleSubmit}>
@@ -166,9 +190,9 @@ const Nav = ({ user }:  any) => {
                 className="border hover:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent w-full border-gray-300 rounded-full p-2 mb-4"
               />
               <input
-                type="text"
+                type="tel"
                 value={phoneNumber}
-                onChange={handlePhoneNumberChange}
+                onKeyDown={handlePhoneNumberChange}
                 placeholder="Телефон"
                 className="border hover:border-transparent focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent w-full border-gray-300 rounded-full p-2 mb-4"
               />
