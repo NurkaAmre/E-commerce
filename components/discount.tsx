@@ -32,9 +32,9 @@ export default async function Discount (){
                       <p className="pl-1 pt-2">-{product.discount}%</p>
                     </div>
                     <Image className=' m-2 rounded-md' src={product.imagesURL[1]} width={200} height={400} alt='bed' />
-                    <div className='flex flex-row bottom-[2rem] absolute bg-slate-500 bg-opacity-50 w-full rounded-md gap-2 py-3 justify-center'>
-                      <h1 className='text-start ml-4 text-xl text-white'>{product.name}</h1>
-                      <h3 className='text-white'>{product.price}&#x20B8;</h3>
+                    <div className='flex flex-row bottom-[2rem] absolute bg-slate-500 bg-opacity-50 w-full rounded-md gap-8 py-3 justify-center'>
+                      <h1 className='text-start ml-4 font-castoro text-xl text-white'>{product.name}</h1>
+                      <h3 className='text-white '>{product.price}&#x20B8;</h3>
                     </div>
                   </div>
                 </div>

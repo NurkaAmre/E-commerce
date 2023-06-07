@@ -6,8 +6,8 @@ export default function DeliveryServices() {
     <section className="w-4/5 mx-auto my-20 flex flex-col md:flex-row">
       <div className="bg-[#d2c6b1a7] md:w-1/2 py-20 text-center">
         <div>
-          <h1 className="font-bold delivery-heading text-2xl">Доставка</h1>
-          <h2 className="font-bold delivery-heading text-2xl">Услуги</h2>
+          <h1 className="font-bold delivery-heading text-gray-800 opacity-50 text-2xl">Доставка</h1>
+          <h2 className="font-bold delivery-heading text-gray-800 opacity-50 text-2xl">Услуги</h2>
         </div>
         <div className="m-6">
           <h3 className="font-medium font font-castoro text-2xl"> Мы упрощаем</h3>
