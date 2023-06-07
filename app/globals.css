@@ -48,7 +48,7 @@ nav {
   }
 }
 
-@media (max-width: 2000px) {
+@media (max-width: 1400px) {
   .about-img {
     display: none;
   }
