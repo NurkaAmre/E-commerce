@@ -182,7 +182,7 @@ const Nav = ({ user }:  any) => {
             className="bg-gray-950 bg-opacity-75 p-10 w-[350px] relative rounded-md"
             onClick={(e) => { e.stopPropagation() }}
           >
-            <h2 className="text-2xl font-bold mb-4 font-lobster text-white">Заказать звонок</h2>
+            <h2 className="text-2xl mb-4 font-lobster text-white">Заказать звонок</h2>
             <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
             <form onSubmit={handleSubmit}>
 
@@ -208,9 +208,12 @@ const Nav = ({ user }:  any) => {
                   Перезвоните мне
                 </button>
               </div>
-              <Link href="tel:+77087179128" className="mt-[2rem] text-center">
-                <span className="text-white text-2xl underline md:text-3xl sm:text-xl">+7 708 717 91 28</span>
-              </Link>
+              <div className="flex flex-row mt-7 justify-center gap-4">
+                <FiPhoneCall className="text-xl phone-icon mt-1 text-[#8CCCC1] " />
+                <Link href="tel:+77087179128" className=" text-center">
+                  <span className="text-white text-xl underline">+7 708 717 91 28</span>
+                </Link>
+              </div>
             </form>
           </div>
         </div>
