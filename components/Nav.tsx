@@ -11,7 +11,7 @@ import { userCartStore, userFavStore } from "@/store"
 import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
-import logo from '@/public/logo.svg'
+import logo from '@/public/logo3.svg'
 import FavList from "./FavList"
 
 const Nav = ({ user }:  any) => {
@@ -76,13 +76,13 @@ const Nav = ({ user }:  any) => {
 
   return (
     <>
-      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-castoro w-full z-20">
+      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 md:py-0 font-castoro w-full z-20">
       <button className="md:hidden text-3xl" onClick={menuButtonClick}>
         <AiOutlineMenu></AiOutlineMenu>
       </button>
 
       <Link href={'/'} className="hidden md:block">
-        <Image src={logo} width={70} height={70} alt="logo" />
+          <Image src={logo} width={80} height={80} alt="logo" />
       </Link>
 
       <ul className="hidden md:flex">

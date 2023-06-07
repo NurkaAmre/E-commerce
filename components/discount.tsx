@@ -31,7 +31,7 @@ export default async function Discount (){
                     <div className="discount1 absolute right-4 top-4">
                       <p className="pl-1 pt-2">-{product.discount}%</p>
                     </div>
-                    <Image className=' m-2 rounded-md' src={product.imagesURL[1]} width={200} height={400} alt='bed' />
+                    <Image className=' m-2 rounded-md max-h-full' src={product.imagesURL[1]} width={200} height={310} alt='bed' />
                     <div className='flex flex-row bottom-[2rem] absolute bg-slate-500 bg-opacity-50 w-full rounded-md gap-8 py-3 justify-center'>
                       <h1 className='text-start ml-4 font-castoro text-xl text-white'>{product.name}</h1>
                       <h3 className='text-white '>{product.price}&#x20B8;</h3>
