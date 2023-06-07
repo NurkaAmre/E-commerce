@@ -116,11 +116,7 @@ const Nav = ({ user }:  any) => {
           <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
-            {cartStore.cart.length > 0 && (
-              <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="bg-primary text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
-                {cartStore.cart.length}
-              </motion.span>
-            )}
+
           </AnimatePresence>
         </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>

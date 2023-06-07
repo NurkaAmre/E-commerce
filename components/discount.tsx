@@ -19,21 +19,26 @@ export default async function Discount (){
   return (
     <> 
       <section className='discount-section'>
-        {/* <div className="flex-1 order-0 discount-section">
-          <h1 className='font-bold discount-heading text-2xl m-3 '>Найдите свою</h1>
-          <h3 className='font-medium font-castoro p-2 text-4xl'>Мебель</h3>
-        <hr className="h-2 bg-gradient-to-r from-gray-300 to-transparent border-transparent w-2/3 mt-8"/>
-          <h4 className='font-cormorant font-medium text-6xl m-5'>Новые коллекции</h4>
-        <div className='bg-discount'>
-          <span className='span1'>До</span>
-          <span className='span2 underline'>20%</span>
-        </div>
-          <button className='btn-primary btn font-medium text-white px-4 mt-9 rounded-full py-3 text-lg w-1/2'>Купить</button>
-        </div> */}
+        <h1 className='text-4xl font-roboto font-medium text-green-950-700 opacity-50 ml-[10rem]'>Товары со скидкой</h1>
+        <hr className='my-2 h-3 mb-[1rem] text-gray-900 mx-[10rem]' />
         <div className="marquee">
-          <div className='justify-center rounded-img relative ml-10 maylike-products-container track flex flex-col discount-img'>
-            {products.map((product) => (
-              <Image className='border-2 border-red-500 m-4 rounded-full' src={product.imagesURL[1]} width={200} height={200} alt='bed' />
+          <div className='justify-center relative ml-10 maylike-products-container track flex flex-row gap-10'>
+            {products.map((product: any) => (
+              <>
+                <div className='flex flex-col'>
+
+                  <div className='relative'>
+                    <div className="discount1 absolute right-4 top-4">
+                      <p className="pl-1 pt-2">-{product.discount}%</p>
+                    </div>
+                    <Image className=' m-2 rounded-md' src={product.imagesURL[1]} width={200} height={400} alt='bed' />
+                    <div className='flex flex-row bottom-[2rem] absolute bg-slate-500 bg-opacity-50 w-full rounded-md gap-2 py-3 justify-center'>
+                      <h1 className='text-start ml-4 text-xl text-white'>{product.name}</h1>
+                      <h3 className='text-white'>{product.price}&#x20B8;</h3>
+                    </div>
+                  </div>
+                </div>
+              </>
             ))}
 
           </div>

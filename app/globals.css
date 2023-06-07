@@ -136,11 +136,9 @@ margin-right: 5%;
 
 .discount-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 3rem;
   justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 .discount-heading{
@@ -404,6 +402,11 @@ background: #d2c6b1a7;
   border: 2px solid #8CCCC1;
 
 }
+
+.add-cart-point {
+  background: #8CCCC1;
+  color: #fff;
+}
 .btn {
   background: #8CCCC1;
   border: 2px solid #DFDFD4;
@@ -482,7 +485,17 @@ background: #d2c6b1a7;
   background: #EB6E45;
   width: 3rem;
   height: 3rem;
-  margin-top: 2%;
+  margin-top: 3%;
+  border-radius: 50%;
+}
+.discount1 {
+  font-weight: bold;
+  color: #fff;
+  font-size: 1rem;
+  background: #8CCCC1;
+  width: 3rem;
+  height: 3rem;
+  margin-top: 3%;
   border-radius: 50%;
 }
 .btn-xs {
@@ -493,13 +506,6 @@ background: #d2c6b1a7;
 
 .btn-xs:hover {
   background: #14c1f175;
-}
-
-.marquee-text {
-  font-size: 29px;
-  font-weight: 600;
-  margin: 60px 0px;
-  color: #f02d34;
 }
 
 .marquee {
