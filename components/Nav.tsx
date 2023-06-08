@@ -11,7 +11,7 @@ import { userCartStore, userFavStore } from "@/store"
 import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
-import logo from '@/public/logo.svg'
+import logo from '@/public/logo3.svg'
 import FavList from "./FavList"
 
 const Nav = ({ user }:  any) => {
@@ -51,7 +51,7 @@ const Nav = ({ user }:  any) => {
     }
 
     if (phoneNumber.length === 0) {
-      const newValue = `+7 (${e.key}__) (___) (__) (__)`;
+      const newValue = `+7-(${e.key})-(___)-(__)-(__)`;
       setPhoneNumber(newValue);
     } else {
       const newValue = phoneNumber.replace("_", e.key);
@@ -76,13 +76,13 @@ const Nav = ({ user }:  any) => {
 
   return (
     <>
-      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-castoro w-full z-20">
+      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 md:py-0 font-castoro w-full z-20">
       <button className="md:hidden text-3xl" onClick={menuButtonClick}>
         <AiOutlineMenu></AiOutlineMenu>
       </button>
 
       <Link href={'/'} className="hidden md:block">
-        <Image src={logo} width={70} height={70} alt="logo" />
+          <Image src={logo} width={80} height={80} alt="logo" />
       </Link>
 
       <ul className="hidden md:flex">
@@ -116,7 +116,11 @@ const Nav = ({ user }:  any) => {
           <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
-
+              {cartStore.cart.length > 0 && (
+                <motion.span animate={{ scale: 1 }} initial={{ scale: 0 }} className="add-cart-point text-sm font-bold w-5 h-5 rounded-full absolute left-4 bottom-4 flex items-center justify-center">
+                  {cartStore.cart.length}
+                </motion.span>
+              )}
           </AnimatePresence>
         </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
@@ -178,7 +182,7 @@ const Nav = ({ user }:  any) => {
             className="bg-gray-950 bg-opacity-75 p-10 w-[350px] relative rounded-md"
             onClick={(e) => { e.stopPropagation() }}
           >
-            <h2 className="text-2xl font-bold mb-4 font-lobster text-white">Заказать звонок</h2>
+            <h2 className="text-2xl mb-4 font-lobster text-white">Заказать звонок</h2>
             <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
             <form onSubmit={handleSubmit}>
 
@@ -204,9 +208,12 @@ const Nav = ({ user }:  any) => {
                   Перезвоните мне
                 </button>
               </div>
-              <Link href="tel:+77087179128" className="mt-[2rem] text-center">
-                <span className="text-white text-2xl underline md:text-3xl sm:text-xl">+7 708 717 91 28</span>
-              </Link>
+              <div className="flex flex-row mt-7 justify-center gap-4">
+                <FiPhoneCall className="text-xl phone-icon mt-1 text-[#8CCCC1] " />
+                <Link href="tel:+77087179128" className=" text-center">
+                  <span className="text-white text-xl underline">+7 708 717 91 28</span>
+                </Link>
+              </div>
             </form>
           </div>
         </div>
