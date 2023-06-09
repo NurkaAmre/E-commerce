@@ -46,6 +46,14 @@ nav {
   .search-box {
     display: none;
   }
+
+  .xsm-hide {
+    display: none;
+  }
+
+  .xsm {
+    display: block;
+  }
 }
 
 @media (max-width: 1400px) {
