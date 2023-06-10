@@ -6,14 +6,14 @@ import Link from 'next/link';
 import visa from '@/public/visa.svg'
 import master from '@/public/mastercard.svg'
 import Image from 'next/image';
-import logo from '@/public/logowhite.svg'
+import logo from '@/public/logo1.svg'
 
 function Footer() {
   return (
     <footer>
       <div className="text-white flex flex-col md:flex-row justify-evenly font-castoro items-center md:items-start py-10">
         <div className="text-white text-center">
-          <Image src={logo} width={150} height={100} alt='logo' />
+          <Image src={logo} width={150} height={100} alt='logo' id='logo' />
           <p className='text-sm'>Спасибо за ваш выбор и доверие!</p>
         </div>
 

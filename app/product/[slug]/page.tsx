@@ -25,7 +25,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
       <div key={product._id} className="product-detail-container mt-[4rem]">
         <div className="product-image md:w-1/2">
           <div className="image-container">
-            <Image src={product.imagesURL[1]} alt={product.name} width={250} height={250} />
+            <Image src={product.imagesURL[1]} alt={product.name} width={400} height={400} className="product-img" />
           </div>
           <div className="small-images-container carousel w-full">
             {product.imagesURL.map((imageURL: string, index: number) => {
