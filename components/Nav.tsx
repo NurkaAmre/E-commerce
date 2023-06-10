@@ -5,7 +5,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiFillShopping, AiFillHeart, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { FiPhoneCall } from 'react-icons/fi';
 import { motion, AnimatePresence } from "framer-motion"
 import { userCartStore, userFavStore } from "@/store"
 import UserOptions from "./UserOptions"
