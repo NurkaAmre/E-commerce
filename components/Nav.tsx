@@ -6,17 +6,15 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiFillShopping, AiFillHeart, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 import { motion, AnimatePresence } from "framer-motion"
-import { userCartStore, userFavStore } from "@/store"
+import { userCartStore } from "@/store"
 import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
 import logo from '@/public/logo3.svg'
-import FavList from "./FavList"
 import CallButton from "./CallButton"
 
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
-  const favListStore = userFavStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
 
