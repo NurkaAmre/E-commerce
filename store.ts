@@ -75,17 +75,14 @@ export const userCartStore = create<CartState>()(
 )
 
 type FavStateType = {
-  isOpen: boolean,
   favList: ProductType[],
   toggleProduct: (item: ProductType) => void
-  toggleFavList: () => void
   clearList: () => void
 }
 
 export const userFavStore = create<FavStateType>()(
   persist(
     (set) => ({
-      isOpen: false,
       favList: [],
       toggleProduct: (item) => set((state) => {
         const existingItem = state.favList.find(favItem => favItem.id === item.id)
@@ -95,7 +92,6 @@ export const userFavStore = create<FavStateType>()(
           return {favList: [...state.favList, item]}
         }
       }),
-      toggleFavList: () => set((state) => ({isOpen: !state.isOpen})),
       clearList() {
         set((state) => ({favList: []}))
       },
