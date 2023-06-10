@@ -117,17 +117,6 @@ background-image: url(../public/set1.png);
   flex-direction: row;
 }
 
-.img-size {
-  width: 250px;
-  height: 350px;
-}
-
-.img-discount {
-  width: auto;
-  height: 350px;
-  object-fit: cover;
-}
-
 .nav-icon {
   color: #788A74;
 }
