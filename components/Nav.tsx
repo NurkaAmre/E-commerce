@@ -35,9 +35,10 @@ const Nav = ({ user }:  any) => {
       </button>
 
       <Link href={'/'} className="hidden md:block">
-          <Image src={logo} width={80} height={80} alt="logo" />
+        <Image src={logo} width={80} height={80} alt="logo" />
       </Link>
 
+      {/* Desktop Menu */}
       <ul className="hidden md:flex">
           <li className="mr-6 cursor-pointer whitespace-nowrap group">
             <button role="list">Товары</button>
@@ -58,7 +59,8 @@ const Nav = ({ user }:  any) => {
       <SearchBar />
       <CallButton />
       <ul className="flex items-center gap-6">
-          <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
+        {/* Cart */}
+        <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
               {cartStore.cart.length > 0 && (
@@ -69,15 +71,17 @@ const Nav = ({ user }:  any) => {
           </AnimatePresence>
         </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
-        <li className="cursor-pointer text-3xl" onClick={() => favListStore.toggleFavList()}>
-          <AiFillHeart />
-          {favListStore.isOpen && <FavList userFavList={favListStore.favList} />}
+        {/* Favlist */}
+        <li className="cursor-pointer text-3xl">
+          <Link href={"/account/wishlist"}><AiFillHeart /></Link>
         </li>
+        {/* User Options */}
         {user && (
           <li className="cursor-pointer w-10">
             <UserOptions user={user} />
           </li>
         )}
+        {/* Signin Button */}
         {!user && (
           <li>
             <button className="cursor-pointer" onClick={() => { signIn() }}>Логин</button>
@@ -86,6 +90,7 @@ const Nav = ({ user }:  any) => {
       </ul>
     </nav>
 
+    {/* Mobile Menu */}
     {showMobileMenu && (
       <nav className="fixed top-0 bottom-0 right-0 left-0 bg-gray-400 z-50">
         <button className="absolute right-1 top-1 text-3xl" onClick={menuButtonClick}>
