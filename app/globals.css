@@ -505,13 +505,6 @@ background: #d2c6b1a7;
   border: #2cb9d8;
 }
 
-.product-img {
-  /* width: auto;
-  height: auto; */
-  object-fit: cover;
-  max-width: 100%;
-  border-radius: 10px;
-}
 .btn-xs:hover {
   background: #14c1f175;
 }
