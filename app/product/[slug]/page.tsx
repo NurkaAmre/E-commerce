@@ -30,7 +30,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
               alt={product.name}
               width={300}
               height={300}
-              className="rounded-md h-[300px] w-[300px] object-contain" />
+              className="rounded-md h-[300px] w-[300px] object-fill" />
           </div>
           <div className="small-images-container carousel w-full">
             {product.imagesURL.map((imageURL: string, index: number) => {
