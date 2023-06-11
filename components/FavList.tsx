@@ -12,6 +12,7 @@ export default function FavList () {
 
   return (
     <div className="flex flex-wrap w-full items-center gap-4 justify-center">
+      <h2>A list of products you liked</h2>
       {
         favList.map((product: ProductType) => (
           <Product product={product} />

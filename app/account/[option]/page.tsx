@@ -1,4 +1,5 @@
 import FavList from '@/components/FavList'
+import Orders from '@/components/Orders'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
@@ -15,7 +16,7 @@ export default async function Account({ params: { option } }: { params: { option
   
   return (
     <main className="flex min-h-[60vh]">
-      <nav className='pt-[100px]'>
+      <nav className='pt-[150px]'>
         <ul className='flex flex-col gap-4'>
           <li>
             <Link href={"/account/info"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
@@ -37,8 +38,9 @@ export default async function Account({ params: { option } }: { params: { option
           </li>
         </ul>
       </nav>
-      <section className='flex flex-col items-center w-full pt-[100px] pb-10 px-4'>
+      <section className='flex flex-col items-center w-full pt-[150px] pb-10 px-4'>
         {option === 'wishlist' && <FavList />}
+        {option === 'orders' && <Orders />}
       </section>
     </main>
   )
