@@ -18,6 +18,12 @@ export default {
       title: 'Image',
       type: 'url'
     },
+    {
+      name: 'address',
+      title: 'Address',
+      type: 'reference',
+      to: [{ type: 'address' }]
+    }
     // {
     //   // this is only if you use credentials provider
     //   name: 'password',
