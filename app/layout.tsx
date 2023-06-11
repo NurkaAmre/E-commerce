@@ -1,5 +1,6 @@
 import './globals.css'
 import Nav from '../components/Nav'
+import SearchBarMobile from '@/components/SearchBarMobile'
 import Footer from '../components/Footer'
 import Hydrate from '../components/Hydrate'
 import { Roboto, Lobster_Two, Dancing_Script, Castoro, Pacifico } from 'next/font/google'
@@ -29,6 +30,7 @@ export default async function RootLayout({
     <html lang="ru" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${cormorant.variable} ${dancing_script.variable}`}>
         <Hydrate>
         <Nav user={session?.user} />
+        <SearchBarMobile />
         {children}
         <Footer />
         </Hydrate>

@@ -90,17 +90,17 @@ const Nav = ({ user }:  any) => {
 
     {/* Mobile Menu */}
     {showMobileMenu && (
-      <nav className="fixed top-0 bottom-0 right-0 left-0 bg-gray-400 z-50">
-        <button className="absolute right-1 top-1 text-3xl" onClick={menuButtonClick}>
+        <nav className="fixed top-0 left-0 bottom-0 text-white bg-black opacity-70 z-50">
+          <button className="absolute right-1 top-2 text-3xl" onClick={menuButtonClick}>
           <AiOutlineClose></AiOutlineClose>
         </button>
 
         <Link href={'/'} className="block">
-          <Image src={logo} width={70} height={70} alt="logo" />
+            <Image src={logo} width={80} height={80} alt="logo" />
         </Link>
 
-        <ul className="flex flex-col ml-20">
-          <li className="mr-6 cursor-pointer whitespace-nowrap" onClick={categoriesButtonClick}>
+          <ul className="flex flex-col justify-center ml-4 mt-[2rem]">
+            <li className="mr-6 cursor-pointer underline text-3xl whitespace-nowrap" onClick={categoriesButtonClick}>
             <Link href={'#'} onClick={categoriesButtonClick}>Товары</Link>
             {showCategoriesMenu && (
               <ul className="flex flex-col ml-8">
@@ -111,10 +111,10 @@ const Nav = ({ user }:  any) => {
               </ul>
             )}
           </li>
-          <li className="mr-6 cursor-pointer whitespace-nowrap">
+            <li className="mr-6 cursor-pointer underline text-3xl whitespace-nowrap">
             <Link href={'/about'}>О Компании</Link>
           </li>
-          <li className="mr-6 cursor-pointer whitespace-nowrap">
+            <li className="mr-6 cursor-pointer underline text-3xl whitespace-nowrap">
             <Link href={'/sale'}>Акции</Link>
           </li>
         </ul>
