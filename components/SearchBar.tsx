@@ -10,8 +10,8 @@ function SearchBar() {
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     const res = await fetch(`/api/search?q=${searchQuery}`);
-    const data = await res.json();
-    console.log(data);
+    const products = await res.json();
+    console.log(products);
   };
 
 

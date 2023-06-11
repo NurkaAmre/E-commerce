@@ -6,22 +6,21 @@ export async function GET(request: Request) {
   const query = searchParams.get('q')
   try {
     const response = await SanityClient.fetch(
-      `*[_type == "product" && name match "${query}"]{
+      `*[_type == "product" && (category[]->name.current match "${query}*" || name match "${query}*" || details match "${query}*" || description match "${query}*" || type match "${query}*" || slug match "${query}*")]{
       "id": _id,
       name,
       price,
       quantity,
       details,
       type,
+      category,
       description,
       discount,
       slug,
       "imagesURL": images[].asset -> url
     }`);
-    // Do something with the search results
     return NextResponse.json({ response })
   } catch (error) {
-    // Handle error
     console.error(error);
   }
 }
