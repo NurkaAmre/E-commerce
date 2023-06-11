@@ -23,6 +23,11 @@ export default {
       title: 'Address',
       type: 'reference',
       to: [{ type: 'address' }]
+    },
+    {
+      name: 'phone',
+      title: 'Phone',
+      type: 'string'
     }
     // {
     //   // this is only if you use credentials provider
