@@ -2,6 +2,7 @@ import FavList from '@/components/FavList'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
+import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
 
 export default async function Account({ params: { option } }: { params: { option: string } }) {
   const session = await getServerSession(authOptions);
@@ -14,11 +15,26 @@ export default async function Account({ params: { option } }: { params: { option
   
   return (
     <main className="flex min-h-[60vh]">
-      <nav className='pt-[100px] px-2'>
-        <ul>
-          <li><Link href={"/account/info"}>My Info</Link></li>
-          <li><Link href={"/account/orders"}>My Orders</Link></li>
-          <li><Link href={"/account/wishlist"}>WishList</Link></li>
+      <nav className='pt-[100px]'>
+        <ul className='flex flex-col gap-4'>
+          <li>
+            <Link href={"/account/info"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
+              <AiOutlineInfoCircle />
+              <span className="hidden">My Info</span>
+            </Link>
+          </li>
+          <li>
+            <Link href={"/account/orders"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
+              <AiOutlineShoppingCart />
+              <span className="hidden">My Orders</span>
+            </Link>
+          </li>
+          <li>
+            <Link href={"/account/wishlist"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
+              <AiOutlineHeart />
+              <span className="hidden">WishList</span>
+            </Link>
+          </li>
         </ul>
       </nav>
       <section className='flex flex-col items-center w-full pt-[100px] pb-10 px-4'>
