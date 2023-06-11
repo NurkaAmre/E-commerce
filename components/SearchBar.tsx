@@ -6,7 +6,6 @@ import { useState } from 'react';
 import SanityClient from '@/sanity/client';
 
 function SearchBar() {
-  const [showSearchBar, setShowSearchBar] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   // async function searchProducts(query) {
