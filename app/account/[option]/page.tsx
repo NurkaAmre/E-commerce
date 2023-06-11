@@ -20,27 +20,36 @@ export default async function Account({ params: { option } }: { params: { option
       <nav className='pt-[150px]'>
         <ul className='flex flex-col gap-4'>
           <li>
-            <Link href={"/account/info"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
+            <Link
+              href={"/account/info"}
+              className='text-3xl flex gap-2 px-4 py-2 hover:bg-slate-400/25'
+            >
               <AiOutlineInfoCircle />
-              <span className="hidden">My Info</span>
+              <span className="hidden md:block text-lg whitespace-nowrap">My Info</span>
             </Link>
           </li>
           <li>
-            <Link href={"/account/orders"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
+            <Link
+              href={"/account/orders"}
+              className='text-3xl flex gap-2 px-4 py-2 hover:bg-slate-400/25'
+            >
               <AiOutlineShoppingCart />
-              <span className="hidden">My Orders</span>
+              <span className="hidden md:block text-lg whitespace-nowrap">My Orders</span>
             </Link>
           </li>
           <li>
-            <Link href={"/account/wishlist"} className='text-3xl block px-4 py-2 hover:bg-slate-400/25'>
+            <Link 
+              href={"/account/wishlist"}
+              className='text-3xl flex gap-2 px-4 py-2 hover:bg-slate-400/25'
+            >
               <AiOutlineHeart />
-              <span className="hidden">WishList</span>
+              <span className="hidden md:block text-lg whitespace-nowrap">WishList</span>
             </Link>
           </li>
         </ul>
       </nav>
       <section className='flex flex-col items-center w-full pt-[150px] pb-10 px-4'>
-        {option === 'info' && <UserInfo />}
+        {option === 'info' && <UserInfo user={session.user} />}
         {option === 'orders' && <Orders />}
         {option === 'wishlist' && <FavList />}
       </section>
