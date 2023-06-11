@@ -3,40 +3,56 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { useState } from 'react';
+import SanityClient from '@/sanity/client';
 
 function SearchBar() {
   const [showSearchBar, setShowSearchBar] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // async function searchProducts(query) {
+  //   try {
+  //     const response = await SanityClient.fetch(
+  //       `*[_type == "product" && title match $query]{
+  //       _id,
+  //       name,
+  //       price,
+  //       quantity,
+  //       details,
+  //       type,
+  //       description,
+  //       discount,
+  //       slug,
+  //       "imagesURL": images[].asset -> url
+  //     }`,
+  //       {
+  //         query: query
+  //       }
+  //     );
+  //     // Do something with the search results
+  //     console.log(response);
+  //   } catch (error) {
+  //     // Handle error
+  //     console.error(error);
+  //   }
+  // }
+
+  // const handleSearch = () => {
+  //   searchProducts(searchQuery);
+  // };
+
+
   return (
     <>
-      <div className="flex rounded-full search-box px-2 items-center bg-slate-50">
+      <div className="flex rounded-full desktop-content search-box px-2 items-center bg-slate-50">
         <FiSearch className="text-gray-600 text-lg" />
           <input
             type="text"
             placeholder="Введите запрос"
           className="font-castoro rounded-full py-2 bg-slate-50 px-2 outline-none border-0 w-full"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           />
       </div>
-
-      <FiSearch 
-        className="hidden xsm absolute top-20 text-gray-600 text-lg"
-        onClick={(e) => {
-          e.stopPropagation();
-          setShowSearchBar(!showSearchBar);
-        }}
-      />  
-      {showSearchBar && (
-        <div 
-          className='fixed top-0 left-0 right-0 bottom-0'
-          onClick={() => setShowSearchBar(false)}
-        >
-          <input
-            type="text"
-            placeholder="Введите запрос"
-            onClick={(e) => e.stopPropagation()}
-            className="font-castoro rounded-full py-2 bg-slate-50 px-2 relative left-1/2 transform -translate-x-1/2 top-20 outline-none border-0 z-50"
-          />
-        </div>
-      )}   
     </>
   );
 }

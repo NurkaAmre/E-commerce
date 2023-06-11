@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image'
 import SanityClient from '@/sanity/client';
+import discountPrice from '@/util/discountPrice';
 
 export default async function Discount (){
   const query = `*[_type == "product" && defined(discount)]
@@ -40,7 +41,7 @@ export default async function Discount (){
                       alt={product.name} />
                     <div className='flex flex-row bottom-[2rem] absolute bg-slate-500 bg-opacity-50 w-full rounded-md gap-8 py-3 justify-center'>
                       <h1 className='text-start font-castoro text-xl text-white'>{product.name}</h1>
-                      <h3 className='text-white '>{product.price}&#x20B8;</h3>
+                      <h3 className='text-white '>{discountPrice(product.price, product.discount)}&#x20B8;</h3>
                     </div>
                   </Link>
                 </div>

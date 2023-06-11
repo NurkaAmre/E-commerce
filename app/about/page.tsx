@@ -7,15 +7,15 @@ import about from '@/public/about-1.jpg'
 
 const AboutUs = () => {
   return (
-    <section className='about-us mx-[2rem] md:mx-[6rem] sm:mx-[4rem]'>
-      <div className='about-section'>
+    <section className='about-us md:my-[3rem] mx-[2rem] md:mx-[6rem] sm:mx-[4rem]'>
+      <div className='about-section md:mb-[3rem]'>
         <div className='flex-1 order-0 about-img'>
           <Image src={about} alt='about' className='mt-[6.5rem]' />
         </div>
         <div className='flex-1 order-0 about-text'>
 
-          <h2 className="section-title">О нас</h2>
-          <p className="section-description text-[0.5rem] md:text-[1rem] ">
+          <h2 className="section-title md:[mt-5rem]">О нас</h2>
+          <p className="section-description text-[0.7rem] sm:text-[1rem] md:text-[2rem] ">
             Добро пожаловать в нашу мебельную компанию! Мы лидирующий производитель и магазин мебели в Казахстане. У нас широкий выбор стильной и качественной мебели. Мы гордимся производством собственной мебели с использованием передовых технологий и высококачественных материалов. Наша цель - создавать функциональные и эстетически привлекательные предметы мебели, отражающие последние тенденции в дизайне интерьера. Мы также предлагаем мебель из Турции, известную своим элегантным и качественным дизайном. Наша команда профессионалов поможет вам выбрать идеальные решения для вашего дома или офиса. Мы ценим каждого клиента и предлагаем высокий уровень обслуживания. Спасибо за выбор нашей компании. Мы готовы предложить вам лучшую мебель и надежное обслуживание, чтобы помочь вам создать прекрасный и функциональный интерьер, который впечатлит вас и ваших гостей.
             <br /><br />
             С уважением,<br />
