@@ -1,5 +1,6 @@
 import FavList from '@/components/FavList'
 import Orders from '@/components/Orders'
+import UserInfo from '@/components/UserInfo'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
@@ -39,8 +40,9 @@ export default async function Account({ params: { option } }: { params: { option
         </ul>
       </nav>
       <section className='flex flex-col items-center w-full pt-[150px] pb-10 px-4'>
-        {option === 'wishlist' && <FavList />}
+        {option === 'info' && <UserInfo />}
         {option === 'orders' && <Orders />}
+        {option === 'wishlist' && <FavList />}
       </section>
     </main>
   )
