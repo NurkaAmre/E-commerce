@@ -3,15 +3,17 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 function SearchBar() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch(`/api/search?q=${searchQuery}`);
-    const products = await res.json();
-    console.log(products);
+    if (searchQuery !== '') {
+      router.push(`/search/${searchQuery}`);
+    }
   };
 
 
