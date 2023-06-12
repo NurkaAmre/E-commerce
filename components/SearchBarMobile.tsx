@@ -1,16 +1,16 @@
 'use client'
 
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
 
 function SearchBarMobile() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch(`/api/search?q=${searchQuery}`);
-    const products = await res.json();
-    console.log(products);
+    router.push(`/search/${searchQuery}`);
   };
   return (
     <>
