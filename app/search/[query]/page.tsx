@@ -21,7 +21,7 @@ export default async function Search({ params }: { params: { query: string } }) 
 
   return (
     <main className="md:p-20 p-[2rem] mt-[4rem]">
-      <div className="text-gray-700 grid grid-cols-fluid gap-16 mt-6">
+      <div className="text-gray-700 grid gap-6 grid-cols-fluid justify-center mt-6">
         {products?.map((product: ProductType) => (
           <Product product={product} />
         ))}
