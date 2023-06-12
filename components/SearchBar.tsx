@@ -11,7 +11,9 @@ function SearchBar() {
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
-    router.push(`/search/${searchQuery}`);
+    if (searchQuery !== '') {
+      router.push(`/search/${searchQuery}`);
+    }
   };
 
 
