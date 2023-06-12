@@ -82,7 +82,7 @@ const Nav = ({ user }:  any) => {
         {/* Signin Button */}
         {!user && (
           <li>
-            <button className="cursor-pointer" onClick={() => { signIn() }}>Логин</button>
+              <button className="cursor-pointer ml-4" onClick={() => { signIn() }}>Логин</button>
           </li>
         )}
       </ul>
