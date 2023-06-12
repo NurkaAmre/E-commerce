@@ -5,19 +5,16 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiFillShopping, AiFillHeart, AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
-import { FiPhoneCall } from 'react-icons/fi';
 import { motion, AnimatePresence } from "framer-motion"
-import { userCartStore, userFavStore } from "@/store"
+import { userCartStore } from "@/store"
 import UserOptions from "./UserOptions"
 import SearchBar from "./SearchBar";
 import Cart from "./Cart"
 import logo from '@/public/logo3.svg'
-import FavList from "./FavList"
 import CallButton from "./CallButton"
 
 const Nav = ({ user }:  any) => {
   const cartStore = userCartStore()
-  const favListStore = userFavStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
 
@@ -30,15 +27,16 @@ const Nav = ({ user }:  any) => {
 
   return (
     <>
-      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 p-4 md:p-0 md:py-0 font-castoro w-full z-20">
+      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-castoro w-full z-20">
       <button className="md:hidden text-3xl" onClick={menuButtonClick}>
         <AiOutlineMenu></AiOutlineMenu>
       </button>
 
       <Link href={'/'} className="hidden md:block">
-          <Image src={logo} width={80} height={80} alt="logo" />
+        <Image src={logo} width={80} height={80} alt="logo" />
       </Link>
 
+      {/* Desktop Menu */}
       <ul className="hidden md:flex">
           <li className="mr-6 cursor-pointer whitespace-nowrap group">
             <button role="list">Товары</button>
@@ -59,7 +57,8 @@ const Nav = ({ user }:  any) => {
       <SearchBar />
       <CallButton />
       <ul className="flex items-center gap-6">
-          <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
+        {/* Cart */}
+        <li onClick={() => cartStore.toggleCart()} className="cursor-pointer text-3xl relative">
           <AiFillShopping />
           <AnimatePresence>
               {cartStore.cart.length > 0 && (
@@ -70,15 +69,17 @@ const Nav = ({ user }:  any) => {
           </AnimatePresence>
         </li>
         <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
-        <li className="cursor-pointer text-3xl" onClick={() => favListStore.toggleFavList()}>
-          <AiFillHeart />
-          {favListStore.isOpen && <FavList userFavList={favListStore.favList} />}
+        {/* Favlist */}
+        <li className="cursor-pointer text-3xl">
+          <Link href={"/account/wishlist"}><AiFillHeart /></Link>
         </li>
+        {/* User Options */}
         {user && (
           <li className="cursor-pointer w-10">
             <UserOptions user={user} />
           </li>
         )}
+        {/* Signin Button */}
         {!user && (
           <li>
               <button className="cursor-pointer ml-4" onClick={() => { signIn() }}>Логин</button>
@@ -87,6 +88,7 @@ const Nav = ({ user }:  any) => {
       </ul>
     </nav>
 
+    {/* Mobile Menu */}
     {showMobileMenu && (
         <nav className="fixed top-0 left-0 bottom-0 text-white bg-black opacity-70 z-50">
           <button className="absolute right-1 top-2 text-3xl" onClick={menuButtonClick}>
