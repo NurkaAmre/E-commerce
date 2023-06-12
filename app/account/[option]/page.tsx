@@ -2,6 +2,7 @@ import FavList from '@/components/FavList'
 import Orders from '@/components/Orders'
 import UserInfo from '@/components/UserInfo'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import SanityClient from '@/sanity/client'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
@@ -14,6 +15,10 @@ export default async function Account({ params: { option } }: { params: { option
         <h1>You need to login to access this page</h1>
       </main>
     )
+  const query = `*[_type == "user" && email == "${session.user.email}"]
+                {"id": _id, name, email, "address": address->, phone}`;
+  const data = await SanityClient.fetch(query);
+  const user = data[0];
   
   return (
     <main className="flex min-h-[60vh]">
@@ -49,7 +54,7 @@ export default async function Account({ params: { option } }: { params: { option
         </ul>
       </nav>
       <section className='flex flex-col items-center w-full pt-[150px] pb-10 px-4'>
-        {option === 'info' && <UserInfo user={session.user} />}
+        {option === 'info' && <UserInfo user={user} />}
         {option === 'orders' && <Orders />}
         {option === 'wishlist' && <FavList />}
       </section>
