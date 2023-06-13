@@ -4,8 +4,8 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'address',
-      title: 'Address',
+      name: 'street',
+      title: 'Street',
       type: 'string',
     },
     {
@@ -16,6 +16,11 @@ export default {
     {
       name: 'province',
       title: 'Province',
+      type: 'string',
+    },
+    {
+      name: 'zip',
+      title: 'Zip',
       type: 'string',
     }
   ]
