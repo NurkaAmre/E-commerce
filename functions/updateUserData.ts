@@ -3,14 +3,17 @@
 import SanityClient from "@/sanity/client"
 
 export default async function updateUserData(userData: any) {
+  let status = {code: 0, message: '', data: null};
   // Check if address field is empty
   if (Object.keys(userData.address).length === 0) {
-    SanityClient.patch(userData.id).set({
+    await SanityClient.patch(userData.id).set({
       phone: userData.phone,
       email: userData.email,
     }).commit()
-      .then((res: any) => console.log('res', res))
-      .catch((err: any) => console.log('err', err))
+      .then((res: any) => status = {code: 200, message: 'Data has been updated successfully', data: res})
+      .catch((err: any) => status = {code: 500, message: err, data: null })
+
+    return status
   } else {
     // Check if address already exists
     if (userData.address.id) {
@@ -23,7 +26,7 @@ export default async function updateUserData(userData: any) {
         .then((res: any) => res)
 
       // Update user data
-      SanityClient.patch(userData.id).set({
+      await SanityClient.patch(userData.id).set({
         phone: userData.phone,
         email: userData.email,
         address: {
@@ -31,9 +34,9 @@ export default async function updateUserData(userData: any) {
           _ref: updatedAddress._id
         }
       }).commit()
-        .then((res: any) => console.log('res', res))
-        .catch((err: any) => console.log('err', err))
-      return
+      .then((res: any) => status = {code: 200, message: 'Data has been updated successfully', data: res})
+      .catch((err: any) => status = {code: 500, message: err, data: null })
+      return status
     }
 
     // Create new address
@@ -45,7 +48,7 @@ export default async function updateUserData(userData: any) {
     })
 
     // Update user data
-    SanityClient.patch(userData.id).set({
+    await SanityClient.patch(userData.id).set({
       phone: userData.phone,
       email: userData.email,
       address: {
@@ -53,7 +56,9 @@ export default async function updateUserData(userData: any) {
         _ref: address._id
       }
     }).commit()
-      .then((res: any) => console.log('res', res))
-      .catch((err: any) => console.log('err', err))
+    .then((res: any) => status = {code: 200, message: 'Data has been updated successfully', data: res})
+    .catch((err: any) => status = {code: 500, message: err, data: null })
   }
+
+  return status
 }

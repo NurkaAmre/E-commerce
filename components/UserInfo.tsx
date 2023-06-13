@@ -7,6 +7,9 @@ import { AiFillEdit } from 'react-icons/ai'
 
 export default function UserInfo({ user }: any) {
   let [isPending, startTransition] = useTransition();
+
+  const [message, setMessage] = useState('')
+
   // Edit mode status for each card
   const [contactInfoEditMode, setContactInfoEditMode] = useState(false)
   const [addressEditMode, setAddressEditMode] = useState(false)
@@ -105,14 +108,18 @@ export default function UserInfo({ user }: any) {
       </div>
       <div className='my-3'>
         <button 
-          onClick={() => startTransition(() => {
-            updateUserData(userData)
+          onClick={() => startTransition(async () => {
+            const response = await updateUserData(userData)
+            setMessage(response.message)
+            console.log(response);
+            
           })} 
           className='btn min-w-full rounded-full'
         >
           Сохранить
         </button>
       </div>
+      <span className='block mt-6'>{message}</span>
     </section >
   )
 }
