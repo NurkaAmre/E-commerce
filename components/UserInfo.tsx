@@ -1,9 +1,12 @@
 'use client'
 
+import { useTransition } from 'react'
+import updateUserData from '@/functions/updateUserData'
 import { useState } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
 
 export default function UserInfo({ user }: any) {
+  let [isPending, startTransition] = useTransition();
   // Edit mode status for each card
   const [contactInfoEditMode, setContactInfoEditMode] = useState(false)
   const [addressEditMode, setAddressEditMode] = useState(false)
@@ -14,7 +17,7 @@ export default function UserInfo({ user }: any) {
   const [phone, setPhone] = useState(user.phone)
 
   // User address data
-  const [address, setAddress] = useState(user.address?.address)
+  const [street, setStreet] = useState(user.address?.street)
   const [city, setCity] = useState(user.address?.city)
   const [zip, setZip] = useState(user.address?.zip)
 
@@ -27,8 +30,8 @@ export default function UserInfo({ user }: any) {
   }
 
   // Event handlers for user address
-  const handleAddressChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setAddress(e.currentTarget.value)
+  const handleStreetChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setStreet(e.currentTarget.value)
   }
   const handleCityChange = (e: React.FormEvent<HTMLInputElement>) => {
     setCity(e.currentTarget.value)
@@ -37,10 +40,16 @@ export default function UserInfo({ user }: any) {
     setZip(e.currentTarget.value)
   }
 
-  // Update user info
-  const updateInfo = () => {
-    // Update user info here
-    // setUserInfoEditMode(false)
+  const userData = {
+    id: user.id,
+    phone,
+    email,
+    address: {
+      id: user.address?.id,
+      street,
+      city,
+      zip
+    }
   }
 
   return (
@@ -78,8 +87,8 @@ export default function UserInfo({ user }: any) {
           <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-5 text-2xl' onClick={() => setAddressEditMode(true)} />
           <div className='flex flex-col my-3'>
             <label className='text-sm'>Адрес доставки<span className='text-red-600'>*</span> </label>
-            {!addressEditMode ? <span className='user-input'>{user.address?.address}</span>
-              : <input className='user-input' type="text" value={address} onChange={handleAddressChange} />}
+            {!addressEditMode ? <span className='user-input'>{user.address?.street}</span>
+              : <input className='user-input' type="text" value={street} onChange={handleStreetChange} />}
           </div>
           <div className='flex flex-col my-3 text-gray-700'>
             <label className='text-sm'>Город<span className='text-red-600'>*</span> </label>
@@ -95,7 +104,14 @@ export default function UserInfo({ user }: any) {
         </div>
       </div>
       <div className='my-3'>
-        <button onClick={() => updateInfo()} className='btn min-w-full rounded-full'>Сохранить</button>
+        <button 
+          onClick={() => startTransition(() => {
+            updateUserData(userData)
+          })} 
+          className='btn min-w-full rounded-full'
+        >
+          Сохранить
+        </button>
       </div>
     </section >
   )

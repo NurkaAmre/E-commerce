@@ -16,7 +16,7 @@ export default async function Account({ params: { option } }: { params: { option
       </main>
     )
   const query = `*[_type == "user" && email == "${session.user.email}"]
-                {"id": _id, name, email, "address": address->, phone}`;
+                {"id": _id, name, email, "address": address->{"id": _id, street, city, zip}, phone}`;
   const data = await SanityClient.fetch(query);
   const user = data[0];
   
