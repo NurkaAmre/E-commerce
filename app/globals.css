@@ -230,6 +230,15 @@ background: #d2c6b1a7;
   padding: 0rem 2rem 2rem 2rem;
 }
 
+.user-input {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  padding: 2px 4px;
+}
 
 .delivery-heading {
   font-size: 3rem;

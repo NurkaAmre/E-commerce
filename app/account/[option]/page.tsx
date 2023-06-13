@@ -5,55 +5,55 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import SanityClient from '@/sanity/client'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
-import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart } from 'react-icons/ai'
+import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineOrderedList } from 'react-icons/ai'
 
 export default async function Account({ params: { option } }: { params: { option: string } }) {
   const session = await getServerSession(authOptions);
   if (!session?.user) 
     return (
       <main className="mt-[100px] flex min-h-[50vh]">
-        <h1>You need to login to access this page</h1>
+        <h1>Для получения доступа к этой странице требуется авторизация.</h1>
       </main>
     )
   const query = `*[_type == "user" && email == "${session.user.email}"]
-                {"id": _id, name, email, "address": address->, phone}`;
+                {"id": _id, name, email, "address": address->{"id": _id, street, city, zip}, phone}`;
   const data = await SanityClient.fetch(query);
   const user = data[0];
   
   return (
     <main className="flex min-h-[60vh]">
-      <nav className='pt-[150px]'>
+      <nav className='pt-[150px] bg-[#EBE7DC] opacity-90'>
         <ul className='flex flex-col gap-4'>
-          <li>
+          <li className='text-base font-castoro'>
             <Link
               href={"/account/info"}
-              className='text-3xl flex gap-2 px-4 py-2 hover:bg-slate-400/25'
+              className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
             >
               <AiOutlineInfoCircle />
-              <span className="hidden md:block text-lg whitespace-nowrap">My Info</span>
+              <span className="hidden md:block whitespace-nowrap">Персональные Данные</span>
             </Link>
           </li>
-          <li>
+          <li className='text-base font-castoro'>
             <Link
               href={"/account/orders"}
-              className='text-3xl flex gap-2 px-4 py-2 hover:bg-slate-400/25'
+              className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
             >
               <AiOutlineShoppingCart />
-              <span className="hidden md:block text-lg whitespace-nowrap">My Orders</span>
+              <span className="hidden md:block whitespace-nowrap">Корзина</span>
             </Link>
           </li>
-          <li>
+          <li className='text-base font-castoro'>
             <Link 
               href={"/account/wishlist"}
-              className='text-3xl flex gap-2 px-4 py-2 hover:bg-slate-400/25'
+              className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
             >
-              <AiOutlineHeart />
-              <span className="hidden md:block text-lg whitespace-nowrap">WishList</span>
+              <AiOutlineHeart className='text-lg' />
+              <span className="hidden md:block  whitespace-nowrap">Избранное</span>
             </Link>
           </li>
         </ul>
       </nav>
-      <section className='flex flex-col items-center w-full pt-[150px] pb-10 px-4'>
+      <section className='flex flex-col w-full pt-[150px] pb-10 px-4 md:px-[3rem]'>
         {option === 'info' && <UserInfo user={user} />}
         {option === 'orders' && <Orders />}
         {option === 'wishlist' && <FavList />}
