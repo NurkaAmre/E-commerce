@@ -111,8 +111,6 @@ export default function UserInfo({ user }: any) {
           onClick={() => startTransition(async () => {
             const response = await updateUserData(userData)
             setMessage(response.message)
-            console.log(response);
-            
           })} 
           className='btn min-w-full rounded-full'
         >
