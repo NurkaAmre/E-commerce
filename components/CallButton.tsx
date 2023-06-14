@@ -34,7 +34,7 @@ export default function CallButton () {
       return;
     }
 
-    if (phoneNumber.length !== 0 && phoneNumber === "+_ (____)-__-__-__") {
+    if (phoneNumber.length !== 0 && phoneNumber === "+_ (___)-___-__-__") {
       const newValue = phoneNumber.replace("_", "7");
       setPhoneNumber(newValue);
     } else {
