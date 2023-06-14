@@ -18,7 +18,7 @@ export default function CallButton () {
   };
 
   const populatePhoneNumber = () => {
-    setPhoneNumber("+_ (____)-__-__-__")
+    setPhoneNumber("+_ (___)-___-__-__")
   }
 
   const handlePhoneNumberChange = (e: React.KeyboardEvent) => {
