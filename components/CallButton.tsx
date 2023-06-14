@@ -23,7 +23,7 @@ export default function CallButton () {
 
   const handlePhoneNumberChange = (e: React.KeyboardEvent) => {
     if (e.key === "Backspace") {
-      if (phoneNumber.length > 0 && phoneNumber !== "+_ (____)-__-__-__") {
+      if (phoneNumber.length > 0 && phoneNumber !== "+_ (___)-___-__-__") {
         const newValue = phoneNumber.replace(/\d(?![\s\S]*\d)/m, "_");
         setPhoneNumber(newValue);
       }
