@@ -8,14 +8,14 @@ export default function Product({ product }: {product: ProductType } ){
     <Link 
       href={`/product/${product.slug.current}`} 
       key={product.id}
-      className="block relative group h-[200px] w-[300px]"
+      className="block relative group "
     >
       <Image
         src={product.imagesURL[0]}
         alt={product.name}
-        fill={true}
-        sizes="(max-width: 768px) 300px"
-        className="object-cover rounded-lg transition-transform transform group-hover:scale-110"
+        width={400}
+        height={300}
+        className="object-fill rounded-lg transition-transform transform group-hover:scale-110"
       />
       <LikeButton product={product}/>
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex items-center py-4 px-10 justify-between w-[90%] bg-gray-600 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-transform group-hover:scale-110">
