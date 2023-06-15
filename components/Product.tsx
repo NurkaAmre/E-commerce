@@ -10,6 +10,7 @@ export default function Product({ product }: {product: ProductType } ){
       key={product.id}
       className="block relative group "
     >
+      <div className="flex flex-col rounded-lg justify-center items-center -inset-2 shadow-2xl">
       <Image
         src={product.imagesURL[0]}
         alt={product.name}
@@ -17,11 +18,12 @@ export default function Product({ product }: {product: ProductType } ){
         height={300}
         className="object-fill rounded-lg transition-transform transform group-hover:scale-110"
       />
-      <LikeButton product={product}/>
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 flex items-center py-4 px-10 justify-between w-[90%] bg-gray-600 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-transform group-hover:scale-110">
-        <h3 className="text-white text-xl font-semibold">{product.name}</h3>
-        <h2 className="text-white text-lg">{product.price}&#x20B8;</h2>
-
+        <LikeButton product={product} />
+        <div className="flex flex-row text-lg gap-6 text-gray-600 font-dancing_script md:mt-[2rem]">
+          <h3>{product.name}</h3>
+          <h2>{product.price}&#x20B8;</h2>
+        </div>
+        <button className='btn my-4 rounded-full w-full py-2'>Купить</button>
       </div>
     </Link>
   )

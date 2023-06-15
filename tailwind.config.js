@@ -9,7 +9,7 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(20rem,1fr))",
-
+        fluid1: "repeat(auto-fit, minmax(13rem,2fr))",
       },
       fontFamily: {
         lobster: ['var(--font-lobster)'],
