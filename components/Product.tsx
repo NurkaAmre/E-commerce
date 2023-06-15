@@ -10,13 +10,13 @@ export default function Product({ product }: {product: ProductType } ){
       key={product.id}
       className="block relative group "
     >
-      <div className="flex flex-col rounded-lg justify-center items-center -inset-2 shadow-2xl">
+      <div className="flex flex-col md:px-10 rounded-lg justify-center items-center -inset-2 shadow-2xl">
       <Image
         src={product.imagesURL[0]}
         alt={product.name}
         width={400}
         height={300}
-          className="object-fill transition-transform transform group-hover:scale-110"
+          className="object-fill"
       />
         <LikeButton product={product} />
         <div className="flex flex-row text-lg gap-6 text-gray-600 font-dancing_script md:mt-[2rem]">
