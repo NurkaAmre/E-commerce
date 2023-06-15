@@ -16,7 +16,7 @@ export default function Product({ product }: {product: ProductType } ){
         alt={product.name}
         width={400}
         height={300}
-        className="object-fill rounded-lg transition-transform transform group-hover:scale-110"
+          className="object-fill transition-transform transform group-hover:scale-110"
       />
         <LikeButton product={product} />
         <div className="flex flex-row text-lg gap-6 text-gray-600 font-dancing_script md:mt-[2rem]">
