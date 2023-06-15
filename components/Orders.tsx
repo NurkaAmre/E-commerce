@@ -18,7 +18,7 @@ export default function Orders() {
           <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
           <p className="text-xs font-castoro">
             Status:
-            <span className="text-white py-1 bg-teal-500 rounded-md px-2 mx-2 text-xs">
+            <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
               Completed
             </span>
           </p>
@@ -51,7 +51,7 @@ export default function Orders() {
           <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
           <p className="text-xs font-castoro">
             Status:
-            <span className="text-white py-1 bg-orange-500 rounded-md px-2 mx-2 text-xs">
+            <span className="text-white py-1 bg-orange-500 rounded-full px-2 mx-2 text-xs">
               Pending
             </span>
           </p>
@@ -84,7 +84,7 @@ export default function Orders() {
           <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
           <p className="text-xs font-castoro">
             Status:
-            <span className="text-white py-1 bg-teal-500 rounded-md px-2 mx-2 text-xs">
+            <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
               Completed
             </span>
           </p>
@@ -117,7 +117,7 @@ export default function Orders() {
           <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
           <p className="text-xs font-castoro">
             Status:
-            <span className="text-white py-1 bg-orange-500 rounded-md px-2 mx-2 text-xs">
+            <span className="text-white py-1 bg-orange-500 rounded-full px-2 mx-2 text-xs">
               Pending
             </span>
           </p>

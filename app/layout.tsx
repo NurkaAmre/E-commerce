@@ -1,11 +1,12 @@
-import './globals.css'
+import { Suspense } from 'react'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { Roboto, Lobster_Two, Dancing_Script, Castoro, Pacifico } from 'next/font/google'
 import Nav from '../components/Nav'
 import SearchBarMobile from '@/components/SearchBarMobile'
 import Footer from '../components/Footer'
-import Hydrate from '../components/Hydrate'
-import { Roboto, Lobster_Two, Dancing_Script, Castoro, Pacifico } from 'next/font/google'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import LoadingAnimation from '@/components/loadingAnimation'
+import './globals.css'
 
 
 //Define main font
@@ -28,13 +29,14 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
   return (
     <html lang="ru" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${cormorant.variable} ${dancing_script.variable}`}>
-        <Hydrate>
-        <Nav user={session?.user} />
-        <SearchBarMobile />
-        {children}
-        <Footer />
-        </Hydrate>
-      
+      <body>
+        <Suspense fallback={<LoadingAnimation />}>
+          <Nav user={session?.user} />
+          <SearchBarMobile />
+          {children}
+          <Footer />
+        </Suspense>
+      </body>
     </html>
   )
 }

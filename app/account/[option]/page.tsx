@@ -12,7 +12,7 @@ export default async function Account({ params: { option } }: { params: { option
   if (!session?.user) 
     return (
       <main className="mt-[100px] flex min-h-[50vh]">
-        <h1>Для получения доступа к этой странице требуется авторизация.</h1>
+        <h1 className='text-lg text-red-400 font-castoro font-medium'>Для получения доступа к этой странице требуется авторизация.</h1>
       </main>
     )
   const query = `*[_type == "user" && email == "${session.user.email}"]

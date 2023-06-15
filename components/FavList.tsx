@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-import Link from 'next/link'
 import { ProductType } from '@/types/ProductType'
 import { userFavStore } from "@/store"
 import Product from './Product'
@@ -11,12 +9,13 @@ export default function FavList () {
   const favList = userFavStore((state) => state.favList)
 
   return (
-    <div className="flex flex-col w-full items-center gap-4 justify-center">
-      <h2>A list of products you liked</h2>
-      <div className="flex flex-wrap w-full items-center gap-4 justify-center">
+    <div className="px-[2rem]">
+      <div className="grid grid-cols-fluid1 rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-2xl items-center gap-10 justify-center">
         {
           favList.map((product: ProductType) => (
-            <Product product={product} />
+            <div className='-inset-2 shadow-md rounded-md'>
+              <Product product={product} />
+            </div>
           ))
         }
       </div>

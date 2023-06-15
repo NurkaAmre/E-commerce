@@ -25,7 +25,7 @@ export default function Cart() {
       <motion.div 
       layout
       onClick={(e) => e.stopPropagation()} 
-        className='bg-base-200 bg-opacity-75 absolute right-0 top-0 w-full h-screen lg:w-2/5 p-12 overflow-y-scroll'>
+        className='bg-base-200 bg-opacity-85 absolute right-0 top-0 w-full h-screen lg:w-2/5 p-12 overflow-y-scroll'>
         {cartStore.onCheckout === 'cart' && (
           <button onClick={() => cartStore.toggleCart()} className='text-sm font-bold pb-12'>Вернуться в магазин</button>)}
         {cartStore.onCheckout === 'checkout' && (

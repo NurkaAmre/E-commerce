@@ -99,17 +99,3 @@ export const userFavStore = create<FavStateType>()(
     {name: 'fav-store'}
   )
 )
-
-type ThemeState = {
-  mode: 'lemonade' | 'halloween'
-  toggleMode: (theme: 'lemonade' | 'halloween') => void
-}
-export const useThemeStore = create<ThemeState>()(
-  persist(
-    (set) => ({
-      mode: 'lemonade',
-      toggleMode: (theme) => set((state) => ({mode: theme})),
-    }),
-    {name: 'theme-store'}
-  )
-)
