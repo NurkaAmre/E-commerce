@@ -8,7 +8,7 @@ import { userCartStore } from '@/store';
 import updateUserData from '@/functions/updateUserData'
 import discountPrice from '@/util/discountPrice';
 
-export default function Checkout({ user }: any) {
+export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {

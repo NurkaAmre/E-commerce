@@ -13,7 +13,7 @@ import Cart from "./Cart"
 import logo from '@/public/logo3.svg'
 import CallButton from "./CallButton"
 
-const Nav = ({ user }:  any) => {
+const Nav = ({ user }:  {user: UserType}) => {
   const cartStore = userCartStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)

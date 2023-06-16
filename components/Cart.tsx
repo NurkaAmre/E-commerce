@@ -8,7 +8,7 @@ import {motion, AnimatePresence} from 'framer-motion'
 import Checkout from './Checkout';
 import discountPrice from '@/util/discountPrice';
 
-export default function Cart({ user }: any) {
+export default function Cart({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
@@ -61,7 +61,7 @@ export default function Cart({ user }: any) {
         {/* Checkout button and total amount */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
-          <p className=''>Сумма к оплате: {totalPrice} KZTgi</p>
+          <p className=''>Сумма к оплате: {totalPrice} KZT</p>
           {/* cartStore.setCheckout('checkout') */}
           <button 
             onClick={() => cartStore.setCheckout('checkout')}
