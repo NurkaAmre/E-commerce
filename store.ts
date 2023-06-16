@@ -33,7 +33,6 @@ export const userCartStore = create<CartState>()(
     (set) => ({
       cart: [],
       isOpen: false,
-      paymentIntent: '',
       onCheckout: 'cart',
       toggleCart: () => set((state) => ({ isOpen: !state.isOpen })),
       addProduct: (item) => set((state) => {

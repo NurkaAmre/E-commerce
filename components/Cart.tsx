@@ -5,15 +5,14 @@ import { userCartStore } from '@/store';
 import {IoAddCircle, IoRemoveCircle} from 'react-icons/io5';
 import basket from '@/public/shopping-cart.png';
 import {motion, AnimatePresence} from 'framer-motion'
-import OrderConfirmed from './OrderConfirmed';
-import completePayment from '@/functions/completePayment';
 import Checkout from './Checkout';
+import discountPrice from '@/util/discountPrice';
 
-export default function Cart() {
+export default function Cart({ user }: any) {
   const cartStore = userCartStore()
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + item.price * item.cartQuantity
+    return acc + discountPrice(item.price, item.discount) * item.cartQuantity
   }, 0)
 
   return (
@@ -52,7 +51,7 @@ export default function Cart() {
                   <h2>{item.cartQuantity}</h2>
                   <button onClick={() => cartStore.addProduct(item)}><IoAddCircle /></button>
                 </div>
-                <p className='text-sm'>{item.price}</p>
+                <p className='text-sm'>{discountPrice(item.price, item.discount)} KZT</p>
               </div>
             </motion.div>
           ))}
@@ -62,7 +61,7 @@ export default function Cart() {
         {/* Checkout button and total amount */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
-          <p className=''>Сумма к оплате: {totalPrice}</p>
+          <p className=''>Сумма к оплате: {totalPrice} KZTgi</p>
           {/* cartStore.setCheckout('checkout') */}
           <button 
             onClick={() => cartStore.setCheckout('checkout')}
@@ -88,8 +87,12 @@ export default function Cart() {
         </AnimatePresence>
 
         {/* Checkout from */}
-        {cartStore.onCheckout === 'checkout' && (
-          <Checkout />
+        {cartStore.onCheckout === 'checkout' && user && (
+          <Checkout user={user} />
+        )}
+        {/* Checkout form for non signed in users */}
+        {cartStore.onCheckout === 'checkout' && !user && (
+          <p>You need to sign in to be able to complete an order</p>
         )}
       </motion.div>
     </motion.div>
