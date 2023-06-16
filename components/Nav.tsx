@@ -68,7 +68,7 @@ const Nav = ({ user }:  any) => {
               )}
           </AnimatePresence>
         </li>
-        <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
+        <AnimatePresence>{cartStore.isOpen && <Cart user={user} />}</AnimatePresence>
         {/* Favlist */}
         <li className="cursor-pointer text-3xl">
           <Link href={"/account/wishlist"}><AiFillHeart /></Link>

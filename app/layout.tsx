@@ -7,6 +7,7 @@ import SearchBarMobile from '@/components/SearchBarMobile'
 import Footer from '../components/Footer'
 import LoadingAnimation from '@/components/loadingAnimation'
 import './globals.css'
+import getUser from '@/functions/getUser'
 
 
 //Define main font
@@ -27,13 +28,16 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const session = await getServerSession(authOptions);
+  const user = await getUser(session?.user?.email)  
   return (
     <html lang="ru" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${cormorant.variable} ${dancing_script.variable}`}>
       <body>
         <Suspense fallback={<LoadingAnimation />}>
-          <Nav user={session?.user} />
+          <Nav user={user} />
           <SearchBarMobile />
-          {children}
+          <Suspense fallback={<LoadingAnimation />}>
+            {children}
+          </Suspense>
           <Footer />
         </Suspense>
       </body>
