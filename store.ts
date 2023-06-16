@@ -1,6 +1,5 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
-import ProductType from './types/ProductType';
 
 type CartItem = {
   id: string;

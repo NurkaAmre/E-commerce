@@ -4,4 +4,5 @@ type OrderType = {
   amount: number,
   user: UserType,
   address: AddressType,
+  products: ProductType[],
 }

@@ -1,4 +1,4 @@
-export type ProductType = {
+type ProductType = {
   id: string;
   name: string;
   details: string;
@@ -11,5 +11,3 @@ export type ProductType = {
     current: string;
   };
 }
-
-export default ProductType;
