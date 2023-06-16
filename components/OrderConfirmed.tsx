@@ -9,7 +9,6 @@ import { useEffect } from 'react'
 export default function OrderConfirmed() {
   const cartStore = userCartStore()
   useEffect(() => {
-    cartStore.setPaymentIntent('')
     cartStore.clearCart()
   }, [])
 
