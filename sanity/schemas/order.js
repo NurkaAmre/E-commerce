@@ -14,6 +14,11 @@ export default {
         type: 'number',
       },
       {
+        name: 'paymentId',
+        title: 'Payment Id',
+        type: 'string',
+      },
+      {
         name: 'products',
         title: 'Products',
         type: 'array',
