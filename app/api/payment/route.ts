@@ -3,10 +3,8 @@ import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
   const response = await request.formData()
-  let text = ""
-  for (const entry of response.entries()) {
-    text += `${entry[0]}: ${entry[1]}\n`
-  }
+  let text = response.get('pg_result')
+  
   await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
     title: `${text}`,
   }).commit()
