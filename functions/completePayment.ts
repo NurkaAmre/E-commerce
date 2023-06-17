@@ -1,13 +1,10 @@
 'use server'
 
-import md5 from 'md5'
+import generateSig from '@/util/generateSig'
 import xml2js from 'xml2js'
 
 export default async function completePayment(order: OrderType, user: UserType) {
-  let status = {code: 0, message: '', data: {}};
-
   // Payment data
-  const secretKey = 'xbiXRN7i69LFWK8x'
   const merchantId = '550159'
   const paymentData = {
     pg_order_id: order.id,
@@ -21,12 +18,7 @@ export default async function completePayment(order: OrderType, user: UserType) 
   } as any
 
   // Generate signature key
-  let sig = Object.keys(paymentData)
-    .sort()
-    .map((key) => paymentData[key])
-    .join(';')
-  sig = md5(`init_payment.php;${sig};${secretKey}`)
-  paymentData.pg_sig = sig
+  paymentData.pg_sig = generateSig(paymentData)
 
   // Create request body from payment data
   const body = new FormData()
