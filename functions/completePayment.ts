@@ -3,18 +3,18 @@
 import md5 from 'md5'
 import xml2js from 'xml2js'
 
-export default async function completePayment() {
+export default async function completePayment(order: OrderType, user: UserType) {
   const secretKey = 'xbiXRN7i69LFWK8x'
   const merchantId = '550159'
   const paymentData = {
-    pg_order_id: '123478556546sds464hgdqsd545459',
+    pg_order_id: order.id,
     pg_merchant_id: merchantId,
-    pg_amount: '200000.00',
+    pg_amount: order.amount,
     pg_currency: 'KZT',
     pg_salt: 'salt',
     pg_description: 'Description',
-    pg_user_phone: '+79999999999',
-    pg_user_contact_email: 'test@example.com'
+    pg_user_phone: user.phone,
+    pg_user_contact_email: user.email
   } as any
 
   // Generate signature key
@@ -39,6 +39,5 @@ export default async function completePayment() {
   const result = await pgResponse.text()
   const parser = new xml2js.Parser()
   const { response } = await parser.parseStringPromise(result)
-  console.log(response);
   return response
 }

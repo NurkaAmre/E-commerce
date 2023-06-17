@@ -1,12 +1,16 @@
+'use server'
+
 import SanityClient from "@/sanity/client";
 import { CartItem } from "@/store";
+import { randomUUID } from "crypto";
 
 export default async function createOrder(cartItems: CartItem[], totalAmount: number, user: UserType) {
   let status = {code: 0, message: '', data: null};
   const products = cartItems.map((item) => {
     return {
       _type: 'reference',
-      _ref: item.id
+      _ref: item.id,
+      _key: randomUUID()
     }
   })
   const order = await SanityClient.create({
@@ -23,4 +27,7 @@ export default async function createOrder(cartItems: CartItem[], totalAmount: nu
     },
     products: products
   })
+
+  console.log(order);
+  
 }

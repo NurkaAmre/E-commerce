@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { userCartStore } from '@/store';
 import updateUserData from '@/functions/updateUserData'
 import discountPrice from '@/util/discountPrice';
+import createOrder from '@/functions/createOrder';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
@@ -57,8 +58,10 @@ export default function Checkout({ user }: { user: UserType }) {
 
   const userData = {
     id: user.id,
+    name,
     phone,
     email,
+    image: user.image,
     address: {
       id: user.address?.id,
       street,
@@ -128,10 +131,10 @@ export default function Checkout({ user }: { user: UserType }) {
       <div className='my-3 flex justify-center items-center'>
         <button 
           onClick={() => startTransition(async () => {
-            const response = await updateUserData(userData)
             if (name && phone && email && street && city && zip) {
+              const response = await updateUserData(userData)
               if (response.code === 200) {
-                console.log(response.data)
+                const order = await createOrder(cartStore.cart, totalPrice , userData)
               } else {
                 setMessage(response.message)
               }
