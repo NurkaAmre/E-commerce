@@ -3,9 +3,12 @@ import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
   const response = await request.formData()
-  const status = response.pg_result
+  let text = ""
+  for (const entry of response.entries()) {
+    text += `${entry[0]}: ${entry[1]}\n`
+  }
   await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
-    title: `${response}`,
+    title: `${text}`,
   }).commit()
   return NextResponse.json({ message: 'Hello world!' })
 }
