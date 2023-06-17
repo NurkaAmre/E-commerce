@@ -123,6 +123,7 @@ export default function Checkout({ user }: { user: UserType }) {
               const response = await updateUserData(userData)
               if (response.code === 200) {
                 const order = await createOrder(cartStore.cart, totalPrice , userData)
+                console.log(order)
               } else {
                 setMessage(response.message)
               }

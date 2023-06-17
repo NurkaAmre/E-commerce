@@ -8,26 +8,23 @@ export default async function getOrder(orderId: string) {
     "id": _id,
     status,
     amount,
-    user->{
+    "user": user->{
       "id": _id,
       name,
       email,
       phone,
       image,
-      address->{
-        "id:" _id,
-        street,
-        city,
-        zip
-      }
+      "address": address->{"id": _id, street, city, zip}
     },
-    address->{
-      "id:" _id,
+    "address": address->{
+      "id": _id,
       street,
       city,
       zip
     },
-    products[]->{
+    products[]{
+      quantity,
+      "product": product->{
       "id": _id,
       name,
       type,
@@ -35,11 +32,11 @@ export default async function getOrder(orderId: string) {
       description,
       price,
       discount,
-      imagesURL,
       slug,
       stock,
       "imagesURL": images[].asset->url,
       "category": category[]->name.current
+      }
     }
   }[0]`, {orderId: orderId})
 
