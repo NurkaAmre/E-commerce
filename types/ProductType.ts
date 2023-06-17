@@ -1,6 +1,8 @@
 type ProductType = {
   id: string;
   name: string;
+  type: string;
+  category: string[];
   details: string;
   description: string;
   imagesURL: string[];

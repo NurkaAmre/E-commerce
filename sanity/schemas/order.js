@@ -19,8 +19,8 @@ export default {
         type: 'array',
         of: [
           {
-            name: 'orderproduct',
-            title: 'OrderProduct',
+            name: 'order_product',
+            title: 'Order Product',
             type: 'object',
             fields: [
               {

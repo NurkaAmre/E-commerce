@@ -8,9 +8,11 @@ export default async function createOrder(cartItems: CartItem[], totalAmount: nu
   let status = {code: 0, message: '', data: {}};
   const products = cartItems.map((item) => {
     return {
-      _type: 'reference',
-      _ref: item.id,
-      _key: randomUUID(),
+      quantity: item.quantity,
+      product: {
+        _type: 'reference',
+        _ref: item.id,
+      }
     }
   })
   const order = await SanityClient.create({

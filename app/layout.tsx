@@ -32,14 +32,12 @@ export default async function RootLayout({
   return (
     <html lang="ru" className={`${roboto.variable} ${lobster.variable} ${castoro.variable} ${cormorant.variable} ${dancing_script.variable}`}>
       <body>
-        {/* <Suspense fallback={<LoadingAnimation />}> */}
           <Nav user={user} />
           <SearchBarMobile />
           <Suspense fallback={<LoadingAnimation />}>
             {children}
           </Suspense>
           <Footer />
-        {/* </Suspense> */}
       </body>
     </html>
   )

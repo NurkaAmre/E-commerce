@@ -31,13 +31,9 @@ export default function Checkout({ user }: { user: UserType }) {
   const [city, setCity] = useState(user.address?.city)
   const [zip, setZip] = useState(user.address?.zip)
 
+  // Event handlers
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
     setName(e.currentTarget.value)
-  }
-
-  // Event handlers
-  const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
-    setEmail(e.currentTarget.value)
   }
   const handlePhoneChange = (e: React.FormEvent<HTMLInputElement>) => {
     setPhone(e.currentTarget.value)
@@ -103,11 +99,6 @@ export default function Checkout({ user }: { user: UserType }) {
           <label className='text-sm'>Тел<span className='text-red-600'>*</span> </label>
           {!editMode ? <span className='user-input text-base font-roboto'>{user.phone}</span>
             : <input className='user-input text-base font-roboto' type="tel" value={phone} onChange={handlePhoneChange} />}
-        </div>
-        <div className='flex flex-col text-gray-700'>
-          <label className='text-sm'>E-mail<span className='text-red-600'>*</span> </label>
-          {!editMode ? <span className='user-input text-base font-roboto'>{user.email}</span>
-            : <input className='user-input text-base font-roboto' type="email" value={email} onChange={handleEmailChange} />}
         </div>
         <div className='flex flex-col'>
           <label className='text-sm'>Адрес доставки<span className='text-red-600'>*</span> </label>
