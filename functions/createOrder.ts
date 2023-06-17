@@ -5,12 +5,12 @@ import { CartItem } from "@/store";
 import { randomUUID } from "crypto";
 
 export default async function createOrder(cartItems: CartItem[], totalAmount: number, user: UserType) {
-  let status = {code: 0, message: '', data: null};
+  let status = {code: 0, message: '', data: {}};
   const products = cartItems.map((item) => {
     return {
       _type: 'reference',
       _ref: item.id,
-      _key: randomUUID()
+      _key: randomUUID(),
     }
   })
   const order = await SanityClient.create({
@@ -28,6 +28,13 @@ export default async function createOrder(cartItems: CartItem[], totalAmount: nu
     products: products
   })
 
-  console.log(order);
-  
+  if (order) {
+    status.code = 200;
+    status.message = 'Order created successfully';
+    status.data = order;
+  } else {
+    status.code = 500;
+    status.message = 'Something went wrong';
+  }
+  return status;
 }

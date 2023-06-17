@@ -11,24 +11,22 @@ import createOrder from '@/functions/createOrder';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
-  //Total Price
+  // Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + discountPrice(item.price, item.discount) * item.cartQuantity
+    return acc + discountPrice(item.price, item.discount) * item.quantity
   }, 0)
 
   let [isPending, startTransition] = useTransition();
 
   const [message, setMessage] = useState('')
 
-  // Edit mode status for each card
+  // Edit mode status
   const [editMode, setEditMode] = useState(false)
 
-  // User info data
+  // Shipping Information
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
   const [phone, setPhone] = useState(user.phone)
-
-  // User address data
   const [street, setStreet] = useState(user.address?.street)
   const [city, setCity] = useState(user.address?.city)
   const [zip, setZip] = useState(user.address?.zip)
@@ -37,15 +35,13 @@ export default function Checkout({ user }: { user: UserType }) {
     setName(e.currentTarget.value)
   }
 
-  // Event handlers for contact info
+  // Event handlers
   const handleEmailChange = (e: React.FormEvent<HTMLInputElement>) => {
     setEmail(e.currentTarget.value)
   }
   const handlePhoneChange = (e: React.FormEvent<HTMLInputElement>) => {
     setPhone(e.currentTarget.value)
   }
-
-  // Event handlers for user address
   const handleStreetChange = (e: React.FormEvent<HTMLInputElement>) => {
     setStreet(e.currentTarget.value)
   }
@@ -83,7 +79,7 @@ export default function Checkout({ user }: { user: UserType }) {
                 <h2>{item.name}</h2>
                 <div className='flex gap-2'>
                   <h2>Количество: </h2>
-                  <h2>{item.cartQuantity}</h2>
+                  <h2>{item.quantity}</h2>
                 </div>
                 <p className='text-sm'>{discountPrice(item.price, item.discount)} KZT</p>
               </div>
@@ -92,10 +88,11 @@ export default function Checkout({ user }: { user: UserType }) {
           <p className=''>Сумма к оплате: {totalPrice} KZT</p>
         </div>
       </div>
+
+      {/* Shipping Information */}
       <h2 className='my-4'>Shipping Information</h2>
       <div className='flex flex-col gap-4 justify-center relative'>
         <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-0 text-2xl' onClick={() => setEditMode(true)} />
-        {/* User info */}
         <div className='flex flex-col text-gray-700'>
           <label className='text-sm'>Имя<span className='text-red-600'>*</span> </label>
           

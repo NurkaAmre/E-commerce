@@ -12,7 +12,7 @@ export default function Cart({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + discountPrice(item.price, item.discount) * item.cartQuantity
+    return acc + discountPrice(item.price, item.discount) * item.quantity
   }, 0)
 
   return (
@@ -48,7 +48,7 @@ export default function Cart({ user }: { user: UserType }) {
                 <div className='flex gap-2'>
                   <h2>Количество: </h2>
                   <button onClick={() => cartStore.removeProduct(item)}><IoRemoveCircle /></button>
-                  <h2>{item.cartQuantity}</h2>
+                  <h2>{item.quantity}</h2>
                   <button onClick={() => cartStore.addProduct(item)}><IoAddCircle /></button>
                 </div>
                 <p className='text-sm'>{discountPrice(item.price, item.discount)} KZT</p>

@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import ProductType from "@/types/ProductType"
 import LikeButton from "@/components/LikeButton"
 
 export default function Product({ product }: {product: ProductType } ){

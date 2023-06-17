@@ -6,7 +6,7 @@ type ProductType = {
   imagesURL: string[];
   price: number;
   discount?: number;
-  quantity: number;
+  stock: number;
   slug: {
     current: string;
   };

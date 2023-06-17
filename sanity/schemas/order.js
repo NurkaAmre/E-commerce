@@ -14,16 +14,35 @@ export default {
         type: 'number',
       },
       {
+        name: 'products',
+        title: 'Products',
+        type: 'array',
+        of: [
+          {
+            name: 'orderproduct',
+            title: 'OrderProduct',
+            type: 'object',
+            fields: [
+              {
+                name: 'product',
+                title: 'Product',
+                type: 'reference',
+                to: [{type: 'product'}]
+              },
+              {
+                name: 'quantity',
+                title: 'Quantity',
+                type: 'number',
+              }
+            ]
+          }
+        ]
+      },
+      {
         name: 'user',
         title: 'User',
         type: 'reference',
         to: [{type: 'user'}]
-      },
-      {
-        name: 'products',
-        title: 'Products',
-        type: 'array',
-        of: [{type: 'reference', to: [{type: 'product'}]}]
       },
       {
         name: 'address',
