@@ -8,6 +8,8 @@ import { userCartStore } from '@/store';
 import updateUserData from '@/functions/updateUserData'
 import discountPrice from '@/util/discountPrice';
 import createOrder from '@/functions/createOrder';
+import completePayment from '@/functions/completePayment';
+import { redirect } from 'next/navigation';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
@@ -119,13 +121,28 @@ export default function Checkout({ user }: { user: UserType }) {
       <div className='my-3 flex justify-center items-center'>
         <button 
           onClick={() => startTransition(async () => {
+
+            // Check if all fields are filled
             if (name && phone && email && street && city && zip) {
-              const response = await updateUserData(userData)
-              if (response.code === 200) {
-                const order = await createOrder(cartStore.cart, totalPrice , userData)
-                console.log(order)
+              // Update user data (address & contact info)
+              const updateDataResponse = await updateUserData(userData)
+              if (updateDataResponse.code === 200) {
+                // Create order in database after user data is updated
+                const createOrderResponse = await createOrder(cartStore.cart, totalPrice , userData)
+
+                // Redirect user to payment page after order is created in database
+                if (createOrderResponse.code === 200) {
+                  const payment = await completePayment(createOrderResponse.data, userData)
+                  if (payment.pg_status.pop() === 'ok') {
+                    setMessage('You will be redirected to payment page')
+                    cartStore.clearCart()
+                    redirect(payment.pg_redirect_url.pop())
+                  }
+                } else {
+                  setMessage(createOrderResponse.message)
+                }
               } else {
-                setMessage(response.message)
+                setMessage(updateDataResponse.message)
               }
             } else {
               setMessage('Please fill in all the fields')

@@ -4,6 +4,9 @@ import md5 from 'md5'
 import xml2js from 'xml2js'
 
 export default async function completePayment(order: OrderType, user: UserType) {
+  let status = {code: 0, message: '', data: {}};
+
+  // Payment data
   const secretKey = 'xbiXRN7i69LFWK8x'
   const merchantId = '550159'
   const paymentData = {
@@ -36,8 +39,13 @@ export default async function completePayment(order: OrderType, user: UserType) 
     method: 'POST',
     body: body,
   })
+
+  // Extract XML from response
   const result = await pgResponse.text()
+
+  // Parse XML result to JS object
   const parser = new xml2js.Parser()
   const { response } = await parser.parseStringPromise(result)
+
   return response
 }
