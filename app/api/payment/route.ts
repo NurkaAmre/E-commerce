@@ -21,13 +21,13 @@ export async function POST(request: Request) {
     text += `${key}: ${value}\n`
   }
 
-  text += `Sig: ${generateSig(paymentData)}`
+  text += `Sig: ${generateSig('payment', paymentData)}`
 
   await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
     text: text
   }).commit()
 
-  if (paymentData.pg_sig !== generateSig(paymentData)) 
+  if (paymentData.pg_sig !== generateSig('payment', paymentData)) 
     return NextResponse.json({ message: 'Error' })
   
   if (paymentData.pg_result === '1') {
