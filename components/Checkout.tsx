@@ -15,7 +15,7 @@ export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   // Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + discountPrice(item.price, item.discount) * item.quantity
+    return acc + (discountPrice(item.price, item.discount) * (item.quantity as any))
   }, 0)
 
   let [isPending, startTransition] = useTransition();
@@ -132,7 +132,7 @@ export default function Checkout({ user }: { user: UserType }) {
 
                 // Redirect user to payment page after order is created in database
                 if (createOrderResponse.code === 200) {
-                  const payment = await completePayment(createOrderResponse.data, userData)
+                  const payment = await completePayment(createOrderResponse.data as any, userData)
                   if (payment.pg_status.pop() === 'ok') {
                     setMessage('You will be redirected to payment page')
                     // cartStore.clearCart()

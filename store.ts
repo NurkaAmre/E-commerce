@@ -10,7 +10,7 @@ export type CartItem = {
   price: number;
   discount?: number;
   stock: number;
-  quantity: number
+  quantity?: number
   slug: {
     current: string;
   }; 
@@ -22,8 +22,8 @@ type CartState = {
   onCheckout: string,
   toggleCart: () => void
   clearCart: () => void
-  addProduct: (item: ProductType) => void
-  removeProduct: (item: ProductType) => void
+  addProduct: (item: CartItem) => void
+  removeProduct: (item: CartItem) => void
   setCheckout: (val: string) => void
 }
 
@@ -39,7 +39,7 @@ export const userCartStore = create<CartState>()(
         if(existingItem){
           const updatedCart = state.cart.map((cartItem) => {
             if(cartItem.id === item.id){
-              return {...cartItem, quantity: cartItem.quantity + 1}
+              return {...cartItem, quantity: cartItem.quantity as any + 1}
             }
             return cartItem
           })
@@ -51,10 +51,10 @@ export const userCartStore = create<CartState>()(
       removeProduct: (item) => set((state) => {
         //check if the item exists and remove quantity -1
         const existingItem = state.cart.find((cartItem) => cartItem.id === item.id)
-        if(existingItem && existingItem.quantity > 1){
+        if(existingItem && existingItem.quantity as any > 1){
           const updatedCart = state.cart.map((cartItem) => {
             if(cartItem.id === item.id){
-              return {...cartItem, quantity: cartItem.quantity - 1}
+              return {...cartItem, quantity: cartItem.quantity as any - 1}
             }
             return cartItem
           })

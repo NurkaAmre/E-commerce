@@ -12,7 +12,7 @@ export default function Cart({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   //Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + discountPrice(item.price, item.discount) * item.quantity
+    return acc + (discountPrice(item.price, item.discount) * (item.quantity as any))
   }, 0)
 
   return (
