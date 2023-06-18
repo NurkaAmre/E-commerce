@@ -19,7 +19,7 @@ export default async function completePayment(order: OrderType, user: UserType) 
   } as any
 
   // Generate signature key
-  paymentData.pg_sig = generateSig(paymentData)
+  paymentData.pg_sig = generateSig('init_payment.php', paymentData)
 
   await SanityClient.patch(paymentData.pg_order_id as any).set({
     sig: paymentData.pg_sig
