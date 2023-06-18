@@ -135,7 +135,8 @@ export default function Checkout({ user }: { user: UserType }) {
                   const payment = await completePayment(createOrderResponse.data, userData)
                   if (payment.pg_status.pop() === 'ok') {
                     setMessage('You will be redirected to payment page')
-                    cartStore.clearCart()
+                    // cartStore.clearCart()
+                    // cartStore.setCheckout('cart')
                     redirect(payment.pg_redirect_url.pop())
                   }
                 } else {

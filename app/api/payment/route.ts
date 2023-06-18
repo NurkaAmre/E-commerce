@@ -17,7 +17,7 @@ export async function POST(request: Request) {
   }
 
   await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
-    title: paymentData.pg_sig
+    title: `${paymentData.pg_sig} === ${generateSig(paymentData)}`
   }).commit()
 
   if (paymentData.pg_sig !== generateSig(paymentData)) 
