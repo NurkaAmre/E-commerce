@@ -16,8 +16,13 @@ export async function POST(request: Request) {
     paymentData[key] = value
   }
 
+  let text = '';
+  for (const [key, value] of Object.entries(paymentData)) {
+    text += `${key}: ${value}\n`
+  }
+
   await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
-    title: `${paymentData.pg_sig} === ${generateSig(paymentData)}`
+    text: text
   }).commit()
 
   if (paymentData.pg_sig !== generateSig(paymentData)) 

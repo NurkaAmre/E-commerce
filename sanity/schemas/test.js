@@ -3,6 +3,6 @@ export default {
     title: 'Test',
     type: 'document',
     fields: [
-        { name: 'title', title: 'Title', type: 'string' },
+        { name: 'text', title: 'Text', type: 'text' },
     ]
 }
