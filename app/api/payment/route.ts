@@ -3,6 +3,8 @@ import generateSig from "@/util/generateSig"
 import { NextResponse } from "next/server"
 
 export async function POST(request: Request) {
+  console.log('Payment callback');
+  
   const paymentFormData = await request.formData()
   // const paymentStatus = paymentFormData.get('pg_result')
   // const paymentOrderId = paymentFormData.get('pg_order_id')
@@ -14,15 +16,21 @@ export async function POST(request: Request) {
     paymentData[key] = value
   }
 
+  await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
+    title: paymentData.pg_sig
+  }).commit()
+
   if (paymentData.pg_sig !== generateSig(paymentData)) 
     return NextResponse.json({ message: 'Error' })
   
   if (paymentData.pg_result === '1') {
+    console.log('Payment success')
     await SanityClient.patch(paymentData.pg_order_id as any).set({
       status: 'success',
       paymentId: paymentData.pg_payment_id,
     }).commit()
   } else {
+    console.log('Payment failed')
     await SanityClient.patch(paymentData.pg_order_id as any).set({
       status: 'failed',
       paymentId: paymentData.pg_payment_id,
