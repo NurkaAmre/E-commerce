@@ -1,6 +1,6 @@
 'use client'
 
-import { useTransition, useState } from 'react'
+import { useState } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -9,21 +9,23 @@ import updateUserData from '@/functions/updateUserData'
 import discountPrice from '@/util/discountPrice';
 import createOrder from '@/functions/createOrder';
 import completePayment from '@/functions/completePayment';
-import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
+  const router = useRouter()
   // Total Price
   const totalPrice = cartStore.cart.reduce((acc, item) => {
     return acc + (discountPrice(item.price, item.discount) * (item.quantity as any))
   }, 0)
 
-  let [isPending, startTransition] = useTransition();
-
   const [message, setMessage] = useState('')
 
   // Edit mode status
   const [editMode, setEditMode] = useState(false)
+
+  // Order status
+  const [isLoading, setIsLoading] = useState(false)
 
   // Shipping Information
   const [name, setName] = useState(user.name)
@@ -64,6 +66,38 @@ export default function Checkout({ user }: { user: UserType }) {
     }
   }
 
+  const completeOrder = async () => {
+    // Set loading status
+    setIsLoading(true)  
+
+    // Check if all fields are filled
+    if (name && phone && email && street && city && zip) {
+      // Update user data (address & contact info)
+      const updateDataResponse = await updateUserData(userData)
+      if (updateDataResponse.code === 200) {
+        // Create order in database after user data is updated
+        const createOrderResponse = await createOrder(cartStore.cart, totalPrice , userData)
+
+        // Redirect user to payment page after order is created in database
+        if (createOrderResponse.code === 200) {
+          const payment = await completePayment(createOrderResponse.data as any, userData)
+          if (payment.pg_status.pop() === 'ok') {
+            cartStore.clearCart()
+            cartStore.toggleCart()
+            cartStore.setCheckout('cart')
+            router.push(payment.pg_redirect_url.pop())
+          }
+        } else {
+          setMessage(createOrderResponse.message)
+        }
+      } else {
+        setMessage(updateDataResponse.message)
+      }
+    } else {
+      setMessage('Please fill in all the fields')
+    }
+  }
+
   return (
     <div>
       <div>
@@ -93,7 +127,6 @@ export default function Checkout({ user }: { user: UserType }) {
         <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-0 text-2xl' onClick={() => setEditMode(true)} />
         <div className='flex flex-col text-gray-700'>
           <label className='text-sm'>Имя<span className='text-red-600'>*</span> </label>
-          
           {!editMode ? <span className='user-input text-base font-roboto'>{name}</span>
             : <input className='user-input text-base font-roboto' type="text" value={name} onChange={handleNameChange} />}
         </div>
@@ -118,41 +151,23 @@ export default function Checkout({ user }: { user: UserType }) {
             : <input className='user-input text-base font-roboto' type="text" value={zip} onChange={handleZipChange} />}
         </div>
       </div>
+
+      {/* Confirm Order Button */}
       <div className='my-3 flex justify-center items-center'>
-        <button 
-          onClick={() => startTransition(async () => {
+        {!isLoading && (
+          <button 
+            onClick={completeOrder} 
+            className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
+          >
+            Confirm Order
+          </button>
+        )}
 
-            // Check if all fields are filled
-            if (name && phone && email && street && city && zip) {
-              // Update user data (address & contact info)
-              const updateDataResponse = await updateUserData(userData)
-              if (updateDataResponse.code === 200) {
-                // Create order in database after user data is updated
-                const createOrderResponse = await createOrder(cartStore.cart, totalPrice , userData)
-
-                // Redirect user to payment page after order is created in database
-                if (createOrderResponse.code === 200) {
-                  const payment = await completePayment(createOrderResponse.data as any, userData)
-                  if (payment.pg_status.pop() === 'ok') {
-                    setMessage('You will be redirected to payment page')
-                    // cartStore.clearCart()
-                    // cartStore.setCheckout('cart')
-                    redirect(payment.pg_redirect_url.pop())
-                  }
-                } else {
-                  setMessage(createOrderResponse.message)
-                }
-              } else {
-                setMessage(updateDataResponse.message)
-              }
-            } else {
-              setMessage('Please fill in all the fields')
-            }
-          })} 
-          className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
-        >
-          Confirm Order
-        </button>
+        {isLoading && (
+          <button className='btn mt-[2rem] w-full md:w-1/2 rounded-full bg-gray-100' disabled={true}>
+            Processing the order...
+          </button>
+        )}
       </div>
       <span className='block mt-6'>{message}</span>
     </div>
