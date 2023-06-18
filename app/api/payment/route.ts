@@ -1,47 +1,62 @@
 import SanityClient from "@/sanity/client"
 import generateSig from "@/util/generateSig"
 import { NextResponse } from "next/server"
+import xml2js from 'xml2js'
 
 export async function POST(request: Request) {
-  console.log('Payment callback');
-  
+  // Extract formData from request
   const paymentFormData = await request.formData()
-  // const paymentStatus = paymentFormData.get('pg_result')
-  // const paymentOrderId = paymentFormData.get('pg_order_id')
-  // const paymentId = paymentFormData.get('pg_payment_id')
-  // const paymentSig = paymentFormData.get('pg_sig')
 
+  // Convert formData to JS object
   const paymentData = {} as any
   for (const [key, value] of paymentFormData.entries()) {
     paymentData[key] = value
   }
 
-  let text = '';
-  for (const [key, value] of Object.entries(paymentData)) {
-    text += `${key}: ${value}\n`
-  }
-
-  text += `Sig: ${generateSig('payment', paymentData)}`
-
-  await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
-    text: text
-  }).commit()
-
+  // Check request signature
   if (paymentData.pg_sig !== generateSig('payment', paymentData)) 
     return NextResponse.json({ message: 'Error' })
   
+  // Check payment status
   if (paymentData.pg_result === '1') {
-    console.log('Payment success')
+    // Update payment status in Sanity (Success)
     await SanityClient.patch(paymentData.pg_order_id as any).set({
       status: 'success',
       paymentId: paymentData.pg_payment_id,
     }).commit()
+
+    // Prepare & return response
+    const response = {
+      pg_status: 'ok',
+      pg_description: 'Payment allowed',
+      pg_salt: 'salt',
+    }
+    const sig = generateSig('', response)
+    const signedResponse = {
+      response: {...response, pg_sig: sig},
+    }
+    const builder = new xml2js.Builder()
+    const xmlResponse = builder.buildObject(signedResponse)
+    return new Response(xmlResponse, {status: 200})
   } else {
-    console.log('Payment failed')
+    // Update payment status in Sanity (Failed)
     await SanityClient.patch(paymentData.pg_order_id as any).set({
       status: 'failed',
       paymentId: paymentData.pg_payment_id,
     }).commit()
+
+    // Prepare & return response
+    const response = {
+      pg_status: 'rejected',
+      pg_description: 'Payment cancelled',
+      pg_salt: 'salt',
+    }
+    const sig = generateSig('', response)
+    const signedResponse = {
+      response: {...response, pg_sig: sig},
+    }
+    const builder = new xml2js.Builder()
+    const xmlResponse = builder.buildObject(signedResponse)
+    return new Response(xmlResponse, {status: 200})
   }
-  return NextResponse.json({ message: 'Hello world!' })
 }

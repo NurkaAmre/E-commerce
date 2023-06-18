@@ -5,6 +5,5 @@ import user from './user';
 import account from './account';
 import address from './address';
 import order from './order';
-import test from './test';
 
-export const schemaTypes = [product, banner, category, user, account, address, order, test]
+export const schemaTypes = [product, banner, category, user, account, address, order]
