@@ -1,18 +1,9 @@
-'use client'
 import {motion} from 'framer-motion'
 import Image from 'next/image'
 import dance from '@/public/dance.gif'
 import Link from 'next/link'
-import { userCartStore } from '@/store'
-import { useEffect } from 'react'
 
 export default function OrderConfirmed() {
-  const cartStore = userCartStore()
-  useEffect(() => {
-    cartStore.clearCart()
-  }, [])
-
-  
     return(
       <motion.div 
         className='flex items-center justify-center my-12'
@@ -24,8 +15,8 @@ export default function OrderConfirmed() {
           <h2 className='text-sm my-4'>Check your email for the receipt</h2>
           <Image src={dance} width={300} height={300} className='py-8' alt='dance'/>
           <div className='flex items-center justify-center gap-12'>
-          <Link href={'/account/orders'}>
-            <button className='font-medium'>Check your Order</button>
+          <Link className='font-medium' href={'/account/orders'}>
+            Check your Order
           </Link>
         </div>
         </div>  
