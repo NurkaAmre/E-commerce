@@ -1,5 +1,6 @@
 'use server'
 
+import SanityClient from '@/sanity/client'
 import generateSig from '@/util/generateSig'
 import xml2js from 'xml2js'
 
@@ -19,6 +20,10 @@ export default async function completePayment(order: OrderType, user: UserType) 
 
   // Generate signature key
   paymentData.pg_sig = generateSig(paymentData)
+
+  await SanityClient.patch(paymentData.pg_order_id as any).set({
+    sig: paymentData.pg_sig
+  }).commit()
 
   // Create request body from payment data
   const body = new FormData()

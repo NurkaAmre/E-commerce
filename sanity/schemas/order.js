@@ -54,6 +54,11 @@ export default {
         title: 'Address',
         type: 'reference',
         to: [{type: 'address'}]
+      },
+      {
+        name: 'sig',
+        title: 'Signature',
+        type: 'string'
       }
     ]
 }

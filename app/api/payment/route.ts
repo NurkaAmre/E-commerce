@@ -21,6 +21,8 @@ export async function POST(request: Request) {
     text += `${key}: ${value}\n`
   }
 
+  text += `Sig: ${generateSig(paymentData)}`
+
   await SanityClient.patch('00675708-865c-4187-88dd-de3bce751590').set({
     text: text
   }).commit()
