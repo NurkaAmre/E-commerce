@@ -1,7 +1,7 @@
 import md5 from "md5"
 
 export default function generateSig(URL: string, dataObject: any) {
-  const secretKey = 'xbiXRN7i69LFWK8x'
+  const secretKey = process.env.PAYBOX_SECRET_KEY as string
   let sig = Object.keys(dataObject)
     .sort()
     .filter((key) => key !== 'pg_sig')

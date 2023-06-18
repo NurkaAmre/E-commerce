@@ -5,7 +5,7 @@ import xml2js from 'xml2js'
 
 export default async function completePayment(order: OrderType, user: UserType) {
   // Payment data
-  const merchantId = '550159'
+  const merchantId = process.env.PAYBOX_MERCHANT_ID as string
   const paymentData = {
     pg_order_id: order.id,
     pg_merchant_id: merchantId,
