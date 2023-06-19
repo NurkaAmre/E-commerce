@@ -54,8 +54,8 @@ export default {
       type: 'number',
     },
     {
-      name: 'quantity',
-      title: 'Quantity',
+      name: 'stock',
+      title: 'Stock',
       type: 'number',
     },
     {

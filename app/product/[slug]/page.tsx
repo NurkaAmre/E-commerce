@@ -10,7 +10,7 @@ export default async function ProductDetails({ params }: { params: { slug: strin
     "id": _id,
     name,
     price,
-    quantity,
+    stock,
     details,
     type,
     description,

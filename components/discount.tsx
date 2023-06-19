@@ -9,7 +9,7 @@ export default async function Discount (){
                   _id,
                   name,
                   price,
-                  quantity,
+                  stock,
                   details,
                   type,
                   description,

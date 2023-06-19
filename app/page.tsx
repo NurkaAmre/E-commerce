@@ -7,9 +7,9 @@ export default function Main (){
   return (
     <>
       <MainSection />
-    <Discount />
-    <ProductSection />
-    <DeliveryServices />
+      <Discount />
+      <ProductSection />
+      <DeliveryServices />
     </>
   )
 }

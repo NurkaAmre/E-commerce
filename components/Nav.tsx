@@ -13,7 +13,7 @@ import Cart from "./Cart"
 import logo from '@/public/logo3.svg'
 import CallButton from "./CallButton"
 
-const Nav = ({ user }:  any) => {
+const Nav = ({ user }:  {user: UserType}) => {
   const cartStore = userCartStore()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
   const [showCategoriesMenu, setShowCategoriesMenu] = useState(false)
@@ -68,7 +68,7 @@ const Nav = ({ user }:  any) => {
               )}
           </AnimatePresence>
         </li>
-        <AnimatePresence>{cartStore.isOpen && <Cart />}</AnimatePresence>
+        <AnimatePresence>{cartStore.isOpen && <Cart user={user} />}</AnimatePresence>
         {/* Favlist */}
         <li className="cursor-pointer text-3xl">
           <Link href={"/account/wishlist"}><AiFillHeart /></Link>
