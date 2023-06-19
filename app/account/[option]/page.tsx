@@ -5,7 +5,8 @@ import getUser from '@/functions/getUser'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
-import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineOrderedList } from 'react-icons/ai'
+import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart, } from 'react-icons/ai'
+
 
 export default async function Account({ params: { option } }: { params: { option: string } }) {
   const session = await getServerSession(authOptions);

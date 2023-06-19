@@ -1,5 +1,6 @@
 import Image from "next/image"
 import delivery from "@/public/delivery.gif"
+import Link from "next/link"
 
 export default function DeliveryServices() {
   return(
@@ -16,7 +17,9 @@ export default function DeliveryServices() {
         </div>
         <div>
           <h1 className="font-dancing_script font-medium font1 text-xl m-5">Быстро и Безопасно</h1>
-          <button className=" font-medium text-white px-4 text-lg text-center  rounded-full btn py-3">Подробнее</button>
+          <Link href={"/deliveryPolicy"}>
+            <button className=" font-medium text-white px-4 text-lg text-center  rounded-full btn py-3">Подробнее</button>
+          </Link>
         </div>
       </div>
 

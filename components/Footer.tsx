@@ -41,7 +41,7 @@ function Footer() {
           <div className='flex flex-row gap-3'>
             <FiMail className='text-xl phone-icon' />
           <p>info@furniturewebsite.com</p>
-        </div>
+          </div>
         </div>
 
         <div className='py-4 text-center'>

@@ -38,7 +38,7 @@ const Nav = ({ user }:  {user: UserType}) => {
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex">
-          <li className="mr-6 cursor-pointer whitespace-nowrap group">
+          <li className="mr-6 cursor-pointer whitespace-nowrap text-xl group">
             <button role="list">Товары</button>
             <ul className="hidden absolute pr-[0.8rem] pl-[0.8rem] text-white pt-[0.3rem] pb-[0.3rem] group-hover:flex flex-col gap-1 hidden-category z-40">
               <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
@@ -47,10 +47,10 @@ const Nav = ({ user }:  {user: UserType}) => {
               <li><Link href={'/category/beds'} className="li-hover">Спальня</Link></li>
             </ul>
           </li>
-          <li className="mr-6 cursor-pointer whitespace-nowrap">
+          <li className="mr-6 cursor-pointer text-xl whitespace-nowrap">
             <Link href={'/about'}>О Компании</Link>
           </li>
-          <li className="mr-6 cursor-pointer whitespace-nowrap">
+          <li className="mr-6 cursor-pointer text-xl whitespace-nowrap">
             <Link href={'/sale'}>Акции</Link>
           </li>
       </ul>
@@ -81,7 +81,7 @@ const Nav = ({ user }:  {user: UserType}) => {
         )}
         {/* Signin Button */}
         {!user && (
-          <li>
+            <li className="text-xl">
               <button className="cursor-pointer ml-4" onClick={() => { signIn() }}>Логин</button>
           </li>
         )}

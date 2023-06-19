@@ -53,12 +53,14 @@ export default function Cart({ user }: { user: UserType }) {
                 </div>
                 <p className='text-sm'>{discountPrice(item.price, item.discount)} KZT</p>
               </div>
+
             </motion.div>
           ))}
           </>
         )}
 
         {/* Checkout button and total amount */}
+
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
           <p className=''>Сумма к оплате: {totalPrice} KZT</p>
