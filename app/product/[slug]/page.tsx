@@ -87,7 +87,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
               </div>
               <div className="discount">
-                <p className="pl-1">-{product.discount}%</p>
+                {(product.discount) ? <p className="pl-1">-{product.discount}%</p> : null}
               </div>
             </div>
             <div className="buttons">
