@@ -61,7 +61,7 @@ export default function CallButton () {
   return (
     <>
     <button role="form" className="lg:flex ">
-      <h3 className="hidden lg:block mr-4 mt-2 cursor-pointer whitespace-nowrap" onClick={openPopup}>Обратный Звонок</h3>
+        <h3 className="hidden lg:block mr-4 mt-2 cursor-pointer text-xl whitespace-nowrap" onClick={openPopup}>Обратный Звонок</h3>
       <div className="phone-anim relative" onClick={openPopup}>
         <FiPhoneCall className="text-xl phone-icon text-white absolute top-[0.7rem] left-[0.5rem]" />
       </div>

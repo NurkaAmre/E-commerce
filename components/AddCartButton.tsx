@@ -21,7 +21,7 @@ const AddCartButton = (product : ProductType) => {
     disabled={added}
     className="add-to-cart">
       {!added && <span>В корзину</span>}
-        {added && <span>Добавить в корзину</span>}
+        {added && <span>Добавить</span>}
     </button>
     </>
   )
