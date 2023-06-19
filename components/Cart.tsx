@@ -51,7 +51,8 @@ export default function Cart() {
           </motion.div>
         ))}
         </>
-          )}
+        )}
+        <h1>Доставка</h1>
         {/* Checkout and Total */}
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
