@@ -60,6 +60,14 @@ function Footer() {
           </ul>
         </div>
       </div>
+
+      <div className='max-w-fit mx-auto py-4 font-sans font-bold'>
+        <span>Made with <i className='text-red-700 text-lg'>&#9829;</i> by 
+          <Link className='text-blue-400 underline mx-1' href={'https://github.com/NurkaAmre'}>Nurka</Link> 
+          & 
+          <Link className='text-blue-400 underline mx-1' href={'https://github.com/ouasamine'}>Amine</Link>
+        </span>
+      </div>
     </footer>
   );
 }
