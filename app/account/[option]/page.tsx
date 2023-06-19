@@ -1,8 +1,8 @@
 import FavList from '@/components/FavList'
 import Orders from '@/components/Orders'
 import UserInfo from '@/components/UserInfo'
+import getUser from '@/functions/getUser'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import SanityClient from '@/sanity/client'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
 import { AiOutlineInfoCircle, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineOrderedList } from 'react-icons/ai'
@@ -15,10 +15,8 @@ export default async function Account({ params: { option } }: { params: { option
         <h1 className='text-lg text-red-400 font-castoro font-medium'>Для получения доступа к этой странице требуется авторизация.</h1>
       </main>
     )
-  const query = `*[_type == "user" && email == "${session.user.email}"]
-                {"id": _id, name, email, "address": address->{"id": _id, street, city, zip}, phone}`;
-  const data = await SanityClient.fetch(query);
-  const user = data[0];
+
+  const user = await getUser(session.user.email)
   
   return (
     <main className="flex min-h-[60vh]">

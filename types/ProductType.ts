@@ -1,15 +1,15 @@
-export type ProductType = {
+type ProductType = {
   id: string;
   name: string;
+  type: string;
+  category: string[];
   details: string;
   description: string;
   imagesURL: string[];
   price: number;
   discount?: number;
-  quantity: number;
+  stock: number;
   slug: {
     current: string;
   };
 }
-
-export default ProductType;
