@@ -1,16 +1,18 @@
 'use client'
 
 import Image from "next/image";
-import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import discountPrice from "@/util/discountPrice";
-import AddCartButton from "@/components/AddCartButton";
+import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { userFavStore } from '@/store'
+import discountPrice from "@/util/discountPrice";
+import AddCartButton from "@/components/AddCartButton";
 import getProduct from "@/functions/getProduct";
-import { useEffect, useState } from "react";
 import LoadingAnimation from "@/components/loadingAnimation";
 
 export default function ProductDetails({ params }: { params: { slug: string } }) {
+  const favStore = userFavStore()
   const slug = params.slug;
   const [product, setProduct] = useState({} as ProductType);
   useEffect(() => {
@@ -92,9 +94,17 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                   </div>
                 )}
             </div>
-            <div className="buttons">
+            <div className="flex flex-wrap gap-6 my-10">
               <AddCartButton { ...product } />
-              <button type="button" className="buy-now whitespace-nowrap">Add To WishList</button>
+              <button 
+                type="button"
+                className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl cursor-pointer text-lg font-medium whitespace-nowrap hover:scale-110 transition-transform duration-500 ease-out px-4 py-2 min-w-[180px]"
+                onClick={(e) => {
+                  favStore.toggleProduct(product)
+                }}
+              >
+                Add To WishList
+              </button>
             </div>
           </div>
   

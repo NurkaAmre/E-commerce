@@ -1,7 +1,6 @@
 'use client'
 
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
-import ProductType from '@/types/ProductType'
 import { userFavStore } from '@/store'
 
 export default function LikeButton({ product }: { product: ProductType }) {

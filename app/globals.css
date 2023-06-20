@@ -274,10 +274,6 @@ background: #d2c6b1a7;
 }
 
 @media (max-width: 700px) {
-  .buttons {
-    width: 300px;
-  }
-
   .add-cart {
     justify-content: center;
   }
@@ -290,31 +286,11 @@ background: #d2c6b1a7;
   .discount {
     margin-top: inherit;
   }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                #logo {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  display: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-}
-
-@media (max-width: 400px) {
-
-  .buttons .buy-now {
-    width: 350px;
-    padding: 5px 20px;
-    margin-top: 0;
-  }
-
-  .buttons .add-cart {
-    width: 350px;
-    padding: 5px 20px;
-    margin-top: 0;
-  }
-
-  .product-detail-desc .buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  #logo {
+    display: none;
   }
 }
+
 .image-container {
   display: flex;
   margin-top: 3rem;
@@ -391,29 +367,10 @@ background: #d2c6b1a7;
   align-items: center;
 }
 
-.product-detail-desc .buttons {
-  display: flex;
-  gap: 10px;
-}
-
 .highLight {
   color: #8CCCC1;
 }
-.buttons .add-to-cart {
-  padding: 10px 20px;
-  border: 1px solid #8CCCC1;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  background-color: white;
-  color: #8CCCC1;
-  cursor: pointer;
-  width: 200px;
-  border-radius: 25px;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
 
-}
 .popup-btn {
   background: #8CCCC1;
   border: 2px solid #DFDFD4;
@@ -441,28 +398,6 @@ background: #d2c6b1a7;
       background: transparent;
         color: #8CCCC1;
         border: 2px solid #8CCCC1;
-}
-.buttons .add-to-cart:hover {
-  transform: scale(1.1, 1.1)
-}
-
-.buttons .buy-now {
-  width: 200px;
-  padding: 10px 20px;
-  background-color: #8CCCC1;
-    color: #fff;
-  border: none;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 25px;
-  transform: scale(1, 1);
-  transition: transform 0.5s ease;
-}
-
-.buttons .buy-now:hover {
-  transform: scale(1.1, 1.1)
 }
 
 .quantity-desc {
