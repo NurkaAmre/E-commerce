@@ -16,7 +16,7 @@ function SearchBarMobile() {
   };
   return (
     <>
-      <section className=" mobile-content bg-gray-400 items-center py-1 w-full z-20 fixed mt-[4rem]">
+      <section className="mobile-content bg-[#EBE7DC] items-center py-1 w-full z-10 fixed top-[72px]">
         <div className='flex rounded-full mx-[2rem] bg-slate-50 justify-center items-center'>
           <FiSearch className="text-gray-500 text-lg" />
           <form onSubmit={handleSearch}>

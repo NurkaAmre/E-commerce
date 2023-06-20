@@ -11,7 +11,7 @@ export default function LikeButton({ product }: { product: ProductType }) {
   }
   return (
     <span 
-      className="absolute right-0 top-0 transition-transform transform group-hover:scale-110"
+      className="transition duration-500 ease-out transform hover:scale-110 cursor-pointer"
       onClick={(e) => {
         e.preventDefault()
         favStore.toggleProduct(product)
