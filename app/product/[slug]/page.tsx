@@ -15,6 +15,11 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   const favStore = userFavStore()
   const slug = params.slug;
   const [product, setProduct] = useState({} as ProductType);
+  const [multiplier, setMultiplier] = useState(1);
+  let isLiked = false;
+  if (favStore.favList.find((item) => item.id === product.id)) {
+    isLiked = true;
+  }
   useEffect(() => {
     getProduct(slug).then((res) => {
       setProduct(res.data as ProductType);
@@ -75,17 +80,31 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             <h3>Характеристики</h3>
             <hr />
             <p className="font-roboto">{product.details}</p>
-            <div className="add-cart flex gap-10 mt-5">
-              <div className="quantity">
-                <p className="quantity-desc">
-                  <span className="minus"><AiOutlineMinus /></span>
-                  <span className="num">0</span>
-                  <span className="plus" ><AiOutlinePlus /></span>
-                </p>
+            <div className="flex gap-10 mt-5">
+              <div className="flex self-center">
+                <button 
+                  className="text-red-700 border-l border-t border-b rounded-l-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
+                  onClick={() => {
+                    if (multiplier > 1) {
+                      setMultiplier(multiplier - 1);
+                    }
+                  }}
+                >
+                  <AiOutlineMinus />
+                </button>
+                <span className="border-t border-b p-2">{multiplier}</span>
+                <button 
+                  className="text-green-500 border-r border-t border-b rounded-r-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
+                  onClick={() => {
+                    setMultiplier(multiplier + 1);
+                  }}
+                >
+                  <AiOutlinePlus />
+                </button>
               </div>
               <div className="product-prices">
                 {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
-                {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount)}&#x20B8;</p> : null}
+                {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount) * multiplier}&#x20B8;</p> : null}
                 {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
               </div>
                 {(product.discount) && (
@@ -96,7 +115,8 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             </div>
             <div className="flex flex-wrap gap-6 my-10">
               <AddCartButton { ...product } />
-              <button 
+              {!isLiked ? (
+                <button 
                 type="button"
                 className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl cursor-pointer text-lg font-medium whitespace-nowrap hover:scale-110 transition-transform duration-500 ease-out px-4 py-2 min-w-[180px]"
                 onClick={(e) => {
@@ -105,6 +125,14 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               >
                 Add To WishList
               </button>
+              ) : (
+                <button
+                  className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-[180px]"
+                  disabled={true}
+                >
+                  Added To WishList
+                </button>
+              )}
             </div>
           </div>
   

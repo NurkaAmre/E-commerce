@@ -13,6 +13,7 @@ export default async function getProduct(productSlug: string) {
     type,
     description,
     discount,
+    slug,
     "imagesURL": images[].asset->url
   }`;
 
