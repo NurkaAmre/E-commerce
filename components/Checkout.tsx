@@ -107,7 +107,7 @@ export default function Checkout({ user }: { user: UserType }) {
               className='flex p-4 gap-4 bg-base-100 my-2 rounded-lg'>
               <Image className='rounded-md h-24' src={item.imagesURL[0]} alt={item.name} width={120} height={120}/>
               <div>
-                <h2 className='font-[dancing_script]'>{item.name}</h2>
+                <h2 className='font-[dancingScript]'>{item.name}</h2>
                 <div className='flex gap-2'>
                   <h2 className='font-[lobster]'>Количество:{item.quantity} </h2>
                   <h2>{item.quantity}</h2>

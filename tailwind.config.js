@@ -15,7 +15,7 @@ module.exports = {
         lobster: ['var(--font-lobster)'],
         roboto: ['var(--font-roboto)'],
         castoro: ['var(--font-castoro)'],
-        dancing_script: ['var(--font-dancing)'],
+        dancingScript: ['var(--font-dancing)'],
       },
       boxShadow: {
         custom: '15px -2px 63px 13px rgba(16, 201, 199, 0.908);',

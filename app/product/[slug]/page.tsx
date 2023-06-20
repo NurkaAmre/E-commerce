@@ -60,7 +60,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   
           <div className="product-detail-desc">
             <div className="flex gap-20">
-              <h1 className="text-3xl md:text-6xl font-[dancing_script] text-gray-600">{product.name}</h1>
+              <h1 className="text-3xl md:text-6xl font-[dancingScript] text-gray-600">{product.name}</h1>
               <div className="reviews">
                 <div className="review-stars">
                   <AiFillStar />

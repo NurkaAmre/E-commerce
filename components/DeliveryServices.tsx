@@ -16,7 +16,7 @@ export default function DeliveryServices() {
           <h3 className="font-medium font font-[castoro] text-2xl"> Для вас  </h3>
         </div>
         <div>
-          <h1 className="font-[dancing_script] font1 text-xl m-5">Быстро и Безопасно</h1>
+          <h1 className="font-[dancingScript] font1 text-xl m-5">Быстро и Безопасно</h1>
           <Link href={"/delivery"}>
             <button className=" font-medium text-white px-4 text-lg text-center  rounded-full btn py-3">Подробнее</button>
           </Link>
