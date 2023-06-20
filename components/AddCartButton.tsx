@@ -19,7 +19,7 @@ const AddCartButton = (product : ProductType) => {
     <button
     onClick={handleAddToCart} 
     disabled={added}
-    className="add-to-cart">
+    className="add-to-cart whitespace-nowrap ">
       {!added && <span>В корзину</span>}
         {added && <span>Добавить</span>}
     </button>

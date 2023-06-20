@@ -22,14 +22,14 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   if (product.id) {
     return (
       <div>
-        <div className="product-detail-container mt-[4rem]">
+        <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] my-[150px] text-[#324d67]">
           <div className="product-image md:h-[300px] md:w-1/2">
             <Carousel
               renderThumbs={() => {
                 return product.imagesURL.map((imageURL: string) => {
                   return (
                     <Image
-                      className="max-h-[100px]"
+                      className="max-h-[75px]"
                       src={imageURL}
                       alt={product.name}
                       width={100}
@@ -86,13 +86,15 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount)}&#x20B8;</p> : null}
                 {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
               </div>
-              <div className="discount">
-                {(product.discount) ? <p className="pl-1">-{product.discount}%</p> : null}
-              </div>
+                {(product.discount) && (
+                  <div className="discount">
+                    <p className="pl-1">-{product.discount}%</p>
+                  </div>
+                )}
             </div>
             <div className="buttons">
               <AddCartButton { ...product } />
-              <button type="button" className="buy-now">Купить</button>
+              <button type="button" className="buy-now whitespace-nowrap">Add To WishList</button>
             </div>
           </div>
   
