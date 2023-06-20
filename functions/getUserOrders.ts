@@ -8,6 +8,7 @@ export default async function getUserOrders(userId: string) {
     "id": _id,
     status,
     amount,
+    "createdAt": _createdAt,
     "user": user->{
       "id": _id,
       name,

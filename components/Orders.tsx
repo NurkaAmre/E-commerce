@@ -1,147 +1,66 @@
 "use client"
 
 import Image from "next/image"
-import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import { motion, AnimatePresence } from 'framer-motion'
-import set1 from '@/public/set1.png'
 
 export default function Orders({ orders }: { orders: OrderType[]}) {
   console.log(orders)
   return (
     <motion.div layout>
       <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md">
-          <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
-          <p className="text-xs font-castoro">
-            Status:
-            <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
-              Completed
-            </span>
-          </p>
-          <p className="text-xs">
-            Time: {new Date().toString()}
-          </p>
-          <div className="text-sm lg:flex items-center gap-4">
-            <div className="py-2" >
-              <h2 className="py-2 font-castoro text-lg">Felis</h2>
-              <div className="flex items-baseline gap-4">
-                <Image
-                  src={set1}
-                  width={36}
-                  height={36}
-                  alt='set'
-                  priority={true}
-                  className="w-auto"
-                />
-                <p className="font-medium  text-gray-500">140000</p>
-                <p className="font-castoro">Quantity: 1</p>
+        {orders ? orders.map((order) => (
+          <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md">
+            <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
+            <p className="text-xs font-castoro">
+              Status:
+              {order.status === 'success' && (
+                <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
+                  Completed
+                </span>
+              )}
+              {order.status === 'pending' && (
+                <span className="text-white py-1 bg-orange-500 rounded-full px-2 mx-2 text-xs">
+                  Pending
+                </span>
+              )}
+              {order.status === 'failed' && (
+                <span className="text-white py-1 bg-red-600 rounded-full px-2 mx-2 text-xs">
+                  Canceled
+                </span>
+              )}
+            </p>
+            <p className="text-xs">
+              Time: {new Date(order.createdAt).toLocaleString()}
+            </p>
+            {order.products.map(({product, quantity}) => (
+              <div className="text-sm lg:flex items-center gap-4">
+                <div className="py-2" >
+                  <h2 className="py-2 font-castoro text-lg">{product.name}</h2>
+                  <div className="flex items-baseline gap-4">
+                    <Image
+                      src={product.imagesURL[0]}
+                      width={36}
+                      height={36}
+                      alt={product.name}
+                      priority={true}
+                      className="w-auto"
+                    />
+                    <p className="font-medium  text-gray-500">{product.price} KZT</p>
+                    <p className="font-castoro">Quantity: {quantity}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
+            
+            <p className="font-medium py-2">
+              Total: {order.amount} KZT
+            </p>
           </div>
-          <p className="font-medium py-2">
-            Total: 140000
-          </p>
-        </div>
-
-        <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md ">
-          <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
-          <p className="text-xs font-castoro">
-            Status:
-            <span className="text-white py-1 bg-orange-500 rounded-full px-2 mx-2 text-xs">
-              Pending
-            </span>
-          </p>
-          <p className="text-xs">
-            Time: {new Date().toString()}
-          </p>
-          <div className="text-sm lg:flex items-center gap-4">
-            <div className="py-2" >
-              <h2 className="py-2 font-castoro text-lg">Felis</h2>
-              <div className="flex items-baseline gap-4">
-                <Image
-                  src={set1}
-                  width={36}
-                  height={36}
-                  alt='set'
-                  priority={true}
-                  className="w-auto"
-                />
-                <p className="font-medium  text-gray-500">140000</p>
-                <p className="font-castoro">Quantity: 1</p>
-              </div>
-            </div>
+        )): (
+          <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md">
+            <h2 className="text-xs font-medium">No orders yet</h2>
           </div>
-          <p className="font-medium py-2">
-            Total: 140000
-          </p>
-        </div>
-
-        <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md ">
-          <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
-          <p className="text-xs font-castoro">
-            Status:
-            <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
-              Completed
-            </span>
-          </p>
-          <p className="text-xs">
-            Time: {new Date().toString()}
-          </p>
-          <div className="text-sm lg:flex items-center gap-4">
-            <div className="py-2" >
-              <h2 className="py-2 font-castoro text-lg">Felis</h2>
-              <div className="flex items-baseline gap-4">
-                <Image
-                  src={set1}
-                  width={36}
-                  height={36}
-                  alt='set'
-                  priority={true}
-                  className="w-auto"
-                />
-                <p className="font-medium  text-gray-500">140000</p>
-                <p className="font-castoro">Quantity: 1</p>
-              </div>
-            </div>
-          </div>
-          <p className="font-medium py-2">
-            Total: 140000
-          </p>
-        </div>
-
-        <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md ">
-          <h2 className="text-xs font-medium">Order reference: #22-341-02</h2>
-          <p className="text-xs font-castoro">
-            Status:
-            <span className="text-white py-1 bg-orange-500 rounded-full px-2 mx-2 text-xs">
-              Pending
-            </span>
-          </p>
-          <p className="text-xs">
-            Time: {new Date().toString()}
-          </p>
-          <div className="text-sm lg:flex items-center gap-4">
-            <div className="py-2" >
-              <h2 className="py-2 font-castoro text-lg">Felis</h2>
-              <div className="flex items-baseline gap-4">
-                <Image
-                  src={set1}
-                  width={36}
-                  height={36}
-                  alt='set'
-                  priority={true}
-                  className="w-auto"
-                />
-                <p className="font-medium text-gray-500">140000</p>
-                <p className="font-castoro">Quantity: 1</p>
-              </div>
-            </div>
-          </div>
-          <p className="font-medium py-2">
-            Total: 140000
-          </p>
-        </div>
-
+        ) }
       </motion.div>
     </motion.div>
   )
