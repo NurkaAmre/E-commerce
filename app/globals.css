@@ -17,6 +17,7 @@ html,
 body {
   min-height: 90vh;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 h4 {
   font-size: 3rem;

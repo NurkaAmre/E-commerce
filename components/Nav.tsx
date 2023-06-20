@@ -51,7 +51,7 @@ const Nav = ({ user }:  {user: UserType}) => {
             <Link href={'/about'}>О Компании</Link>
           </li>
           <li className="mr-6 cursor-pointer text-xl whitespace-nowrap">
-            <Link href={'/sale'}>Акции</Link>
+            <Link href={'#discounts'}>Акции</Link>
           </li>
       </ul>
       <SearchBar />
