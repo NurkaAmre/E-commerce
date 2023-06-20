@@ -5,5 +5,6 @@ type OrderType = {
   paymentId: string,
   user: UserType,
   address: AddressType,
-  products: ProductType[],
+  products: {product: ProductType, quantity: number}[],
+  createdAt: string,
 }

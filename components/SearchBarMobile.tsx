@@ -23,7 +23,7 @@ function SearchBarMobile() {
             <input
               type="text"
               placeholder="Введите запрос"
-              className="font-castoro rounded-full py-1 my-1 bg-slate-50 px-2 outline-none border-0"
+              className="font-[castoro] rounded-full py-1 my-1 bg-slate-50 px-2 outline-none border-0"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

@@ -21,7 +21,7 @@ export default async function Discount (){
   
   return (
     <> 
-      <section className='discount-section'>
+      <section id="discounts" className='discount-section'>
         <h1 className='text-3xl md:text-4xl font-roboto font-medium text-green-950-700 opacity-50 ml-[2rem] md:ml-[10rem]'>Товары со скидкой</h1>
         <hr className='my-2 h-3 mb-[1rem] text-gray-900 mx-[2rem] md:mx-[10rem]' />
         <div className="marquee">
@@ -40,7 +40,7 @@ export default async function Discount (){
                       height={250} 
                       alt={product.name} />
                     <div className='flex flex-row bottom-[2rem] absolute bg-slate-500 bg-opacity-50 w-full rounded-md gap-8 py-3 justify-center'>
-                      <h1 className='text-start font-castoro text-xl text-white'>{product.name}</h1>
+                      <h1 className='text-start font-[castoro] text-xl text-white'>{product.name}</h1>
                       <h3 className='text-white '>{discountPrice(product.price, product.discount)}&#x20B8;</h3>
                     </div>
                   </Link>

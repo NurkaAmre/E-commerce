@@ -2,6 +2,7 @@ import FavList from '@/components/FavList'
 import Orders from '@/components/Orders'
 import UserInfo from '@/components/UserInfo'
 import getUser from '@/functions/getUser'
+import getUserOrders from '@/functions/getUserOrders'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
@@ -13,17 +14,19 @@ export default async function Account({ params: { option } }: { params: { option
   if (!session?.user) 
     return (
       <main className="mt-[100px] flex min-h-[50vh]">
-        <h1 className='text-lg text-red-400 font-castoro font-medium'>Для получения доступа к этой странице требуется авторизация.</h1>
+        <h1 className='text-lg text-red-400 font-[castoro] font-medium'>Для получения доступа к этой странице требуется авторизация.</h1>
       </main>
     )
 
   const user = await getUser(session.user.email)
+  const ordersResponse = await getUserOrders(user.id)
+  const orders = ordersResponse.data as OrderType[]
   
   return (
     <main className="flex min-h-[60vh]">
       <nav className='pt-[150px] bg-[#EBE7DC] opacity-90'>
         <ul className='flex flex-col gap-4'>
-          <li className='text-base font-castoro'>
+          <li className='text-base font-[castoro]'>
             <Link
               href={"/account/info"}
               className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
@@ -32,7 +35,7 @@ export default async function Account({ params: { option } }: { params: { option
               <span className="hidden md:block whitespace-nowrap">Персональные Данные</span>
             </Link>
           </li>
-          <li className='text-base font-castoro'>
+          <li className='text-base font-[castoro]'>
             <Link
               href={"/account/orders"}
               className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
@@ -41,7 +44,7 @@ export default async function Account({ params: { option } }: { params: { option
               <span className="hidden md:block whitespace-nowrap">Корзина</span>
             </Link>
           </li>
-          <li className='text-base font-castoro'>
+          <li className='text-base font-[castoro]'>
             <Link 
               href={"/account/wishlist"}
               className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
@@ -54,7 +57,7 @@ export default async function Account({ params: { option } }: { params: { option
       </nav>
       <section className='flex flex-col w-full pt-[150px] pb-10 px-4 md:px-[3rem]'>
         {option === 'info' && <UserInfo user={user} />}
-        {option === 'orders' && <Orders />}
+        {option === 'orders' && <Orders orders={orders} />}
         {option === 'wishlist' && <FavList />}
       </section>
     </main>

@@ -27,7 +27,7 @@ const Nav = ({ user }:  {user: UserType}) => {
 
   return (
     <>
-      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-castoro w-full z-20">
+      <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-0 font-[castoro] w-full z-20">
       <button className="md:hidden text-3xl" onClick={menuButtonClick}>
         <AiOutlineMenu></AiOutlineMenu>
       </button>
@@ -51,7 +51,7 @@ const Nav = ({ user }:  {user: UserType}) => {
             <Link href={'/about'}>О Компании</Link>
           </li>
           <li className="mr-6 cursor-pointer text-xl whitespace-nowrap">
-            <Link href={'/sale'}>Акции</Link>
+            <Link href={'#discounts'}>Акции</Link>
           </li>
       </ul>
       <SearchBar />

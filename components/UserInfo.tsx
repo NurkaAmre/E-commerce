@@ -61,7 +61,7 @@ export default function UserInfo({ user }: any) {
 
         {/* Personal info */}
         <div className='flex flex-col relative w-[250px]'>
-          <h3 className='text-2xl font-castoro font-bold text-left  text-gray-600 my-4'>Личные данные</h3>
+          <h3 className='text-2xl font-[castoro] font-bold text-left  text-gray-600 my-4'>Личные данные</h3>
           <div className='flex flex-col my-3 text-gray-700'>
             <label className='text-sm'>Имя<span className='text-red-600'>*</span> </label>
             <span className='user-input text-[10px] font-roboto'>{name}</span>
@@ -70,7 +70,7 @@ export default function UserInfo({ user }: any) {
 
         {/* Contact info */}
         <div className='flex flex-col relative w-[250px]'>
-          <h3 className='text-2xl my-4 font-castoro font-bold text-gray-600'>Контакты</h3>
+          <h3 className='text-2xl my-4 font-[castoro] font-bold text-gray-600'>Контакты</h3>
           <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-5 text-2xl' onClick={() => setContactInfoEditMode(true)} />
           <div className='flex flex-col my-3  text-gray-700'>
             <label className='head-little'>Тел<span className='text-red-600'>*</span> </label>
@@ -86,7 +86,7 @@ export default function UserInfo({ user }: any) {
 
         {/* Address info */}
         <div className='flex flex-col relative w-[250px]'>
-          <h2 className='text-2xl my-4 font-castoro font-bold text-gray-600 '>Адрес</h2>
+          <h2 className='text-2xl my-4 font-[castoro] font-bold text-gray-600 '>Адрес</h2>
           <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-5 text-2xl' onClick={() => setAddressEditMode(true)} />
           <div className='flex flex-col my-3'>
             <label className='head-little'>Адрес доставки<span className='text-red-600'>*</span> </label>
