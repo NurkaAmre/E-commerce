@@ -30,7 +30,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
     return (
       <div>
         <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] my-[150px] text-[#324d67]">
-          <div className="product-image md:h-[300px] md:w-1/2">
+          <div className="md:h-[400px] md:w-1/2">
             <Carousel
               renderThumbs={() => {
                 return product.imagesURL.map((imageURL: string) => {
@@ -48,7 +48,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               {product.imagesURL.map((imageURL: string) => {
                 return (
                   <Image
-                    className="max-h-[400px]"
+                    className="max-h-[400px] !w-auto"
                     src={imageURL}
                     alt={product.name}
                     width={400}
