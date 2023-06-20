@@ -1,16 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import { useEffect, useState } from "react"
-import { userCartStore } from '@/store';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
-import basket from '@/public/shopping-cart.png';
 import { motion, AnimatePresence } from 'framer-motion'
-import OrderConfirmed from './OrderConfirmed';
 import set1 from '@/public/set1.png'
 
-export default function Orders() {
-
+export default function Orders({ orders }: { orders: OrderType[]}) {
+  console.log(orders)
   return (
     <motion.div layout>
       <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>

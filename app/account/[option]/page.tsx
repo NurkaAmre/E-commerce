@@ -2,6 +2,7 @@ import FavList from '@/components/FavList'
 import Orders from '@/components/Orders'
 import UserInfo from '@/components/UserInfo'
 import getUser from '@/functions/getUser'
+import getUserOrders from '@/functions/getUserOrders'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import Link from 'next/link'
@@ -18,6 +19,8 @@ export default async function Account({ params: { option } }: { params: { option
     )
 
   const user = await getUser(session.user.email)
+  const ordersResponse = await getUserOrders(user.id)
+  const orders = ordersResponse.data as OrderType[]
   
   return (
     <main className="flex min-h-[60vh]">
@@ -54,7 +57,7 @@ export default async function Account({ params: { option } }: { params: { option
       </nav>
       <section className='flex flex-col w-full pt-[150px] pb-10 px-4 md:px-[3rem]'>
         {option === 'info' && <UserInfo user={user} />}
-        {option === 'orders' && <Orders />}
+        {option === 'orders' && <Orders orders={orders} />}
         {option === 'wishlist' && <FavList />}
       </section>
     </main>
