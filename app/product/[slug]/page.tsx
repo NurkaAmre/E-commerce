@@ -1,110 +1,149 @@
+'use client'
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import SanityClient from "@/sanity/client";
+import { userFavStore } from '@/store'
 import discountPrice from "@/util/discountPrice";
 import AddCartButton from "@/components/AddCartButton";
+import getProduct from "@/functions/getProduct";
+import LoadingAnimation from "@/components/loadingAnimation";
 
-export default async function ProductDetails({ params }: { params: { slug: string } }) {
+export default function ProductDetails({ params }: { params: { slug: string } }) {
+  const favStore = userFavStore()
   const slug = params.slug;
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]{
-    "id": _id,
-    name,
-    price,
-    stock,
-    details,
-    type,
-    description,
-    discount,
-    "imagesURL": images[].asset->url
-  }`;
+  const [product, setProduct] = useState({} as ProductType);
+  const [multiplier, setMultiplier] = useState(1);
+  let isLiked = false;
+  if (favStore.favList.find((item) => item.id === product.id)) {
+    isLiked = true;
+  }
+  useEffect(() => {
+    getProduct(slug).then((res) => {
+      setProduct(res.data as ProductType);
+    })
+  })
 
-  const product = await SanityClient.fetch(query);
-
-  return (
-    <div>
-      <div key={product._id} className="product-detail-container mt-[4rem]">
-        <div className="product-image md:w-1/2">
-          <div className="image-container">
-            <Image 
-              src={product.imagesURL[1]}
-              alt={product.name}
-              width={300}
-              height={300}
-              className="rounded-md img-product" />
-          </div>
-          <div className="small-images-container carousel w-full">
-            {product.imagesURL.map((imageURL: string, index: number) => {
-              if (index !== 0) {
-                return (
-                  <div id={`item${index}`} className="carousel-item w-full">
+  if (product.id) {
+    return (
+      <div>
+        <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] my-[150px] text-[#324d67]">
+          <div className="product-image md:h-[300px] md:w-1/2">
+            <Carousel
+              renderThumbs={() => {
+                return product.imagesURL.map((imageURL: string) => {
+                  return (
                     <Image
+                      className="max-h-[75px]"
                       src={imageURL}
                       alt={product.name}
-                      width={150}
-                      height={150} />
-                  </div>
-                );
-              }
-            })}
-          </div>
-          <div className="flex justify-center w-full py-2 gap-2">
-          {product.imagesURL.map((imageURL: string, index: number) => {
-              if (index !== 0) {
+                      width={100}
+                      height={100} />
+                  )
+                })
+              }}
+            >
+              {product.imagesURL.map((imageURL: string) => {
                 return (
-                  <a href={`#item${index}`} className="justify-center btn btn-xs">{index}</a> 
-                );
-              }
-            })}
+                  <Image
+                    className="max-h-[400px]"
+                    src={imageURL}
+                    alt={product.name}
+                    width={400}
+                    height={400} />
+                )
+              })}
+            </Carousel>
           </div>
-        </div>
-
-        <div className="product-detail-desc ">
-          <div className="flex gap-20">
-            <h1 className="text-3xl md:text-6xl font-dancing_script text-gray-600">{product.name}</h1>
-            <div className="reviews">
-              <div className="review-stars">
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiOutlineStar />
+  
+          <div className="product-detail-desc">
+            <div className="flex gap-20">
+              <h1 className="text-3xl md:text-6xl font-dancing_script text-gray-600">{product.name}</h1>
+              <div className="reviews">
+                <div className="review-stars">
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiOutlineStar />
+                </div>
+                <p>
+                  (20)
+                </p>
               </div>
-              <p>
-                (20)
-              </p>
+            </div>
+            <div className="product-desc">
+              <h6 className="text-lg md:texl-xl font-castoro">{product.description}</h6>
+            </div>
+            <h3>Характеристики</h3>
+            <hr />
+            <p className="font-roboto">{product.details}</p>
+            <div className="flex gap-10 mt-5">
+              <div className="flex self-center">
+                <button 
+                  className="text-red-700 border-l border-t border-b rounded-l-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
+                  onClick={() => {
+                    if (multiplier > 1) {
+                      setMultiplier(multiplier - 1);
+                    }
+                  }}
+                >
+                  <AiOutlineMinus />
+                </button>
+                <span className="border-t border-b p-2">{multiplier}</span>
+                <button 
+                  className="text-green-500 border-r border-t border-b rounded-r-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
+                  onClick={() => {
+                    setMultiplier(multiplier + 1);
+                  }}
+                >
+                  <AiOutlinePlus />
+                </button>
+              </div>
+              <div className="product-prices">
+                {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
+                {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount) * multiplier}&#x20B8;</p> : null}
+                {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
+              </div>
+                {(product.discount) && (
+                  <div className="discount">
+                    <p className="pl-1">-{product.discount}%</p>
+                  </div>
+                )}
+            </div>
+            <div className="flex flex-wrap gap-6 my-10">
+              <AddCartButton { ...product } />
+              {!isLiked ? (
+                <button 
+                type="button"
+                className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl cursor-pointer text-lg font-medium whitespace-nowrap hover:scale-110 transition-transform duration-500 ease-out px-4 py-2 min-w-[180px]"
+                onClick={(e) => {
+                  favStore.toggleProduct(product)
+                }}
+              >
+                Add To WishList
+              </button>
+              ) : (
+                <button
+                  className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-[180px]"
+                  disabled={true}
+                >
+                  Added To WishList
+                </button>
+              )}
             </div>
           </div>
-          <div className="product-desc">
-            <h6 className="text-lg md:texl-xl font-castoro">{product.description}</h6>
-          </div>
-          <h3>Характеристики</h3>
-          <hr />
-          <p className="font-roboto">{product.details}</p>
-          <div className="add-cart flex gap-10 mt-5">
-            <div className="quantity">
-              <p className="quantity-desc">
-                <span className="minus"><AiOutlineMinus /></span>
-                <span className="num">0</span>
-                <span className="plus" ><AiOutlinePlus /></span>
-              </p>
-            </div>
-            <div className="product-prices">
-              {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
-              {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount)}&#x20B8;</p> : null}
-              {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
-            </div>
-            <div className="discount">
-              <p className="pl-1">-{product.discount}%</p>
-            </div>
-          </div>
-          <div className="buttons">
-            <AddCartButton { ...product } />
-            <button type="button" className="buy-now">Купить</button>
-          </div>
+  
         </div>
-
+  
       </div>
-
-    </div>
-  );
+    );
+  } else {
+    return (
+      <LoadingAnimation />
+    )
+  }
+  
 }

@@ -1,6 +1,5 @@
 'use client'
 
-import { ProductType } from '@/types/ProductType'
 import { userFavStore } from "@/store"
 import Product from './Product'
 
