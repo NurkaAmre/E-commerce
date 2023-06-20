@@ -14,7 +14,6 @@ export default function MainSection (){
           <p className='headingsm'>
             Обустройте свою гостиную с нашей стильной мебелью. Изысканные диваны, удобные кресла и функциональные столики создадут атмосферу уюта и комфорта.
           </p>
-          <button className='btn-primary btn align-middle font-medium text-white px-10 mt-6 rounded-full'>Заказать</button>
         </div>
 
         <div className="bg-[#d2c6b1] py-[100px] p-4 md:h-auto flex items-center">
