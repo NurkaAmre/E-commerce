@@ -57,7 +57,7 @@ export default function UserInfo({ user }: any) {
 
   return (
     <section className="">
-      <div className='flex flex-col md:flex-row gap-10 md:justify-evenly'>
+      <div className='flex flex-wrap md:flex-row gap-10 justify-center md:justify-evenly'>
 
         {/* Personal info */}
         <div className='flex flex-col relative w-[250px]'>
