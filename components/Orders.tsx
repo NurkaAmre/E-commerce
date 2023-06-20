@@ -11,7 +11,7 @@ export default function Orders({ orders }: { orders: OrderType[]}) {
         {orders ? orders.map((order) => (
           <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md">
             <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
-            <p className="text-xs font-castoro">
+            <p className="text-xs font-[castoro]">
               Status:
               {order.status === 'success' && (
                 <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
@@ -35,7 +35,7 @@ export default function Orders({ orders }: { orders: OrderType[]}) {
             {order.products.map(({product, quantity}) => (
               <div className="text-sm lg:flex items-center gap-4">
                 <div className="py-2" >
-                  <h2 className="py-2 font-castoro text-lg">{product.name}</h2>
+                  <h2 className="py-2 font-[castoro] text-lg">{product.name}</h2>
                   <div className="flex items-baseline gap-4">
                     <Image
                       src={product.imagesURL[0]}
@@ -46,7 +46,7 @@ export default function Orders({ orders }: { orders: OrderType[]}) {
                       className="w-auto"
                     />
                     <p className="font-medium  text-gray-500">{product.price} KZT</p>
-                    <p className="font-castoro">Quantity: {quantity}</p>
+                    <p className="font-[castoro]">Quantity: {quantity}</p>
                   </div>
                 </div>
               </div>

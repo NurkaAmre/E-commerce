@@ -107,9 +107,9 @@ export default function Checkout({ user }: { user: UserType }) {
               className='flex p-4 gap-4 bg-base-100 my-2 rounded-lg'>
               <Image className='rounded-md h-24' src={item.imagesURL[0]} alt={item.name} width={120} height={120}/>
               <div>
-                <h2 className='font-dancing_script'>{item.name}</h2>
+                <h2 className='font-[dancing_script]'>{item.name}</h2>
                 <div className='flex gap-2'>
-                  <h2 className='font-lobster'>Количество:{item.quantity} </h2>
+                  <h2 className='font-[lobster]'>Количество:{item.quantity} </h2>
                   <h2>{item.quantity}</h2>
                 </div>
                 <p className=''>{discountPrice(item.price, item.discount)} <span className='text-teal-400'>KZT</span></p>
@@ -121,7 +121,7 @@ export default function Checkout({ user }: { user: UserType }) {
       </div>
 
       {/* Shipping Information */}
-      <h2 className='my-4 font-lobster text-2xl mb-4 text-gray-400'>Информация о доставке</h2>
+      <h2 className='my-4 font-[lobster] text-2xl mb-4 text-gray-400'>Информация о доставке</h2>
       <hr />
       <div className='flex flex-col gap-4 justify-center relative'>
         <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-0 text-2xl' onClick={() => setEditMode(true)} />

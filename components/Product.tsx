@@ -18,7 +18,7 @@ export default function Product({ product }: {product: ProductType } ){
           className="object-fill"
       />
         <LikeButton product={product} />
-        <div className="flex flex-row text-lg gap-6 text-gray-600 font-dancing_script md:mt-[2rem]">
+        <div className="flex flex-row text-lg gap-6 text-gray-600 font-[dancing_script] md:mt-[2rem]">
           <h3>{product.name}</h3>
           <h2>{product.price}&#x20B8;</h2>
         </div>

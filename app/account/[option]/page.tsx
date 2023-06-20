@@ -14,7 +14,7 @@ export default async function Account({ params: { option } }: { params: { option
   if (!session?.user) 
     return (
       <main className="mt-[100px] flex min-h-[50vh]">
-        <h1 className='text-lg text-red-400 font-castoro font-medium'>Для получения доступа к этой странице требуется авторизация.</h1>
+        <h1 className='text-lg text-red-400 font-[castoro] font-medium'>Для получения доступа к этой странице требуется авторизация.</h1>
       </main>
     )
 
@@ -26,7 +26,7 @@ export default async function Account({ params: { option } }: { params: { option
     <main className="flex min-h-[60vh]">
       <nav className='pt-[150px] bg-[#EBE7DC] opacity-90'>
         <ul className='flex flex-col gap-4'>
-          <li className='text-base font-castoro'>
+          <li className='text-base font-[castoro]'>
             <Link
               href={"/account/info"}
               className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
@@ -35,7 +35,7 @@ export default async function Account({ params: { option } }: { params: { option
               <span className="hidden md:block whitespace-nowrap">Персональные Данные</span>
             </Link>
           </li>
-          <li className='text-base font-castoro'>
+          <li className='text-base font-[castoro]'>
             <Link
               href={"/account/orders"}
               className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
@@ -44,7 +44,7 @@ export default async function Account({ params: { option } }: { params: { option
               <span className="hidden md:block whitespace-nowrap">Корзина</span>
             </Link>
           </li>
-          <li className='text-base font-castoro'>
+          <li className='text-base font-[castoro]'>
             <Link 
               href={"/account/wishlist"}
               className=' flex gap-2 px-4 py-2 hover:bg-[#ebe5d1]'
