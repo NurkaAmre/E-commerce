@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { AiFillEdit } from 'react-icons/ai'
+import { AiFillEdit, AiFillInfoCircle } from 'react-icons/ai'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { userCartStore } from '@/store';
@@ -107,22 +107,25 @@ export default function Checkout({ user }: { user: UserType }) {
               className='flex p-4 gap-4 bg-base-100 my-2 rounded-lg'>
               <Image className='rounded-md h-24' src={item.imagesURL[0]} alt={item.name} width={120} height={120}/>
               <div>
-                <h2 className='font-dancing_script'>{item.name}</h2>
+                <h2 className='font-dancing_script '>{item.name}</h2>
                 <div className='flex gap-2'>
-                  <h2 className='font-lobster'>Количество:{item.quantity} </h2>
+                  <h2 className='font-lobster'>Количество </h2>
                   <h2>{item.quantity}</h2>
                 </div>
-                <p className=''>{discountPrice(item.price, item.discount)} <span className='text-teal-400'>KZT</span></p>
+                <p className='font-semibold text-gray-400'>{discountPrice(item.price, item.discount)} <span className='text-teal-400 text-xs'>KZT</span></p>
               </div>
             </motion.div>
           ))}
-          <p className='font-bold text-gray-600 mt-6'>Сумма к оплате: {totalPrice}<span className='text-teal-400'>KZT</span></p>
+          <p className='font-bold font-roboto text-gray-600 mt-6'>Сумма к оплате: {totalPrice}<span className='text-teal-400 text-xs'>KZT</span></p>
         </div>
       </div>
 
       {/* Shipping Information */}
-      <h2 className='my-4 font-lobster text-2xl mb-4 text-gray-400'>Информация о доставке</h2>
-      <hr />
+      <div className='flex flex-row relative justify-between'>
+        <AiFillInfoCircle className='absolute text-[#8CCCC1] top-6 text-2xl' />
+        <h2 className='my-4 font-lobster pl-8 text-2xl mb-4 text-gray-700'>Информация о доставке</h2>
+        <hr />
+      </div>
       <div className='flex flex-col gap-4 justify-center relative'>
         <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-0 text-2xl' onClick={() => setEditMode(true)} />
         <div className='flex flex-col text-gray-500'>
@@ -151,20 +154,20 @@ export default function Checkout({ user }: { user: UserType }) {
             : <input className='user-input text-xs font-roboto' type="text" value={zip} onChange={handleZipChange} />}
         </div>
         <div>
-          <label className='text-base text-gray-700'>
+          <label className='text-base font-roboto text-gray-700'>
             Срок доставки
             <span className='text-red-600'>*</span>
             <input
               type="date"
               name="deliveryDate"
-              className='mx-6 text-teal-400 rounded-lg py-2 px-3'
+              className='ml-[2rem] text-teal-400 rounded-lg p-2'
             />
           </label>
         </div>
 
         <div className='flex justify-around'>
           <div>
-            <label className='text-base text-gray-700'>
+            <label className='text-base font-lobster text-gray-700'>
               Вне города
               <input
                 type="checkbox"
@@ -175,7 +178,7 @@ export default function Checkout({ user }: { user: UserType }) {
           </div>
 
           <div>
-            <label className='text-base text-gray-700'>
+            <label className='text-base font-lobster text-gray-700'>
               Требуется сборка
               <input
                 type="checkbox"
