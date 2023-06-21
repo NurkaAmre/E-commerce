@@ -7,8 +7,8 @@ export default function DeliveryServices() {
     <section className="w-4/5 mx-auto my-20 flex flex-col md:flex-row">
       <div className="bg-[#d2c6b1a7] md:w-1/2 py-10 text-center">
         <div>
-          <h1 className="font-bold  text-gray-800 opacity-50 text-4xl leading-8">Доставка</h1>
-          <h2 className="font-bold text-4xl text-gray-800  leading-8 opacity-50 ">Услуги</h2>
+          <h1 className="font-bold  text-gray-800 opacity-50 text-4xl md:text-6xl ">Доставка</h1>
+          <h2 className="font-bold text-4xl text-gray-800 md:text-6xl leading-6 opacity-50 ">Услуги</h2>
         </div>
         <div className="m-6">
           <h3 className="font-medium font font-castoro text-2xl"> Мы упрощаем</h3>
