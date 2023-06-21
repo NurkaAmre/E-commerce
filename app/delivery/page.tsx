@@ -1,7 +1,7 @@
 
 const DeliveryPolicy = () => {
   return (
-    <section className="px-[2rem] mt-[10rem] mb-[3rem] font-castoro md:px-[10rem] md:mt-[8rem]">
+    <section className="px-[2rem] mt-[10rem] mb-[3rem] font-[castoro] md:px-[10rem] md:mt-[8rem]">
       <div>
         <h1 className="text-3xl text-gray-800 mt-4 md:text-4xl">Политика доставки</h1>
         <h2 className="text-lg font-semibold my-3 text-gray-600">Время обработки заказа</h2>

@@ -8,14 +8,15 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        fluid: "repeat(auto-fit, minmax(20rem,1fr))",
+        fluid: "repeat(auto-fit, minmax(350px,1fr))",
+        fluidSmall: "repeat(auto-fit, minmax(250px,1fr))",
         fluid1: "repeat(auto-fit, minmax(13rem,2fr))",
       },
       fontFamily: {
         lobster: ['var(--font-lobster)'],
         roboto: ['var(--font-roboto)'],
         castoro: ['var(--font-castoro)'],
-        dancing_script: ['var(--font-dancing)'],
+        dancingScript: ['var(--font-dancing)'],
       },
       boxShadow: {
         custom: '15px -2px 63px 13px rgba(16, 201, 199, 0.908);',

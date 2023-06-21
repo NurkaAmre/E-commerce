@@ -30,7 +30,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
     return (
       <div>
         <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] my-[150px] text-[#324d67]">
-          <div className="product-image md:h-[300px] md:w-1/2">
+          <div className="md:h-[400px] md:w-1/2">
             <Carousel
               renderThumbs={() => {
                 return product.imagesURL.map((imageURL: string) => {
@@ -48,7 +48,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               {product.imagesURL.map((imageURL: string) => {
                 return (
                   <Image
-                    className="max-h-[400px]"
+                    className="max-h-[400px] !w-auto"
                     src={imageURL}
                     alt={product.name}
                     width={400}
@@ -60,7 +60,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   
           <div className="product-detail-desc">
             <div className="flex gap-20">
-              <h1 className="text-3xl md:text-6xl font-dancing_script text-gray-600">{product.name}</h1>
+              <h1 className="text-3xl md:text-6xl font-[dancingScript] text-gray-600">{product.name}</h1>
               <div className="reviews">
                 <div className="review-stars">
                   <AiFillStar />
@@ -75,12 +75,13 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               </div>
             </div>
             <div className="product-desc">
-              <h6 className="text-lg md:texl-xl font-castoro">{product.description}</h6>
+              <h6 className="text-lg md:texl-xl font-[castoro]">{product.description}</h6>
             </div>
             <h3>Характеристики</h3>
             <hr />
             <p className="font-roboto">{product.details}</p>
             <div className="flex gap-5 md:gap-10 mt-5">
+
               <div className="flex self-center">
                 <button 
                   className="text-red-700 border-l border-t border-b rounded-l-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
@@ -103,7 +104,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 </button>
               </div>
               <div className="product-prices">
-                {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
+                {(!product.discount) ? <p className="price">{product.price * multiplier}&#x20B8;</p> : null}
                 {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount) * multiplier}&#x20B8;</p> : null}
                 {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
               </div>

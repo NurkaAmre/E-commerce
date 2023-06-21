@@ -11,13 +11,13 @@ export default function DeliveryServices() {
           <h2 className="font-bold text-4xl text-gray-800 md:text-6xl leading-6 opacity-50 ">Услуги</h2>
         </div>
         <div className="m-6">
-          <h3 className="font-medium font font-castoro text-2xl"> Мы упрощаем</h3>
-          <h3 className="font-medium font font-castoro text-2xl"> Все  </h3>
-          <h3 className="font-medium font font-castoro text-2xl"> Для вас  </h3>
+          <h3 className="font-medium font font-[castoro] text-2xl"> Мы упрощаем</h3>
+          <h3 className="font-medium font font-[castoro] text-2xl"> Все  </h3>
+          <h3 className="font-medium font font-[castoro] text-2xl"> Для вас  </h3>
         </div>
         <div>
-          <h1 className="font-lobster font-medium font1 text-xl m-5">Быстро и Безопасно</h1>
-          <Link href={"/deliveryPolicy"}>
+          <h1 className="font-[lobster] font1 text-xl m-5">Быстро и Безопасно</h1>
+          <Link href={"/delivery"}>
             <button className=" font-medium text-white px-4 text-lg text-center  rounded-full btn py-3">Подробнее</button>
           </Link>
         </div>

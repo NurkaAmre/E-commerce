@@ -16,14 +16,14 @@ function SearchBarMobile() {
   };
   return (
     <>
-      <section className=" mobile-content bg-gray-400 items-center py-1 w-full z-20 fixed mt-[4rem]">
+      <section className="mobile-content bg-[#EBE7DC] items-center py-1 w-full z-10 fixed top-[72px]">
         <div className='flex rounded-full mx-[2rem] bg-slate-50 justify-center items-center'>
           <FiSearch className="text-gray-500 text-lg" />
           <form onSubmit={handleSearch}>
             <input
               type="text"
               placeholder="Введите запрос"
-              className="font-castoro rounded-full py-1 my-1 bg-slate-50 px-2 outline-none border-0"
+              className="font-[castoro] rounded-full py-1 my-1 bg-slate-50 px-2 outline-none border-0"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

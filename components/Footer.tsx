@@ -11,7 +11,7 @@ import logo from '@/public/logo1.svg'
 function Footer() {
   return (
     <footer>
-      <div className="text-white flex flex-col md:flex-row justify-evenly font-castoro items-center md:items-start py-10">
+      <div className="text-white flex flex-col md:flex-row justify-evenly font-[castoro] items-center md:items-start py-10">
         <div className="text-white text-center">
           <Image src={logo} width={150} height={100} alt='logo' id='logo' />
           <p className='text-sm mb-3'>Спасибо за ваш выбор и доверие!</p>

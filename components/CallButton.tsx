@@ -76,7 +76,7 @@ export default function CallButton () {
           className="bg-gray-950 bg-opacity-75 p-10 w-[350px] relative rounded-md"
           onClick={(e) => { e.stopPropagation() }}
         >
-          <h2 className="text-2xl mb-4 font-lobster text-white">Заказать звонок</h2>
+          <h2 className="text-2xl mb-4 font-[lobster] text-white">Заказать звонок</h2>
           <span className="absolute text-4xl text-white top-0 right-5 cursor-pointer" onClick={closePopup}>&times;</span>
           <form onSubmit={handleSubmit}>
 
@@ -98,7 +98,7 @@ export default function CallButton () {
             <div>
               <button
                 type="submit"
-                className="bg-blue-400 popup-btn w-full text-white font-light font-lobster rounded-full"
+                className="bg-blue-400 popup-btn w-full text-white font-light font-[lobster] rounded-full"
               >
                 Перезвоните мне
               </button>

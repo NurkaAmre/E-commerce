@@ -7,7 +7,7 @@ import about from '@/public/about-1.jpg'
 
 const AboutUs = () => {
   return (
-    <section className='about-us md:my-[3rem] mx-[2rem] md:mx-[6rem] sm:mx-[4rem]'>
+    <section className='my-[70px] mx-[2rem] md:mx-[6rem] sm:mx-[4rem]'>
       <div className='about-section md:mb-[3rem]'>
         <div className='flex-1 order-0 about-img'>
           <Image src={about} alt='about' className='mt-[8rem]' />

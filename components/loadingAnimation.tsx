@@ -5,7 +5,7 @@ import loading from '@/public/furni.json'
 
 export default function LoadingAnimation() {
   return (
-    <div className='flex items-center justify-center flex-col'>
+    <div className='flex items-center justify-center flex-col my-[150px]'>
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 2, y: 0 }}

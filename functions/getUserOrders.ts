@@ -2,9 +2,9 @@
 
 import SanityClient from "@/sanity/client";
 
-export default async function getOrder(orderId: string) {
+export default async function getUserOrders(userId: string) {
   let status = {code: 0, message: '', data: {}};
-  const order = await SanityClient.fetch(`*[_type == "order" && _id == $orderId] {
+  const orders = await SanityClient.fetch(`*[_type == "order" && user->_id == $userId] {
     "id": _id,
     status,
     amount,
@@ -39,12 +39,12 @@ export default async function getOrder(orderId: string) {
       "category": category[]->name.current
       }
     }
-  }[0]`, {orderId: orderId})
+  }`, {userId})
 
-  if (order) {
+  if (orders) {
     status.code = 200;
     status.message = 'Order fetched successfully';
-    status.data = order;
+    status.data = orders;
   } else {
     status.code = 500;
     status.message = 'Something went wrong';

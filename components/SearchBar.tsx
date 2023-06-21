@@ -25,7 +25,7 @@ function SearchBar() {
             <input
               type="text"
               placeholder="Введите запрос"
-              className="font-castoro rounded-full py-2 bg-slate-50 px-2 outline-none border-0 w-full"
+              className="font-[castoro] rounded-full py-2 bg-slate-50 px-2 outline-none border-0 w-full"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
