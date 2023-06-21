@@ -103,7 +103,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 </button>
               </div>
               <div className="product-prices">
-                {(!product.discount) ? <p className="price">{product.price}&#x20B8;</p> : null}
+                {(!product.discount) ? <p className="price">{product.price * multiplier}&#x20B8;</p> : null}
                 {(product.discount) ? <p className="price">{discountPrice(product.price, product.discount) * multiplier}&#x20B8;</p> : null}
                 {(product.discount) ? <p className="price-old">{product.price}&#x20B8;</p> : null}
               </div>
