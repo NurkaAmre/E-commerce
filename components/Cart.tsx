@@ -27,7 +27,7 @@ export default function Cart({ user }: { user: UserType }) {
       <motion.div 
         layout
         onClick={(e) => e.stopPropagation()} 
-        className='bg-base-200 bg-opacity-85 absolute right-0 top-0 w-full h-screen lg:w-2/5 p-12 overflow-y-scroll'
+        className='bg-base-200 bg-opacity-85 absolute right-0 top-0 w-full h-screen lg:w-2/5 p-9 overflow-y-scroll'
       >
         {/* Exit Button */}
         {cartStore.onCheckout === 'cart' && (
@@ -51,7 +51,7 @@ export default function Cart({ user }: { user: UserType }) {
                   <h2>{item.quantity}</h2>
                   <button onClick={() => cartStore.addProduct(item)}><IoAddCircle /></button>
                 </div>
-                <p className='text-sm'>{discountPrice(item.price, item.discount)} KZT</p>
+                <p className='font-semibold text-gray-400 mt-2'>{discountPrice(item.price, item.discount)} <span className='text-teal-400'>KZT</span></p>
               </div>
 
             </motion.div>
@@ -63,7 +63,7 @@ export default function Cart({ user }: { user: UserType }) {
 
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
-          <p className=''>Сумма к оплате: {totalPrice} KZT</p>
+            <p className='font-bold text-gray-600 mt-6'>Сумма к оплате: {totalPrice}  <span className='text-teal-400'>KZT</span></p>
           {/* cartStore.setCheckout('checkout') */}
           <button 
             onClick={() => cartStore.setCheckout('checkout')}

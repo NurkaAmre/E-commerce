@@ -90,7 +90,7 @@ const Nav = ({ user }:  {user: UserType}) => {
 
     {/* Mobile Menu */}
     {showMobileMenu && (
-        <nav className="fixed top-0 left-0 bottom-0 text-white bg-black opacity-70 z-50">
+        <nav className="fixed top-0 left-0 bottom-0 text-white bg-slate-500 opacity-90 z-50">
           <button className="absolute right-1 top-2 text-3xl" onClick={menuButtonClick}>
           <AiOutlineClose></AiOutlineClose>
         </button>
@@ -99,11 +99,11 @@ const Nav = ({ user }:  {user: UserType}) => {
             <Image src={logo} width={80} height={80} alt="logo" />
         </Link>
 
-          <ul className="flex flex-col justify-center ml-4 mt-[2rem]">
-            <li className="mr-6 cursor-pointer underline text-3xl whitespace-nowrap" onClick={categoriesButtonClick}>
+          <ul className="flex flex-col justify-center font-lobster ml-4 mt-[2rem]">
+            <li className="mr-6 cursor-pointer text-2xl whitespace-nowrap" onClick={categoriesButtonClick}>
             <Link href={'#'} onClick={categoriesButtonClick}>Товары</Link>
             {showCategoriesMenu && (
-              <ul className="flex flex-col ml-8">
+                <ul className="flex flex-col text-lg ml-8">
                   <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
                   <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
                   <li><Link href={'/category/sofas'} className="li-hover">Диван</Link></li>
@@ -111,10 +111,10 @@ const Nav = ({ user }:  {user: UserType}) => {
               </ul>
             )}
           </li>
-            <li className="mr-6 cursor-pointer underline text-3xl whitespace-nowrap">
+            <li className="mr-6 cursor-pointer text-2xl whitespace-nowrap">
             <Link href={'/about'}>О Компании</Link>
           </li>
-            <li className="mr-6 cursor-pointer underline text-3xl whitespace-nowrap">
+            <li className="mr-6 cursor-pointer text-2xl whitespace-nowrap">
             <Link href={'/sale'}>Акции</Link>
           </li>
         </ul>

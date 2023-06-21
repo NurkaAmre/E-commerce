@@ -14,28 +14,28 @@ function Footer() {
       <div className="text-white flex flex-col md:flex-row justify-evenly font-[castoro] items-center md:items-start py-10">
         <div className="text-white text-center">
           <Image src={logo} width={150} height={100} alt='logo' id='logo' />
-          <p className='text-sm'>Спасибо за ваш выбор и доверие!</p>
+          <p className='text-sm mb-3'>Спасибо за ваш выбор и доверие!</p>
         </div>
 
-        <div className="text-white py-4 text-center">
-          <h2 className='text-xl m-3'>Режим работы call-центра</h2>
+        <div className="text-white text-center mb-4">
+          <h2 className='text-xl md:my-2'>Режим работы call-центра</h2>
           <div className='flex flex-row justify-center gap-3'>
             <FiCalendar className='text-xl' />
             <p className='text-sm'>ежедневно с 11:00 до 00:00</p>
           </div>
-          <h2 className='text-xl m-3'>Доставка заказов</h2>
+          <h2 className='text-xl md:my-2'>Доставка заказов</h2>
           <div className='flex flex-row justify-center gap-3'>
             <FiCalendar className='text-xl' />
             <p className='text-sm'>ежедневно с 09:00 до 23:00</p>
           </div>
         </div>
 
-        <div className="text-white py-4 text-center">
-          <h2 className='text-xl m-3'>Контактная информация</h2>
+        <div className="text-white text-center mb-4">
+          <h2 className='text-xl md:my-2'>Контактная информация</h2>
           <div className='flex flex-row gap-3'>
             <FiPhoneCall className='text-xl phone-icon' />
             <Link href="tel:+77087179128" className="text-center">
-              <span className="text-white underline md:text-xl">+7 708 717 91 28</span>
+              <span className="text-white md:text-xl">+7 708 717 91 28</span>
             </Link>
           </div>
           <div className='flex flex-row gap-3'>
@@ -44,9 +44,9 @@ function Footer() {
           </div>
         </div>
 
-        <div className='py-4 text-center'>
+        <div className=' text-center'>
           <div>
-            <h1 className='text-xl mt-3 mb-1'>Платежные системы</h1>
+            <h2 className='text-xl md:my-2'>Платежные системы</h2>
             <div className='flex flex-row justify-evenly'>
               <Image src={visa} alt='ic' />
               <Image src={master} alt='ic' />
@@ -61,11 +61,11 @@ function Footer() {
         </div>
       </div>
 
-      <div className='max-w-fit mx-auto py-4 font-sans font-bold'>
-        <span>Made with <i className='text-red-700 text-lg'>&#9829;</i> by 
-          <Link className='text-blue-400 underline mx-1' href={'https://github.com/NurkaAmre'}>Nurka</Link> 
+      <div className='max-w-fit mx-auto text-gray-400 py-4 font-lobster font-bold'>
+        <span>Made with <i className='text-red-500 px-1 text-2xl'>&#9829;</i> by
+          <Link className='text-gray-300 underline px-1' href={'https://github.com/NurkaAmre'}>Nurka</Link> 
           & 
-          <Link className='text-blue-400 underline mx-1' href={'https://github.com/ouasamine'}>Amine</Link>
+          <Link className='text-gray-300 underline px-1' href={'https://github.com/ouasamine'}>Amine</Link>
         </span>
       </div>
     </footer>

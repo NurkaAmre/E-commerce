@@ -79,8 +79,9 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             </div>
             <h3>Характеристики</h3>
             <hr />
-            <p className="font-[roboto]">{product.details}</p>
-            <div className="flex gap-10 mt-5">
+            <p className="font-roboto">{product.details}</p>
+            <div className="flex gap-5 md:gap-10 mt-5">
+
               <div className="flex self-center">
                 <button 
                   className="text-red-700 border-l border-t border-b rounded-l-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
@@ -130,7 +131,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                   className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-[180px]"
                   disabled={true}
                 >
-                  Added To WishList
+                    Добавить в Избранное
                 </button>
               )}
             </div>
