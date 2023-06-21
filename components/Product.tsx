@@ -11,7 +11,7 @@ export default function Product({ product }: {product: ProductType } ){
         alt={product.name}
         width={400}
         height={300}
-          className="object-fill"
+        className="max-w-[170px] max-h-[130px] md:max-h-[230px] md:max-w-[300px]"
       />
         <div className="flex justify-between items-center my-4 w-full max-w-[400px]">
           <div className="flex text-lg gap-6 text-gray-600 font-[dancingScript]">
