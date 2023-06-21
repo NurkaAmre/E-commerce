@@ -19,6 +19,21 @@ export default {
         type: 'string',
       },
       {
+        name: 'deliveryDate',
+        title: 'Delivery Date',
+        type: 'date',
+      },
+      {
+        name: 'deliveryType',
+        title: 'Delivery Type',
+        type: 'string',
+      },
+      {
+        delivery: 'deliveryStatus',
+        title: 'Delivery Status',
+        type: 'string',
+      },
+      {
         name: 'products',
         title: 'Products',
         type: 'array',

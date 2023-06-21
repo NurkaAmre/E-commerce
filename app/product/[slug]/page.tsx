@@ -36,7 +36,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 return product.imagesURL.map((imageURL: string) => {
                   return (
                     <Image
-                      className="max-h-[75px] md:mx-[2rem]"
+                      className="max-h-[75px]"
                       src={imageURL}
                       alt={product.name}
                       width={100}
