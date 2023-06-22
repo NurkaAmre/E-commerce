@@ -9,6 +9,9 @@ export default async function getOrder(orderId: string) {
     status,
     amount,
     "createdAt": _createdAt,
+    deliveryStatus,
+    deliveryDate,
+    deliveryAssembly,
     "user": user->{
       "id": _id,
       name,
