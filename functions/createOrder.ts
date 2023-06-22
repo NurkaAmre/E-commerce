@@ -5,7 +5,12 @@ import { CartItem } from "@/store";
 import { randomUUID } from "crypto";
 import getOrder from "./getOrder";
 
-export default async function createOrder(cartItems: CartItem[], totalAmount: number, user: UserType) {
+export default async function createOrder(
+    cartItems: CartItem[],
+    totalAmount: number,
+    user: UserType,
+    deliveryInfo: {deliveryDate: string, deliveryAssembly: boolean}
+  ) {
   let status = {code: 0, message: '', data: {}};
   const products = cartItems.map((item) => {
     return {
@@ -20,6 +25,8 @@ export default async function createOrder(cartItems: CartItem[], totalAmount: nu
   const order = await SanityClient.create({
     _type: 'order',
     status: 'pending',
+    deliveryDate: deliveryInfo.deliveryDate,
+    deliveryAssembly: deliveryInfo.deliveryAssembly,
     amount: totalAmount,
     user: {
       _type: 'reference',

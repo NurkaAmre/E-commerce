@@ -35,6 +35,8 @@ export default function Checkout({ user }: { user: UserType }) {
   const [street, setStreet] = useState(user.address?.street)
   const [city, setCity] = useState(user.address?.city)
   const [zip, setZip] = useState(user.address?.zip)
+  const [deliveryDate, setDeliveryDate] = useState('')
+  const [deliveryAssembly, setDeliveryAssembly] = useState(false)
   const [minDeliveryDate, setMinDeliveryDate] = useState(getMinDeliveryDate(city))
 
   // Event handlers
@@ -52,6 +54,12 @@ export default function Checkout({ user }: { user: UserType }) {
   }
   const handleZipChange = (e: React.FormEvent<HTMLInputElement>) => {
     setZip(e.currentTarget.value)
+  }
+  const handleDeliveryDateChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setDeliveryDate(e.currentTarget.value)
+  }
+  const handleDeliveryAssemblyChange = (e: React.FormEvent<HTMLInputElement>) => {
+    setDeliveryAssembly(e.currentTarget.checked)
   }
 
   const userData = {
@@ -79,7 +87,11 @@ export default function Checkout({ user }: { user: UserType }) {
       const updateDataResponse = await updateUserData(userData)
       if (updateDataResponse.code === 200) {
         // Create order in database after user data is updated
-        const createOrderResponse = await createOrder(cartStore.cart, totalPrice , userData)
+        const deliveryInfo = {
+          deliveryDate,
+          deliveryAssembly
+        }
+        const createOrderResponse = await createOrder(cartStore.cart, totalPrice , userData, deliveryInfo)
 
         // Redirect user to payment page after order is created in database
         if (createOrderResponse.code === 200) {
@@ -159,11 +171,12 @@ export default function Checkout({ user }: { user: UserType }) {
         </div>
         <div>
           <label className='text-base font-roboto text-gray-700'>
-            Срок доставки
-            <span className='text-red-600'>*</span>
+            желаемая дата доставки
             <input
               type="date"
               min={minDeliveryDate}
+              value={deliveryDate}
+              onChange={handleDeliveryDateChange}
               name="deliveryDate"
               className='ml-[2rem] text-teal-400 rounded-lg p-2'
             />
@@ -175,7 +188,9 @@ export default function Checkout({ user }: { user: UserType }) {
               Требуется сборка
               <input
                 type="checkbox"
-                name="requireConstruction"
+                name="deliveryAssembly"
+                onChange={handleDeliveryAssemblyChange}
+                checked={deliveryAssembly}
                 className='mx-2 text-teal-300 rounded-full'
               />
             </label>
