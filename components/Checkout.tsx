@@ -80,7 +80,7 @@ export default function Checkout({ user }: { user: UserType }) {
 
   const completeOrder = async () => {
     // Set loading status
-    setIsLoading(true)  
+    setIsLoading(true)
 
     // Check if all fields are filled
     if (name && phone && email && street && city && zip) {
@@ -92,7 +92,7 @@ export default function Checkout({ user }: { user: UserType }) {
           deliveryDate,
           deliveryAssembly
         }
-        const createOrderResponse = await createOrder(cartStore.cart, totalPrice , userData, deliveryInfo)
+        const createOrderResponse = await createOrder(cartStore.cart, totalPrice, userData, deliveryInfo)
 
         // Redirect user to payment page after order is created in database
         if (createOrderResponse.code === 200) {
@@ -121,31 +121,50 @@ export default function Checkout({ user }: { user: UserType }) {
           {cartStore.cart.map((item) => (
             <motion.div layout key={item.id}
               className='flex p-4 gap-4 bg-base-100 my-2 rounded-lg'>
-              <Image className='rounded-md h-24' src={item.imagesURL[0]} alt={item.name} width={120} height={120}/>
+              <Image
+                className='rounded-md h-24'
+                src={item.imagesURL[0]}
+                alt={item.name}
+                width={120}
+                height={120}
+              />
               <div>
 
                 <h2 className='font-[dancingScript]'>{item.name}</h2>
                 <div className='flex gap-2'>
                   <h2 className='font-[lobster]'>Количество: {item.quantity} </h2>
                 </div>
-                <p className='font-semibold text-gray-400'>{discountPrice(item.price, item.discount)} <span className='text-teal-400 text-xs'>KZT</span></p>
+                <p className='font-semibold text-gray-400'>
+                  {discountPrice(item.price, item.discount)}
+                  <span className='text-teal-400 text-xs'>KZT</span>
+                </p>
               </div>
             </motion.div>
           ))}
-          <p className='font-bold font-roboto text-gray-600 mt-6'>Сумма к оплате: {totalPrice}<span className='text-teal-400 text-xs'>KZT</span></p>
+          <p className='font-bold font-roboto text-gray-600 mt-6'>
+            Сумма к оплате: {totalPrice}
+            <span className='text-teal-400 text-xs'>KZT</span>
+          </p>
         </div>
       </div>
 
       {/* Shipping Information */}
       <div className='flex flex-row relative justify-between'>
         <AiFillInfoCircle className='absolute text-[#8CCCC1] top-6 text-2xl' />
-        <h2 className='my-4 font-lobster pl-8 text-2xl mb-4 text-gray-700'>Информация о доставке</h2>
+        <h2 className='my-4 font-lobster pl-8 text-2xl mb-4 text-gray-700'>
+          Информация о доставк
+        </h2>
         <hr />
       </div>
       <div className='flex flex-col gap-4 justify-center relative'>
-        <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-0 text-2xl' onClick={() => setEditMode(true)} />
-        <div className='flex flex-col text-gray-500'>
-          <label className='head-little'>Имя<span className='text-red-600'>*</span> </label>
+        <AiFillEdit
+          className='absolute cursor-pointer right-0 top-0 text-2xl'
+          onClick={() => setEditMode(true)}
+        />
+        <div className='flex flex-col'>
+          <label className='head-little'>
+            Имя<span className='text-red-600'>*</span> 
+          </label>
           <input
             className='user-input text-xs font-roboto'
             type="text"
@@ -154,8 +173,10 @@ export default function Checkout({ user }: { user: UserType }) {
             disabled={!editMode}
           />
         </div>
-        <div className='flex flex-col text-gray-500'>
-          <label className='head-little'>Тел<span className='text-red-600'>*</span> </label>
+        <div className='flex flex-col'>
+          <label className='head-little'>
+            Тел<span className='text-red-600'>*</span>
+          </label>
           <input
             className='user-input text-xs font-roboto'
             type="tel"
@@ -164,9 +185,11 @@ export default function Checkout({ user }: { user: UserType }) {
             disabled={!editMode}
           />
         </div>
-        <div className='flex flex-col text-gray-500'>
-          <label className='head-little'>Адрес доставки<span className='text-red-600'>*</span> </label>
-          <input 
+        <div className='flex flex-col'>
+          <label className='head-little'>
+            Адрес доставки<span className='text-red-600'>*</span>
+          </label>
+          <input
             className='user-input text-xs font-roboto'
             type="text"
             value={street}
@@ -174,11 +197,17 @@ export default function Checkout({ user }: { user: UserType }) {
             disabled={!editMode}
           />
         </div>
-        <div className='flex flex-col text-gray-500'>
-          <label className='head-little'>Город<span className='text-red-600'>*</span> </label>
-          <select className='user-input text-xs font-roboto' onChange={handleCityChange} disabled={!editMode}>
+        <div className='flex flex-col'>
+          <label className='head-little'>
+            Город<span className='text-red-600'>*</span>
+          </label>
+          <select
+            className='user-input text-xs font-roboto'
+            onChange={handleCityChange}
+            disabled={!editMode}
+          >
             {getKZCities().map((cityObj) => (
-              <option 
+              <option
                 value={cityObj.engName}
                 selected={cityObj.engName === city ? true : false}
               >
@@ -188,7 +217,9 @@ export default function Checkout({ user }: { user: UserType }) {
           </select>
         </div>
         <div className='flex flex-col text-gray-500'>
-          <label className='head-little'>Индекс<span className='text-red-600'>*</span> </label>
+          <label className='head-little'>
+            Индекс<span className='text-red-600'>*</span>
+          </label>
           <input
             className='user-input text-xs font-roboto'
             type="text"
@@ -211,25 +242,25 @@ export default function Checkout({ user }: { user: UserType }) {
           </label>
         </div>
 
-          <div>
-            <label className='text-base font-lobster text-gray-700'>
-              Требуется сборка
-              <input
-                type="checkbox"
-                name="deliveryAssembly"
-                onChange={handleDeliveryAssemblyChange}
-                checked={deliveryAssembly}
-                className='mx-2 text-teal-300 rounded-full'
-              />
-            </label>
-          </div> 
+        <div>
+          <label className='text-base font-lobster text-gray-700'>
+            Требуется сборка
+            <input
+              type="checkbox"
+              name="deliveryAssembly"
+              onChange={handleDeliveryAssemblyChange}
+              checked={deliveryAssembly}
+              className='mx-2 text-teal-300 rounded-full'
+            />
+          </label>
         </div>
+      </div>
 
       {/* Confirm Order Button */}
       <div className='my-3 flex justify-center items-center'>
         {!isLoading && (
-          <button 
-            onClick={completeOrder} 
+          <button
+            onClick={completeOrder}
             className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
           >
             Оформить Заказ
@@ -237,7 +268,10 @@ export default function Checkout({ user }: { user: UserType }) {
         )}
 
         {isLoading && (
-          <button className='btn mt-[2rem] w-full md:w-1/2 rounded-full bg-gray-100' disabled={true}>
+          <button
+            className='btn mt-[2rem] w-full md:w-1/2 rounded-full bg-gray-100'
+            disabled={true}
+          >
             Обработка заказа...
           </button>
         )}
