@@ -11,6 +11,7 @@ import createOrder from '@/functions/createOrder';
 import completePayment from '@/functions/completePayment';
 import { useRouter } from 'next/navigation';
 import getMinDeliveryDate from '@/util/getMinDeliveryDate';
+import getKZCities from '@/util/getKZCities';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
@@ -49,7 +50,7 @@ export default function Checkout({ user }: { user: UserType }) {
   const handleStreetChange = (e: React.FormEvent<HTMLInputElement>) => {
     setStreet(e.currentTarget.value)
   }
-  const handleCityChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleCityChange = (e: React.FormEvent<HTMLSelectElement>) => {
     setCity(e.currentTarget.value)
   }
   const handleZipChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -125,8 +126,7 @@ export default function Checkout({ user }: { user: UserType }) {
 
                 <h2 className='font-[dancingScript]'>{item.name}</h2>
                 <div className='flex gap-2'>
-                  <h2 className='font-[lobster]'>Количество:{item.quantity} </h2>
-                  <h2>{item.quantity}</h2>
+                  <h2 className='font-[lobster]'>Количество: {item.quantity} </h2>
                 </div>
                 <p className='font-semibold text-gray-400'>{discountPrice(item.price, item.discount)} <span className='text-teal-400 text-xs'>KZT</span></p>
               </div>
@@ -146,28 +146,56 @@ export default function Checkout({ user }: { user: UserType }) {
         <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-0 text-2xl' onClick={() => setEditMode(true)} />
         <div className='flex flex-col text-gray-500'>
           <label className='head-little'>Имя<span className='text-red-600'>*</span> </label>
-          {!editMode ? <span className='user-input text-xs font-roboto'>{name}</span>
-            : <input className='user-input text-xs font-roboto' type="text" value={name} onChange={handleNameChange} />}
+          <input
+            className='user-input text-xs font-roboto'
+            type="text"
+            value={name}
+            onChange={handleNameChange}
+            disabled={!editMode}
+          />
         </div>
         <div className='flex flex-col text-gray-500'>
           <label className='head-little'>Тел<span className='text-red-600'>*</span> </label>
-          {!editMode ? <span className='user-input text-xs font-roboto'>{user.phone}</span>
-            : <input className='user-input text-xs font-roboto' type="tel" value={phone} onChange={handlePhoneChange} />}
+          <input
+            className='user-input text-xs font-roboto'
+            type="tel"
+            value={phone}
+            onChange={handlePhoneChange}
+            disabled={!editMode}
+          />
         </div>
         <div className='flex flex-col text-gray-500'>
           <label className='head-little'>Адрес доставки<span className='text-red-600'>*</span> </label>
-          {!editMode ? <span className='user-input text-xs font-roboto'>{user.address?.street}</span>
-            : <input className='user-input text-xs font-roboto' type="text" value={street} onChange={handleStreetChange} />}
+          <input 
+            className='user-input text-xs font-roboto'
+            type="text"
+            value={street}
+            onChange={handleStreetChange}
+            disabled={!editMode}
+          />
         </div>
         <div className='flex flex-col text-gray-500'>
           <label className='head-little'>Город<span className='text-red-600'>*</span> </label>
-          {!editMode ? <span className='user-input text-xs font-roboto'>{user.address?.city}</span>
-            : <input className='user-input text-xs font-roboto' type="text" value={city} onChange={handleCityChange} />}
+          <select className='user-input text-xs font-roboto' onChange={handleCityChange} disabled={!editMode}>
+            {getKZCities().map((cityObj) => (
+              <option 
+                value={cityObj.engName}
+                selected={cityObj.engName === city ? true : false}
+              >
+                {cityObj.rusName}
+              </option>
+            ))}
+          </select>
         </div>
         <div className='flex flex-col text-gray-500'>
           <label className='head-little'>Индекс<span className='text-red-600'>*</span> </label>
-          {!editMode ? <span className='user-input text-xs font-roboto'>{user.address?.zip}</span>
-            : <input className='user-input text-xs font-roboto' type="text" value={zip} onChange={handleZipChange} />}
+          <input
+            className='user-input text-xs font-roboto'
+            type="text"
+            value={zip}
+            onChange={handleZipChange}
+            disabled={!editMode}
+          />
         </div>
         <div>
           <label className='text-base font-roboto text-gray-700'>
