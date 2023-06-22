@@ -24,14 +24,18 @@ export default {
         type: 'date',
       },
       {
-        name: 'deliveryType',
-        title: 'Delivery Type',
-        type: 'string',
+        name: 'deliveryAssembly',
+        title: 'Delivery Assmebly',
+        type: 'boolean',
       },
       {
-        delivery: 'deliveryStatus',
+        name: 'deliveryStatus',
         title: 'Delivery Status',
         type: 'string',
+        initialValue: 'unconfirmed',
+        options: {
+          list: ['unconfirmed', 'processing', 'dispatched', 'delivered']
+        }
       },
       {
         name: 'products',
