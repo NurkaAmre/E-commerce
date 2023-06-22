@@ -10,6 +10,7 @@ import discountPrice from '@/util/discountPrice';
 import createOrder from '@/functions/createOrder';
 import completePayment from '@/functions/completePayment';
 import { useRouter } from 'next/navigation';
+import getMinDeliveryDate from '@/util/getMinDeliveryDate';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
@@ -34,6 +35,7 @@ export default function Checkout({ user }: { user: UserType }) {
   const [street, setStreet] = useState(user.address?.street)
   const [city, setCity] = useState(user.address?.city)
   const [zip, setZip] = useState(user.address?.zip)
+  const [minDeliveryDate, setMinDeliveryDate] = useState(getMinDeliveryDate(city))
 
   // Event handlers
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -65,6 +67,7 @@ export default function Checkout({ user }: { user: UserType }) {
       zip
     }
   }
+
 
   const completeOrder = async () => {
     // Set loading status
@@ -160,23 +163,12 @@ export default function Checkout({ user }: { user: UserType }) {
             <span className='text-red-600'>*</span>
             <input
               type="date"
+              min={minDeliveryDate}
               name="deliveryDate"
               className='ml-[2rem] text-teal-400 rounded-lg p-2'
             />
           </label>
         </div>
-
-        <div className='flex justify-around'>
-          <div>
-            <label className='text-base font-lobster text-gray-700'>
-              Вне города
-              <input
-                type="checkbox"
-                name="outsideCity"
-                className='mx-2 text-teal-300'
-              />
-            </label>
-          </div>
 
           <div>
             <label className='text-base font-lobster text-gray-700'>
@@ -189,7 +181,6 @@ export default function Checkout({ user }: { user: UserType }) {
             </label>
           </div> 
         </div>
-      </div>
 
       {/* Confirm Order Button */}
       <div className='my-3 flex justify-center items-center'>
