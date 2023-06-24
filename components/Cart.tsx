@@ -49,7 +49,7 @@ export default function Cart({ user }: { user: UserType }) {
                   <h2>Количество: </h2>
                   <button onClick={() => cartStore.removeProduct(item)}><IoRemoveCircle /></button>
                   <h2>{item.quantity}</h2>
-                  <button onClick={() => cartStore.addProduct(item)}><IoAddCircle /></button>
+                  <button onClick={() => cartStore.addProduct({...item, quantity: 1})}><IoAddCircle /></button>
                 </div>
                 <p className='font-semibold text-gray-400 mt-2'>{discountPrice(item.price, item.discount)} <span className='text-teal-400'>KZT</span></p>
               </div>

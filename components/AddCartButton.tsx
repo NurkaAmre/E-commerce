@@ -2,12 +2,26 @@
 import { userCartStore } from "@/store"
 import { useState } from "react"
 
-const AddCartButton = (product : ProductType) => {
+const AddCartButton = (
+  {
+    product,
+    color,
+    quantity
+  }: {
+    product: ProductType,
+    color: {hex: string},
+    quantity: number
+  }) => {
   const cartStore = userCartStore();
   const [added, setAdded] = useState(false);
+  const cartIem = {
+    ...product,
+    color,
+    quantity
+  }
 
   const handleAddToCart = () => {
-    cartStore.addProduct(product)
+    cartStore.addProduct(cartIem)
     setAdded(true)
     setTimeout(() => {
       setAdded(false)

@@ -8,9 +8,10 @@ export type CartItem = {
   description: string;
   imagesURL: string[];
   price: number;
+  color: { hex: string };
   discount?: number;
   stock: number;
-  quantity?: number
+  quantity: number
   slug: {
     current: string;
   }; 
@@ -39,13 +40,13 @@ export const userCartStore = create<CartState>()(
         if(existingItem){
           const updatedCart = state.cart.map((cartItem) => {
             if(cartItem.id === item.id){
-              return {...cartItem, quantity: cartItem.quantity as any + 1}
+              return {...cartItem, quantity: cartItem.quantity + item.quantity}
             }
             return cartItem
           })
           return {cart: updatedCart}
         } else {
-          return {cart: [...state.cart, {...item, quantity: 1}]}
+          return {cart: [...state.cart, {...item}]}
         }
       }),
       removeProduct: (item) => set((state) => {
