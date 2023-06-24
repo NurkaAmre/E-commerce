@@ -15,7 +15,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   const favStore = userFavStore()
   const slug = params.slug;
   const [product, setProduct] = useState({} as ProductType);
-  const [color, setColor] = useState({hex: 'test'} as {hex: string});
+  const [color, setColor] = useState({} as {hex: string});
   const [multiplier, setMultiplier] = useState(1);
   let isLiked = false;
   if (favStore.favList.find((item) => item.id === product.id)) {
@@ -89,6 +89,9 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                     type="radio"
                     className="appearance-none border-2 border-gray-300 rounded-full cursor-pointer w-6 h-6 mr-2 checked:border-black/25"
                     style={{ backgroundColor: color.hex }}
+                    onChange={() => {
+                      setColor(color);
+                    }}
                   />
                 ))
               }
