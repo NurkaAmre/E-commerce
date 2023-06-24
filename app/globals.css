@@ -102,11 +102,6 @@ background-image: url(../public/set1.png);
   background: #d2c6b1;
   flex: 1 1 30rem;
 }
-.heading {
-  font-size: 3rem;
-    color: #fff;
-    line-height: 24px;
-  }
 
 
 .headingsm {
@@ -226,7 +221,7 @@ background: #d2c6b1a7;
   outline: none;
   line-height: 1.5rem;
   font-size: 1rem;
-    padding: 3px 4px;
+  padding: 3px 4px;
   }
   
   .head-little {
@@ -392,20 +387,27 @@ background: #d2c6b1a7;
   background: #EB6E45;
   width: 3rem;
   height: 3rem;
-  margin-top: 3%;
+  margin-top: 4%;
   border-radius: 50%;
-}
-.control-arrow {
-  width: 6px;
 }
 
 .carousel-status {
   color: #8CCCC1;
 }
 
-.carousel {
-  margin-left: 2rem;
+.carousel .control-arrow {
+  width: 20px;
 }
+
+.carousel .control-arrow::before {
+  border-left-color: #000 !important;
+  border-right-color: #000 !important;
+}
+
+.carousel-slider .control-arrow::before {
+  transform: translateX(-50%);
+}
+
 .discount1 {
   font-weight: bold;
   color: #fff;

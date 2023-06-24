@@ -1,14 +1,14 @@
 'use client'
 
-import { useTransition } from 'react'
 import updateUserData from '@/functions/updateUserData'
 import { useState } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
+import getKZCities from '@/util/getKZCities'
 
 export default function UserInfo({ user }: any) {
-  let [isPending, startTransition] = useTransition();
 
   const [message, setMessage] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   // Edit mode status for each card
   const [contactInfoEditMode, setContactInfoEditMode] = useState(false)
@@ -36,7 +36,7 @@ export default function UserInfo({ user }: any) {
   const handleStreetChange = (e: React.FormEvent<HTMLInputElement>) => {
     setStreet(e.currentTarget.value)
   }
-  const handleCityChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleCityChange = (e: React.FormEvent<HTMLSelectElement>) => {
     setCity(e.currentTarget.value)
   }
   const handleZipChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -63,59 +63,129 @@ export default function UserInfo({ user }: any) {
         <div className='flex flex-col relative w-[250px]'>
           <h3 className='text-2xl font-[castoro] font-bold text-left  text-gray-600 my-4'>Личные данные</h3>
           <div className='flex flex-col my-3 text-gray-700'>
-            <label className='text-sm'>Имя<span className='text-red-600'>*</span> </label>
-            <span className='user-input text-[10px] font-roboto'>{name}</span>
+            <label className='text-sm'>
+              Имя
+            </label>
+            <span className='user-input text-[10px] font-roboto'>
+              {name}
+            </span>
           </div>
         </div>
 
         {/* Contact info */}
         <div className='flex flex-col relative w-[250px]'>
-          <h3 className='text-2xl my-4 font-[castoro] font-bold text-gray-600'>Контакты</h3>
-          <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-5 text-2xl' onClick={() => setContactInfoEditMode(true)} />
+          <h3 className='text-2xl my-4 font-[castoro] font-bold text-gray-600'>
+            Контакты
+          </h3>
+          <AiFillEdit 
+            className='absolute cursor-pointer text-[#8CCCC1] right-0 top-5 text-2xl'
+            onClick={() => setContactInfoEditMode(true)}
+          />
           <div className='flex flex-col my-3  text-gray-700'>
-            <label className='head-little'>Тел<span className='text-red-600'>*</span> </label>
-            {!contactInfoEditMode ? <span className='user-input text-[10px] font-roboto'>{user.phone}</span>
-              : <input className='user-input text-[10px] font-roboto' type="tel" value={phone} onChange={handlePhoneChange} />}
+            <label className='head-little'>
+              Тел
+            </label>
+            <input
+              className='user-input text-xs font-roboto'
+              type="tel"
+              value={phone}
+              onChange={handlePhoneChange}
+              disabled={!contactInfoEditMode}
+            />
           </div>
           <div className='flex flex-col my-3'>
-            <label className='head-little'>E-mail<span className='text-red-600'>*</span> </label>
-            {!contactInfoEditMode ? <span className='user-input text-[10px] font-roboto'>{user.email}</span>
-              : <input className='user-input text-[10px] font-roboto' type="email" value={email} onChange={handleEmailChange} />}
+            <label className='head-little'>
+              E-mail
+            </label>
+            <input
+              className='user-input text-xs font-roboto'
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              disabled={!contactInfoEditMode}
+            />
           </div>
         </div>
 
         {/* Address info */}
         <div className='flex flex-col relative w-[250px]'>
-          <h2 className='text-2xl my-4 font-[castoro] font-bold text-gray-600 '>Адрес</h2>
-          <AiFillEdit className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-5 text-2xl' onClick={() => setAddressEditMode(true)} />
+          <h2 className='text-2xl my-4 font-[castoro] font-bold text-gray-600'>
+            Адрес
+          </h2>
+          <AiFillEdit 
+            className='absolute cursor-pointer text-[#8CCCC1]  right-0 top-5 text-2xl'
+            onClick={() => setAddressEditMode(true)} 
+          />
           <div className='flex flex-col my-3'>
-            <label className='head-little'>Адрес доставки<span className='text-red-600'>*</span> </label>
-            {!addressEditMode ? <span className='user-input text-[10px] font-roboto'>{user.address?.street}</span>
-              : <input className='user-input text-[10px] font-roboto' type="text" value={street} onChange={handleStreetChange} />}
+            <label className='head-little'>
+              Адрес доставки
+            </label>
+            <input
+              className='user-input text-xs font-roboto'
+              type="text"
+              value={street}
+              onChange={handleStreetChange}
+              disabled={!addressEditMode}
+            />
           </div>
-          <div className='flex flex-col my-3 text-gray-700'>
-            <label className='head-little'>Город<span className='text-red-600'>*</span> </label>
-            {!addressEditMode ? <span className='user-input text-[10px] font-roboto'>{user.address?.city}</span>
-              : <input className='user-input text-[10px] font-roboto' type="text" value={city} onChange={handleCityChange} />}
+          <div className='flex flex-col my-3'>
+            <label className='head-little'>
+              Город
+            </label>            
+            <select
+              className='user-input text-xs font-roboto'
+              onChange={handleCityChange}
+              disabled={!addressEditMode}
+            >
+              {getKZCities().map((cityObj) => (
+                <option
+                  value={cityObj.engName}
+                  selected={cityObj.engName === city ? true : false}
+                >
+                  {cityObj.rusName}
+                </option>
+              ))}
+            </select>
           </div>
-          <div className='flex flex-col text-[10px] my-3'>
-            <label className='head-little'>Индекс<span className='text-red-600'>*</span> </label>
-            {!addressEditMode ? <span className='user-input text-[10px] font-roboto'>{user.address?.zip}</span>
-              : <input className='user-input text-[10px] font-roboto' type="text" value={zip} onChange={handleZipChange} />}
-          </div>
+          <div className='flex flex-col my-3'>
+            <label className='head-little'>
+              Индекс
+            </label>
+            <input
+              className='user-input text-xs font-roboto'
+              type="text"
+              value={zip}
+              onChange={handleZipChange}
+              disabled={!addressEditMode}
+            />
+            </div>
 
         </div>
       </div>
       <div className='my-3 flex justify-center items-center'>
-        <button 
-          onClick={() => startTransition(async () => {
-            const response = await updateUserData(userData)
-            setMessage(response.message)
-          })} 
-          className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
-        >
-          Сохранить
-        </button>
+        {!isLoading && (
+          <button 
+            onClick={async () => {
+              // Set loading status
+              setIsLoading(true)
+              const response = await updateUserData(userData)
+              setIsLoading(false)
+              setMessage(response.message)
+            }} 
+            className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
+          >
+            Сохранить
+          </button>
+        )}
+        
+        {isLoading && (
+          <button
+            className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
+            disabled={true}
+          >
+            обновление...
+          </button>
+        )}
       </div>
       <span className='block mt-6'>{message}</span>
     </section >

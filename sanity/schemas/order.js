@@ -19,6 +19,25 @@ export default {
         type: 'string',
       },
       {
+        name: 'deliveryDate',
+        title: 'Delivery Date',
+        type: 'date',
+      },
+      {
+        name: 'deliveryAssembly',
+        title: 'Delivery Assmebly',
+        type: 'boolean',
+      },
+      {
+        name: 'deliveryStatus',
+        title: 'Delivery Status',
+        type: 'string',
+        initialValue: 'unconfirmed',
+        options: {
+          list: ['unconfirmed', 'processing', 'dispatched', 'delivered']
+        }
+      },
+      {
         name: 'products',
         title: 'Products',
         type: 'array',

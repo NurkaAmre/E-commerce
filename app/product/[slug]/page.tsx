@@ -36,7 +36,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 return product.imagesURL.map((imageURL: string) => {
                   return (
                     <Image
-                      className="max-h-[75px] md:mx-[2rem]"
+                      className="max-h-[75px]"
                       src={imageURL}
                       alt={product.name}
                       width={100}
@@ -79,8 +79,9 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             </div>
             <h3>Характеристики</h3>
             <hr />
-            <p className="font-[roboto]">{product.details}</p>
-            <div className="flex gap-10 mt-5">
+            <p className="font-roboto">{product.details}</p>
+            <div className="flex gap-5 md:gap-10 mt-5">
+
               <div className="flex self-center">
                 <button 
                   className="text-red-700 border-l border-t border-b rounded-l-xl hover:bg-gray-200 cursor-pointer p-2 flex items-center"
@@ -124,6 +125,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 }}
               >
                   Список желаний
+
               </button>
               ) : (
                 <button
@@ -131,6 +133,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                   disabled={true}
                 >
                     Список желаний
+
                 </button>
               )}
             </div>
