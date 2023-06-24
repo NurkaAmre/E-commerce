@@ -57,6 +57,11 @@ export default {
                 name: 'quantity',
                 title: 'Quantity',
                 type: 'number',
+              },
+              {
+                name: 'color',
+                title: 'Color',
+                type: 'color',
               }
             ]
           }

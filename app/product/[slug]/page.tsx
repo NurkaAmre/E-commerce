@@ -24,7 +24,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
     getProduct(slug).then((res) => {
       setProduct(res.data as ProductType);
     })
-  })
+  }, [])
 
   if (product.id) {
     return (

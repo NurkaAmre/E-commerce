@@ -10,6 +10,7 @@ export default async function getProduct(productSlug: string) {
     price,
     stock,
     details,
+    colors[]{hex},
     type,
     description,
     discount,
@@ -18,7 +19,8 @@ export default async function getProduct(productSlug: string) {
   }`;
 
   const product = await SanityClient.fetch(query, {productSlug});
-
+  console.log(product);
+  
   if (product) {
     status.code = 200;
     status.message = 'Product fetched successfully';
