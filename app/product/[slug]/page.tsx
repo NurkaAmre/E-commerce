@@ -123,14 +123,14 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                   favStore.toggleProduct(product)
                 }}
               >
-                Add To WishList
+                  Список желаний
               </button>
               ) : (
                 <button
                   className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-[180px]"
                   disabled={true}
                 >
-                  Added To WishList
+                    Список желаний
                 </button>
               )}
             </div>
