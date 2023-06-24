@@ -80,6 +80,18 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             <h3>Характеристики</h3>
             <hr />
             <p className="font-roboto">{product.details}</p>
+            <div>
+              {
+                product.colors.map((color: {hex: string}) => (
+                  <input
+                    name="color"
+                    type="radio"
+                    className="color"
+                    style={{ backgroundColor: color.hex }}
+                  />
+                ))
+              }
+            </div>
             <div className="flex gap-5 md:gap-10 mt-5">
 
               <div className="flex self-center">

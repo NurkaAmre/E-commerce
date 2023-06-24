@@ -8,6 +8,6 @@ type OrderType = {
   deliveryAssembly: boolean,
   user: UserType,
   address: AddressType,
-  products: {product: ProductType, quantity: number}[],
+  products: {product: ProductType, quantity: number, color: {hex: string}}[],
   createdAt: string,
 }
