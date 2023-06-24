@@ -40,7 +40,7 @@ function Footer() {
           </div>
           <div className='flex flex-row gap-3'>
             <FiMail className='text-xl phone-icon' />
-          <p>info@furniturewebsite.com</p>
+            <p>interior-mebel@proton.me</p>
           </div>
         </div>
 
@@ -54,18 +54,30 @@ function Footer() {
           </div>
           <h2 className='mb-2'>Мы в соцсетях:</h2>
           <ul className="flex justify-center gap-3">
-            <Link href="https://www.facebook.com/" className="hover:text-white text-white rounded-md text-2xl"><AiFillFacebook /></Link>
-            <Link href="https://www.instagram.com/" className="hover:text-white text-white rounded-md  text-2xl"><AiFillInstagram /></Link>
-            <Link href="https://www.twitter.com/" className="hover:text-text-white text-white rounded-md  text-2xl"><AiFillTwitterSquare /></Link>
+            <Link href="https://www.facebook.com/profile.php?id=100094086785165"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white text-white rounded-md text-2xl"><AiFillFacebook /></Link>
+            <Link href="https://www.instagram.com/interior_mebelkz/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white text-white rounded-md  text-2xl"><AiFillInstagram /></Link>
+            <Link href="https://www.twitter.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-text-white text-white rounded-md  text-2xl"><AiFillTwitterSquare /></Link>
           </ul>
         </div>
       </div>
 
-      <div className='max-w-fit mx-auto text-gray-400 py-4 font-lobster font-bold'>
-        <span>Made with <i className='text-red-500 px-1 text-2xl'>&#9829;</i> by
-          <Link className='text-gray-300 underline px-1' href={'https://github.com/NurkaAmre'}>Nurka</Link> 
+      <div className='max-w-fit mx-auto py-4 font-sans font-bold'>
+        <span>Made with <i className='text-red-700 text-lg'>&#9829;</i> by 
+          <Link className='text-blue-400 underline mx-1' target="_blank"
+            rel="noreferrer" href={'https://github.com/NurkaAmre'}>Nurka</Link> 
           & 
-          <Link className='text-gray-300 underline px-1' href={'https://github.com/ouasamine'}>Amine</Link>
+          <Link className='text-blue-400 underline mx-1' target="_blank"
+            rel="noreferrer" href={'https://github.com/ouasamine'}>Amine</Link>
+
         </span>
       </div>
     </footer>
