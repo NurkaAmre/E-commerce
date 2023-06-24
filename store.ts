@@ -51,10 +51,10 @@ export const userCartStore = create<CartState>()(
       }),
       removeProduct: (item) => set((state) => {
         //check if the item exists and remove quantity -1
-        const existingItem = state.cart.find((cartItem) => cartItem.id === item.id)
+        const existingItem = state.cart.find((cartItem) => cartItem.id === item.id && cartItem.color.hex === item.color.hex)
         if(existingItem && existingItem.quantity as any > 1){
           const updatedCart = state.cart.map((cartItem) => {
-            if(cartItem.id === item.id){
+            if(cartItem.id === item.id && cartItem.color.hex === item.color.hex){
               return {...cartItem, quantity: cartItem.quantity as any - 1}
             }
             return cartItem
@@ -62,7 +62,7 @@ export const userCartStore = create<CartState>()(
           return {cart: updatedCart}
         } else {
           //remove item from cart
-          const filteredCart = state.cart.filter((cartItem) => cartItem.id !== item.id)
+          const filteredCart = state.cart.filter((cartItem) => cartItem.id !== item.id || cartItem.color.hex !== item.color.hex)
           return {cart: filteredCart}
         }
       }),
