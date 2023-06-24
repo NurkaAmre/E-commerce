@@ -10,7 +10,7 @@ export default async function getProduct(productSlug: string) {
     price,
     stock,
     details,
-    colors[]{hex},
+    colors[],
     type,
     description,
     discount,

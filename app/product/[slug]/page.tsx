@@ -83,7 +83,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             <p className="font-roboto">{product.details}</p>
             <div className="my-4">
               {
-                product.colors.map((color: {hex: string}) => (
+                product.colors?.map((color: {hex: string}) => (
                   <input
                     name="color"
                     type="radio"
