@@ -12,6 +12,7 @@ import SearchBar from "./SearchBar";
 import Cart from "./Cart"
 import logo from '@/public/logo3.svg'
 import CallButton from "./CallButton"
+import MetaPixel from '../functions/metadata'
 
 const Nav = ({ user }:  {user: UserType}) => {
   const cartStore = userCartStore()
@@ -28,6 +29,7 @@ const Nav = ({ user }:  {user: UserType}) => {
   return (
     <>
       <nav className="flex fixed justify-between text-gray-600 items-center gap-4 px-10 py-4 md:py-1 font-[castoro] w-full z-20">
+        <MetaPixel />
       <button className="md:hidden text-3xl" onClick={menuButtonClick}>
         <AiOutlineMenu></AiOutlineMenu>
       </button>
