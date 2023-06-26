@@ -1,13 +1,36 @@
 'use client'
 import { userCartStore } from "@/store"
 import { useState } from "react"
+import { CartItem } from "@/store"
 
-const AddCartButton = (product : ProductType) => {
+const AddCartButton = (
+  {
+    product,
+    color,
+    quantity
+  }: {
+    product: ProductType,
+    color: {hex: string},
+    quantity: number
+  }) => {
   const cartStore = userCartStore();
   const [added, setAdded] = useState(false);
+  const cartIem = {
+    id: product.id,
+    name: product.name,
+    details: product.details,
+    description: product.description,
+    price: product.price,
+    discount: product.discount,
+    imagesURL: product.imagesURL,
+    color,
+    quantity,
+    stock: product.stock,
+    slug: product.slug
+  } as CartItem
 
   const handleAddToCart = () => {
-    cartStore.addProduct(product)
+    cartStore.addProduct(cartIem)
     setAdded(true)
     setTimeout(() => {
       setAdded(false)

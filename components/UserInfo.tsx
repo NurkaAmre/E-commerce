@@ -64,7 +64,7 @@ export default function UserInfo({ user }: any) {
           <h3 className='text-2xl font-[castoro] font-bold text-left  text-gray-600 my-4'>Личные данные</h3>
           <div className='flex flex-col my-3 text-gray-700'>
             <label className='text-sm'>
-              Имя
+              Имя<span className='text-teal-400'>*</span>
             </label>
             <span className='user-input text-[10px] font-roboto'>
               {name}
@@ -83,7 +83,7 @@ export default function UserInfo({ user }: any) {
           />
           <div className='flex flex-col my-3  text-gray-700'>
             <label className='head-little'>
-              Тел
+              Тел<span className='text-teal-400'>*</span>
             </label>
             <input
               className='user-input text-xs font-roboto'
@@ -95,7 +95,7 @@ export default function UserInfo({ user }: any) {
           </div>
           <div className='flex flex-col my-3'>
             <label className='head-little'>
-              E-mail
+              E-mail<span className='text-teal-400'>*</span>
             </label>
             <input
               className='user-input text-xs font-roboto'
@@ -118,7 +118,7 @@ export default function UserInfo({ user }: any) {
           />
           <div className='flex flex-col my-3'>
             <label className='head-little'>
-              Адрес доставки
+              Адрес доставки<span className='text-teal-400'>*</span>
             </label>
             <input
               className='user-input text-xs font-roboto'
@@ -130,7 +130,7 @@ export default function UserInfo({ user }: any) {
           </div>
           <div className='flex flex-col my-3'>
             <label className='head-little'>
-              Город
+              Город<span className='text-teal-400'>*</span>
             </label>            
             <select
               className='user-input text-xs font-roboto'
@@ -149,7 +149,7 @@ export default function UserInfo({ user }: any) {
           </div>
           <div className='flex flex-col my-3'>
             <label className='head-little'>
-              Индекс
+              Индекс<span className='text-teal-400'>*</span>
             </label>
             <input
               className='user-input text-xs font-roboto'

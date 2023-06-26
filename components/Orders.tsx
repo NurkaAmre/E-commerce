@@ -10,27 +10,27 @@ export default function Orders({ orders }: { orders: OrderType[]}) {
       <motion.div layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         {orders ? orders.map((order) => (
           <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md">
-            <h2 className="text-xs font-medium">Order reference: {order.id}</h2>
+            <h2 className="text-xs font-medium">Код заказа: {order.id}</h2>
             <p className="text-xs font-[castoro]">
-              Status:
+              Статус:
               {order.status === 'success' && (
                 <span className="text-white py-1 bg-teal-500 rounded-full px-2 mx-2 text-xs">
-                  Completed
+                  Завершенный
                 </span>
               )}
               {order.status === 'pending' && (
                 <span className="text-white py-1 bg-orange-500 rounded-full px-2 mx-2 text-xs">
-                  Pending
+                  В ожидании
                 </span>
               )}
               {order.status === 'failed' && (
                 <span className="text-white py-1 bg-red-600 rounded-full px-2 mx-2 text-xs">
-                  Canceled
+                  Отменено
                 </span>
               )}
             </p>
             <p className="text-xs">
-              Time: {new Date(order.createdAt).toLocaleString()}
+              Время: {new Date(order.createdAt).toLocaleString()}
             </p>
             {order.products.map(({product, quantity}) => (
               <div className="text-sm lg:flex items-center gap-4">
@@ -46,19 +46,19 @@ export default function Orders({ orders }: { orders: OrderType[]}) {
                       className="w-auto"
                     />
                     <p className="font-medium  text-gray-500">{product.price} KZT</p>
-                    <p className="font-[castoro]">Quantity: {quantity}</p>
+                    <p className="font-[castoro]">Количество: {quantity}</p>
                   </div>
                 </div>
               </div>
             ))}
             
             <p className="font-medium py-2">
-              Total: {order.amount} KZT
+              Сумма: {order.amount} KZT
             </p>
           </div>
         )): (
           <div className="rounded-lg p-8 my-4 space-y-2 -inset-2 shadow-md">
-            <h2 className="text-xs font-medium">No orders yet</h2>
+              <h2 className="text-xs font-medium">Пусто</h2>
           </div>
         ) }
       </motion.div>

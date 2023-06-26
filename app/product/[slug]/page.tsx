@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 import { AiOutlineMinus, AiOutlinePlus, AiFillStar, AiOutlineStar } from 'react-icons/ai';
-import { userFavStore } from '@/store'
+import { CartItem, userFavStore } from '@/store'
 import discountPrice from "@/util/discountPrice";
 import AddCartButton from "@/components/AddCartButton";
 import getProduct from "@/functions/getProduct";
@@ -15,6 +15,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   const favStore = userFavStore()
   const slug = params.slug;
   const [product, setProduct] = useState({} as ProductType);
+  const [color, setColor] = useState({} as {hex: string});
   const [multiplier, setMultiplier] = useState(1);
   let isLiked = false;
   if (favStore.favList.find((item) => item.id === product.id)) {
@@ -24,7 +25,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
     getProduct(slug).then((res) => {
       setProduct(res.data as ProductType);
     })
-  })
+  }, [])
 
   if (product.id) {
     return (
@@ -80,6 +81,21 @@ export default function ProductDetails({ params }: { params: { slug: string } })
             <h3>Характеристики</h3>
             <hr />
             <p className="font-roboto">{product.details}</p>
+            <div className="my-4">
+              {
+                product.colors?.map((color: {hex: string}) => (
+                  <input
+                    name="color"
+                    type="radio"
+                    className="appearance-none border-2 border-gray-300 rounded-full cursor-pointer w-6 h-6 mr-2 checked:border-black/25"
+                    style={{ backgroundColor: color.hex }}
+                    onChange={() => {
+                      setColor(color);
+                    }}
+                  />
+                ))
+              }
+            </div>
             <div className="flex gap-5 md:gap-10 mt-5">
 
               <div className="flex self-center">
@@ -115,7 +131,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                 )}
             </div>
             <div className="flex flex-wrap gap-6 my-10">
-              <AddCartButton { ...product } />
+              <AddCartButton product={product} color={color} quantity={multiplier} />
               {!isLiked ? (
                 <button 
                 type="button"
@@ -124,14 +140,16 @@ export default function ProductDetails({ params }: { params: { slug: string } })
                   favStore.toggleProduct(product)
                 }}
               >
-                избранное
+                  Список желаний
+
               </button>
               ) : (
                 <button
                   className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-[180px]"
                   disabled={true}
                 >
-                  любимый
+                    Список желаний
+
                 </button>
               )}
             </div>

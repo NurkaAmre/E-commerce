@@ -11,8 +11,8 @@ export default function MainSection (){
             <h2 className='text-4xl md:text-6xl text-white leading-9'><span className='highLight text-5xl md:text-7xl'>М</span>ебельный магазин</h2>
             <h2 className='text-4xl text-white md:text-6xl leading-8'><span className='highLight  md:text-7xl text-5xl'>И</span>нтерьер</h2>
           </div>
-          <p className='headingsm'>
-            Обустройте свою гостиную с нашей стильной мебелью. Изысканные диваны, удобные кресла и функциональные столики создадут атмосферу уюта и комфорта.
+          <p className='headingsm md:mt-3'>
+            Обустройте свою гостиную с нашей стильной мебелью. Изысканные диваны, удобные кресла и функциональные столики создадут атмосферу уюта и комфорта. 
           </p>
         </div>
 

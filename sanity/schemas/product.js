@@ -41,7 +41,7 @@ export default {
       name: 'colors',
       title: 'Colors',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'color' }],
     },
     {
       name: 'price',

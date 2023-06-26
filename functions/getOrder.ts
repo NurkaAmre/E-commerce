@@ -28,6 +28,7 @@ export default async function getOrder(orderId: string) {
     },
     products[]{
       quantity,
+      color,
       "product": product->{
       "id": _id,
       name,

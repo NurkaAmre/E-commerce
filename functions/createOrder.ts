@@ -12,16 +12,21 @@ export default async function createOrder(
     deliveryInfo: {deliveryDate: string, deliveryAssembly: boolean}
   ) {
   let status = {code: 0, message: '', data: {}};
+
+  // Create order products array
   const products = cartItems.map((item) => {
     return {
       _key: randomUUID(),
       quantity: item.quantity,
+      color: item.color,
       product: {
         _type: 'reference',
         _ref: item.id,
       },
     }
   })
+
+  // Create the order
   const order = await SanityClient.create({
     _type: 'order',
     status: 'pending',
