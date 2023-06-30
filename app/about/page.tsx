@@ -55,7 +55,7 @@ const AboutUs = () => {
         <div className="testimonial-card">
           <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>
-            <p className="client-name">Name of Client</p>
+            <p className="client-name">Олжас</p>
             <div className="review-stars text-red-500">
               <AiFillStar />
               <AiFillStar />
@@ -71,13 +71,13 @@ const AboutUs = () => {
         <div className="testimonial-card">
           <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>
-            <p className="client-name">Name of Client</p>
+            <p className="client-name">Асем</p>
             <div className="review-stars text-red-500">
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
-              <AiOutlineStar />
+              <AiFillStar />
             </div>
           </div>
           <p className="testimonial-text">
@@ -87,12 +87,12 @@ const AboutUs = () => {
         <div className="testimonial-card">
           <FaUserCircle className='text-yellow-900 text-4xl' />
           <div>
-            <p className="client-name">Name of Client</p>
+            <p className="client-name">Жанар</p>
             <div className="review-stars text-red-500">
               <AiFillStar />
               <AiFillStar />
               <AiFillStar />
-              <AiFillStar />
+              <AiOutlineStar />
               <AiOutlineStar />
             </div>
           </div>
