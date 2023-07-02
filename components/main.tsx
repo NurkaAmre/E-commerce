@@ -5,7 +5,7 @@ import sofa from '@/public/set1.png'
 export default function MainSection (){
   return (
     <>
-      <div className="grid grid-cols-1 w-4/5 mx-auto font-[cormorant] mt-[180px] md:grid-cols-2">
+      <div className="grid md:mb-[10rem] grid-cols-1 w-4/5 mx-auto font-[cormorant] mt-[180px] md:grid-cols-2">
         <div className="flex flex-col items-center text-center pb-4 md:py-12 bg-[#788A74]">
           <div className='heading mt-8'>
             <h2 className='text-4xl md:text-6xl text-white leading-9'><span className='highLight text-5xl md:text-7xl'>М</span>ебельный магазин</h2>

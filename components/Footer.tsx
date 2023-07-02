@@ -70,16 +70,16 @@ function Footer() {
         </div>
       </div>
 
-      <div className='max-w-fit mx-auto py-4 font-lobster font-bold'>
-        <span>Made with <i className='text-red-700 text-xl'>&#9829; </i> by 
+      {/* <div className='max-w-fit mx-auto py-4 font-lobster font-bold'>
+        <span>Made with <i className='text-red-700 text-xl'>&#9829; </i> by
           <Link className='text-blue-400 underline mx-1' target="_blank"
-            rel="noreferrer" href={'https://github.com/NurkaAmre'}>Nurka</Link> 
-          & 
+            rel="noreferrer" href={'https://github.com/NurkaAmre'}>Nurka</Link>
+          &
           <Link className='text-blue-400 underline mx-1' target="_blank"
             rel="noreferrer" href={'https://github.com/ouasamine'}>Amine</Link>
 
         </span>
-      </div>
+      </div> */}
     </footer>
   );
 }
