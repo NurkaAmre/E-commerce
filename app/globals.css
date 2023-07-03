@@ -142,11 +142,11 @@ margin-right: 5%;
 .discount-section {
   display: flex;
   flex-direction: column;
-  margin-top: 6rem;
+  margin-top: 3rem;
   justify-content: center;
 }
 
-.discount-heading{
+.discount-heading {
     letter-spacing: 1rem;
     font-size: 4rem;
 }
@@ -430,7 +430,7 @@ background: #d2c6b1a7;
 
 .marquee {
   position: relative;
-  height: 500px;
+  height: 400px;
   width: 100%;
   overflow-x: hidden;
 }

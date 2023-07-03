@@ -4,7 +4,7 @@ import Link from "next/link"
 
 export default function DeliveryServices() {
   return(
-    <section className="w-4/5 mx-auto my-20 flex flex-col md:flex-row">
+    <section className="w-4/5 mx-auto mb-20 flex flex-col md:flex-row">
       <div className="bg-[#d2c6b1a7] md:w-1/2 py-10 text-center">
         <div>
           <h1 className="font-bold  text-gray-800 opacity-50 text-4xl md:text-5xl ">Доставка и Услуги</h1>
