@@ -41,7 +41,7 @@ const Nav = ({ user }:  {user: UserType}) => {
       {/* Desktop Menu */}
       <ul className="hidden md:flex">
           <li className="mr-6 cursor-pointer whitespace-nowrap text-xl group">
-            <button role="list">Товары</button>
+            <Link href={'#category'} role="list">Товары</Link>
             <ul className="hidden absolute pr-[0.8rem] pl-[0.8rem] text-white pt-[0.3rem] pb-[0.3rem] group-hover:flex flex-col gap-1 hidden-category z-40">
               <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
               <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
@@ -52,7 +52,7 @@ const Nav = ({ user }:  {user: UserType}) => {
           <li className="mr-6 cursor-pointer text-xl whitespace-nowrap">
             <Link href={'/about'}>О Компании</Link>
           </li>
-          <li className="mr-6 cursor-pointer text-xl whitespace-nowrap">
+          <li className="mr-6 cursor-pointer text-xl whitespace-nowrap sale">
             <Link href={'#discounts'}>Акции</Link>
           </li>
       </ul>

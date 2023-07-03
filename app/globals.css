@@ -424,6 +424,10 @@ background: #d2c6b1a7;
   border: #2cb9d8;
 }
 
+.sale {
+  border: 2px solid #545d62;
+  padding: 0rem 0.8rem;
+}
 .btn-xs:hover {
   background: transparent;
 }
