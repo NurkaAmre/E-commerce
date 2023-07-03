@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { AiFillEdit, AiFillInfoCircle } from 'react-icons/ai'
+import { useEffect, useState } from 'react'
+import { AiFillInfoCircle } from 'react-icons/ai'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { userCartStore } from '@/store';
@@ -12,13 +12,14 @@ import completePayment from '@/functions/completePayment';
 import { useRouter } from 'next/navigation';
 import getMinDeliveryDate from '@/util/getMinDeliveryDate';
 import getKZCities from '@/util/getKZCities';
+import getDeliveryFee from '@/util/getDeliveryFee';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   const router = useRouter()
-  // Total Price
-  const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + (discountPrice(item.price, item.discount) * (item.quantity as any))
+  // Total Products Price
+  const subTotal = cartStore.cart.reduce((acc, item) => {
+    return acc + (discountPrice(item.price, item.discount) * (item.quantity as number))
   }, 0)
 
   const [message, setMessage] = useState('')
@@ -35,7 +36,15 @@ export default function Checkout({ user }: { user: UserType }) {
   const [zip, setZip] = useState(user.address?.zip)
   const [deliveryDate, setDeliveryDate] = useState('')
   const [deliveryAssembly, setDeliveryAssembly] = useState(false)
-  const [minDeliveryDate, setMinDeliveryDate] = useState(getMinDeliveryDate(city))
+  const [minDeliveryDate, setMinDeliveryDate] = useState('')
+  const [deliveryFee, setDeliveryFee] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    setMinDeliveryDate(getMinDeliveryDate(city))
+    setDeliveryFee(getDeliveryFee(city))
+    setTotalPrice(subTotal + deliveryFee)
+  }, [city])
 
   // Event handlers
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -133,14 +142,26 @@ export default function Checkout({ user }: { user: UserType }) {
                 </div>
                 <p className='font-semibold text-gray-400'>
                   {discountPrice(item.price, item.discount)}
-                  <span className='text-teal-400 text-xs'>KZT</span>
+                  <span className='text-teal-400 text-xs'> KZT</span>
                 </p>
               </div>
             </motion.div>
           ))}
+          <p className='font-roboto text-gray-600 mt-6'>
+            <div>
+              Промежуточный итог: {subTotal}
+              <span className='text-teal-400'> KZT</span>
+            </div>
+            <div>
+              Плата за доставку: {deliveryFee || <span className='italic'>
+                Стоимость доставки определяется независимой транспортной компанией и оплачивается при получении товара.
+                </span>} 
+              {deliveryFee > 0 && <span className='text-teal-400'> KZT</span>}
+            </div>
+          </p>
           <p className='font-bold font-roboto text-gray-600 mt-6'>
             Сумма к оплате: {totalPrice}
-            <span className='text-teal-400 text-xs'>KZT</span>
+            <span className='text-teal-400 text-xs'> KZT</span>
           </p>
         </div>
       </div>
