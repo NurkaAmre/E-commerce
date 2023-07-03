@@ -23,9 +23,6 @@ export default function Checkout({ user }: { user: UserType }) {
 
   const [message, setMessage] = useState('')
 
-  // Edit mode status
-  const [editMode, setEditMode] = useState(false)
-
   // Order status
   const [isLoading, setIsLoading] = useState(false)
 
@@ -157,10 +154,6 @@ export default function Checkout({ user }: { user: UserType }) {
         <hr />
       </div>
       <div className='flex flex-col gap-4 justify-center relative'>
-        <AiFillEdit
-          className='absolute cursor-pointer right-0 top-0 text-2xl'
-          onClick={() => setEditMode(true)}
-        />
         <div className='flex flex-col'>
           <label className='head-little'>
             Имя<span className='text-red-600'>*</span> 
@@ -170,7 +163,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="text"
             value={name}
             onChange={handleNameChange}
-            disabled={!editMode}
           />
         </div>
         <div className='flex flex-col'>
@@ -182,7 +174,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="tel"
             value={phone}
             onChange={handlePhoneChange}
-            disabled={!editMode}
           />
         </div>
         <div className='flex flex-col'>
@@ -194,7 +185,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="text"
             value={street}
             onChange={handleStreetChange}
-            disabled={!editMode}
           />
         </div>
         <div className='flex flex-col'>
@@ -204,7 +194,6 @@ export default function Checkout({ user }: { user: UserType }) {
           <select
             className='user-input text-xs font-roboto'
             onChange={handleCityChange}
-            disabled={!editMode}
           >
             {getKZCities().map((cityname) => (
               <option
@@ -225,7 +214,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="text"
             value={zip}
             onChange={handleZipChange}
-            disabled={!editMode}
           />
         </div>
         <div>
