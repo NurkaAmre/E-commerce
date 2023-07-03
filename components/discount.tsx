@@ -23,7 +23,7 @@ export default async function Discount (){
     <> 
       <section id="discounts" className='discount-section'>
         <h1 className='text-3xl md:text-4xl font-roboto font-medium text-green-950-700 opacity-50 ml-[2rem] md:ml-[10rem]'>Товары со скидкой</h1>
-        <hr className='my-2 h-3 mb-[1rem] text-gray-900 mx-[2rem] md:mx-[10rem]' />
+        <hr className='my-2 h-3 mb-[1rem] text-gray-900 mx-[2rem] md:mx-[10rem] md:mb-10' />
         <div className="marquee">
           <div className='justify-center relative ml-10 maylike-products-container track flex flex-row gap-4'>
             {products.map((product: any) => (
