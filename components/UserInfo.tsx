@@ -137,12 +137,12 @@ export default function UserInfo({ user }: any) {
               onChange={handleCityChange}
               disabled={!addressEditMode}
             >
-              {getKZCities().map((cityObj) => (
+              {getKZCities().map((cityName) => (
                 <option
-                  value={cityObj.engName}
-                  selected={cityObj.engName === city ? true : false}
+                  value={cityName}
+                  selected={cityName === city ? true : false}
                 >
-                  {cityObj.rusName}
+                  {cityName}
                 </option>
               ))}
             </select>
