@@ -239,29 +239,29 @@ export default function Checkout({ user }: { user: UserType }) {
         </div>
         <div>
           <label className='text-base font-roboto text-gray-700'>
-            желаемая дата доставки
-            <input
-              type="date"
-              min={minDeliveryDate}
-              value={deliveryDate}
-              onChange={handleDeliveryDateChange}
-              name="deliveryDate"
-              className='ml-[2rem] text-teal-400 rounded-lg p-2'
-            />
+            желаемая дата доставки (неконтрактный)
           </label>
+          <input
+            type="date"
+            min={minDeliveryDate}
+            value={deliveryDate}
+            onChange={handleDeliveryDateChange}
+            name="deliveryDate"
+            className='ml-[2rem] text-teal-400 rounded-lg p-2'
+          />
         </div>
 
         <div>
           <label className='text-base font-lobster text-gray-700'>
             Требуется сборка
-            <input
+          </label>
+          <input
               type="checkbox"
               name="deliveryAssembly"
               onChange={handleDeliveryAssemblyChange}
               checked={deliveryAssembly}
               className='mx-2 text-teal-300 rounded-full'
             />
-          </label>
         </div>
       </div>
 
