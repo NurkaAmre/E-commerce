@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { AiFillEdit, AiFillInfoCircle } from 'react-icons/ai'
+import { useEffect, useState } from 'react'
+import { AiFillInfoCircle } from 'react-icons/ai'
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { userCartStore } from '@/store';
@@ -12,19 +12,17 @@ import completePayment from '@/functions/completePayment';
 import { useRouter } from 'next/navigation';
 import getMinDeliveryDate from '@/util/getMinDeliveryDate';
 import getKZCities from '@/util/getKZCities';
+import getDeliveryFee from '@/util/getDeliveryFee';
 
 export default function Checkout({ user }: { user: UserType }) {
   const cartStore = userCartStore()
   const router = useRouter()
-  // Total Price
-  const totalPrice = cartStore.cart.reduce((acc, item) => {
-    return acc + (discountPrice(item.price, item.discount) * (item.quantity as any))
+  // Total Products Price
+  const subTotal = cartStore.cart.reduce((acc, item) => {
+    return acc + (discountPrice(item.price, item.discount) * (item.quantity as number))
   }, 0)
 
   const [message, setMessage] = useState('')
-
-  // Edit mode status
-  const [editMode, setEditMode] = useState(false)
 
   // Order status
   const [isLoading, setIsLoading] = useState(false)
@@ -38,7 +36,15 @@ export default function Checkout({ user }: { user: UserType }) {
   const [zip, setZip] = useState(user.address?.zip)
   const [deliveryDate, setDeliveryDate] = useState('')
   const [deliveryAssembly, setDeliveryAssembly] = useState(false)
-  const [minDeliveryDate, setMinDeliveryDate] = useState(getMinDeliveryDate(city))
+  const [minDeliveryDate, setMinDeliveryDate] = useState('')
+  const [deliveryFee, setDeliveryFee] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
+
+  useEffect(() => {
+    setMinDeliveryDate(getMinDeliveryDate(city))
+    setDeliveryFee(getDeliveryFee(city))
+    setTotalPrice(subTotal + deliveryFee)
+  }, [city])
 
   // Event handlers
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -136,14 +142,26 @@ export default function Checkout({ user }: { user: UserType }) {
                 </div>
                 <p className='font-semibold text-gray-400'>
                   {discountPrice(item.price, item.discount)}
-                  <span className='text-teal-400 text-xs'>KZT</span>
+                  <span className='text-teal-400 text-xs'> KZT</span>
                 </p>
               </div>
             </motion.div>
           ))}
+          <p className='font-roboto text-gray-600 mt-6'>
+            <div>
+              Промежуточный итог: {subTotal}
+              <span className='text-teal-400'> KZT</span>
+            </div>
+            <div>
+              Плата за доставку: {deliveryFee || <span className='italic'>
+                Стоимость доставки определяется независимой транспортной компанией и оплачивается при получении товара.
+                </span>} 
+              {deliveryFee > 0 && <span className='text-teal-400'> KZT</span>}
+            </div>
+          </p>
           <p className='font-bold font-roboto text-gray-600 mt-6'>
             Сумма к оплате: {totalPrice}
-            <span className='text-teal-400 text-xs'>KZT</span>
+            <span className='text-teal-400 text-xs'> KZT</span>
           </p>
         </div>
       </div>
@@ -157,10 +175,6 @@ export default function Checkout({ user }: { user: UserType }) {
         <hr />
       </div>
       <div className='flex flex-col gap-4 justify-center relative'>
-        <AiFillEdit
-          className='absolute cursor-pointer right-0 top-0 text-2xl'
-          onClick={() => setEditMode(true)}
-        />
         <div className='flex flex-col'>
           <label className='head-little'>
             Имя<span className='text-red-600'>*</span> 
@@ -170,7 +184,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="text"
             value={name}
             onChange={handleNameChange}
-            disabled={!editMode}
           />
         </div>
         <div className='flex flex-col'>
@@ -182,7 +195,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="tel"
             value={phone}
             onChange={handlePhoneChange}
-            disabled={!editMode}
           />
         </div>
         <div className='flex flex-col'>
@@ -194,7 +206,6 @@ export default function Checkout({ user }: { user: UserType }) {
             type="text"
             value={street}
             onChange={handleStreetChange}
-            disabled={!editMode}
           />
         </div>
         <div className='flex flex-col'>
@@ -204,14 +215,13 @@ export default function Checkout({ user }: { user: UserType }) {
           <select
             className='user-input text-xs font-roboto'
             onChange={handleCityChange}
-            disabled={!editMode}
           >
-            {getKZCities().map((cityObj) => (
+            {getKZCities().map((cityname) => (
               <option
-                value={cityObj.engName}
-                selected={cityObj.engName === city ? true : false}
+                value={cityname}
+                selected={cityname === city ? true : false}
               >
-                {cityObj.rusName}
+                {cityname}
               </option>
             ))}
           </select>
@@ -225,34 +235,33 @@ export default function Checkout({ user }: { user: UserType }) {
             type="text"
             value={zip}
             onChange={handleZipChange}
-            disabled={!editMode}
           />
         </div>
         <div>
           <label className='text-base font-roboto text-gray-700'>
-            желаемая дата доставки
-            <input
-              type="date"
-              min={minDeliveryDate}
-              value={deliveryDate}
-              onChange={handleDeliveryDateChange}
-              name="deliveryDate"
-              className='ml-[2rem] text-teal-400 rounded-lg p-2'
-            />
+            желаемая дата доставки (неконтрактный)
           </label>
+          <input
+            type="date"
+            min={minDeliveryDate}
+            value={deliveryDate}
+            onChange={handleDeliveryDateChange}
+            name="deliveryDate"
+            className='ml-[2rem] text-teal-400 rounded-lg p-2'
+          />
         </div>
 
         <div>
           <label className='text-base font-lobster text-gray-700'>
             Требуется сборка
-            <input
+          </label>
+          <input
               type="checkbox"
               name="deliveryAssembly"
               onChange={handleDeliveryAssemblyChange}
               checked={deliveryAssembly}
               className='mx-2 text-teal-300 rounded-full'
             />
-          </label>
         </div>
       </div>
 
