@@ -206,12 +206,12 @@ export default function Checkout({ user }: { user: UserType }) {
             onChange={handleCityChange}
             disabled={!editMode}
           >
-            {getKZCities().map((cityObj) => (
+            {getKZCities().map((cityname) => (
               <option
-                value={cityObj.engName}
-                selected={cityObj.engName === city ? true : false}
+                value={cityname}
+                selected={cityname === city ? true : false}
               >
-                {cityObj.rusName}
+                {cityname}
               </option>
             ))}
           </select>
