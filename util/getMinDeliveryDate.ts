@@ -1,15 +1,17 @@
 export default function getMinDeliveryDate(city: string) {
-  // Current Date
-  const currentDate = new Date()
-  let deliveryPeriod = 1
+  let deliveryPeriod = 10
   switch (city) {
-    case 'Almatay':
-      deliveryPeriod = 1
+    case 'Almaty':
+      deliveryPeriod = 2
   } 
+  // Current Date
+  const currentDate = new Date();
+  const minDeliveryDate = new Date();
+  minDeliveryDate.setDate(currentDate.getDate() + deliveryPeriod);
 
-  const currentYear = currentDate.getFullYear()
-  const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, "0")
-  const currentDay = (currentDate.getDate() + deliveryPeriod).toString().padStart(2, "0")
+  const minYear = minDeliveryDate.getFullYear()
+  const minMonth = (minDeliveryDate.getMonth() + 1).toString().padStart(2, "0")
+  const minDay = minDeliveryDate.getDate().toString().padStart(2, "0")
     
-  return `${currentYear}-${currentMonth}-${currentDay}`
+  return `${minYear}-${minMonth}-${minDay}`
 }
