@@ -11,9 +11,9 @@ export default function DeliveryServices() {
           {/* <h2 className="font-bold text-4xl text-gray-800 md:text-5xl leading-6 opacity-50 ">Услуги</h2> */}
         </div>
         <div className="mt-3">
-          <h3 className="font-medium font font-[castoro] text-3xl"> Мы упрощаем</h3>
-          <h3 className="font-medium font font-[castoro] text-3xl"> Все  </h3>
-          <h3 className="font-medium font font-[castoro] text-3xl"> Для вас  </h3>
+          <h3 className="font-medium font font-[castoro] text-2xl">Все просто!</h3>
+          <h3 className="font-medium font font-[castoro] text-2xl">Все хлопоты по доставке</h3>
+          <h3 className="font-medium font font-[castoro] text-2xl">Мы берем на себя</h3>
         </div>
         <div>
           <p className="font-[lobster] font1 text-lg m-5 px-8">
