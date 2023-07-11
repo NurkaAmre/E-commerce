@@ -88,11 +88,12 @@ export default function Checkout({ user }: { user: UserType }) {
 
 
   const completeOrder = async () => {
-    // Set loading status
-    setIsLoading(true)
 
     // Check if all fields are filled
     if (name && phone && email && street && city && zip) {
+      // Set loading status
+      setIsLoading(true)
+
       // Update user data (address & contact info)
       const updateDataResponse = await updateUserData(userData)
       if (updateDataResponse.code === 200) {
@@ -114,9 +115,13 @@ export default function Checkout({ user }: { user: UserType }) {
           }
         } else {
           setMessage(createOrderResponse.message)
+          // Set loading status
+          setIsLoading(false)
         }
       } else {
         setMessage(updateDataResponse.message)
+        // Set loading status
+        setIsLoading(false)
       }
     } else {
       setMessage('Пожалуйста, заполните все поля.')
@@ -219,14 +224,20 @@ export default function Checkout({ user }: { user: UserType }) {
             className='user-input text-xs font-roboto'
             onChange={handleCityChange}
           >
-            {getKZCities().map((cityname) => (
+            {city ? <option disabled>выбери свой город</option> : <option value={''}>выбери свой город</option>}
+            {city ? getKZCities().map((cityname) => (
               <option
                 value={cityname}
-                selected={cityname === city ? true : false}
+                selected={cityname === city}
               >
                 {cityname}
-              </option>
-            ))}
+              </option>)) : getKZCities().map((cityname) => (
+              <option
+                value={cityname}
+              >
+                {cityname}
+              </option>))
+            }
           </select>
         </div>
         <div className='flex flex-col text-gray-500'>
