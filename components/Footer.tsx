@@ -3,8 +3,7 @@ import { AiFillFacebook, AiFillInstagram, AiFillTwitterSquare, AiFillCarryOut } 
 import { AiOutlineDeliveredProcedure } from 'react-icons/ai';
 import { FiPhoneCall, FiMail, FiCalendar, } from 'react-icons/fi';
 import Link from 'next/link';
-import visa from '@/public/visa.svg'
-import master from '@/public/mastercard.svg'
+import visa from '@/public/paymentkz.png'
 import Image from 'next/image';
 import logo from '@/public/logo1.svg'
 
@@ -47,12 +46,11 @@ function Footer() {
         <div className=' text-center'>
           <div>
             <h2 className='text-xl md:my-2'>Платежные системы</h2>
-            <div className='flex flex-row justify-evenly'>
-              <Image src={visa} alt='ic' />
-              <Image src={master} alt='ic' />
+            <div>
+              <Image src={visa} alt='icon-img' className='payment' />
             </div>
           </div>
-          <h2 className='mb-2'>Мы в соцсетях:</h2>
+          <h2 className='mb-2 mt-4'>Мы в соцсетях:</h2>
           <ul className="flex justify-center gap-3">
             <Link href="https://www.facebook.com/profile.php?id=100094086785165"
               target="_blank"
@@ -69,17 +67,6 @@ function Footer() {
           </ul>
         </div>
       </div>
-
-      {/* <div className='max-w-fit mx-auto py-4 font-lobster font-bold'>
-        <span>Made with <i className='text-red-700 text-xl'>&#9829; </i> by
-          <Link className='text-blue-400 underline mx-1' target="_blank"
-            rel="noreferrer" href={'https://github.com/NurkaAmre'}>Nurka</Link>
-          &
-          <Link className='text-blue-400 underline mx-1' target="_blank"
-            rel="noreferrer" href={'https://github.com/ouasamine'}>Amine</Link>
-
-        </span>
-      </div> */}
     </footer>
   );
 }

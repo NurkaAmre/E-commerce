@@ -395,6 +395,13 @@ background: #d2c6b1a7;
   color: #8CCCC1;
 }
 
+.payment {
+  width: 200px;
+}
+
+.rotate-div {
+  transform: rotate(90deg);
+}
 .carousel .control-arrow {
   width: 20px;
 }
