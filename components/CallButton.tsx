@@ -3,11 +3,14 @@
 import { FiPhoneCall } from 'react-icons/fi';
 import { useState } from "react"
 import Link from "next/link"
+import createContact from '@/functions/createContact';
+import extractPhoneNumber from '@/util/extractPhoneNumber';
 
 export default function CallButton () {
   const [showPopup, setShowPopup] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
   const openPopup = () => {
     setShowPopup(true);
@@ -47,15 +50,24 @@ export default function CallButton () {
     setName(e.currentTarget.value);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Perform any necessary action with the phone number (e.g., send it to the server)
-    // You can access the phone number value with the phoneNumber variable
-    // Reset the phone number input
-    setPhoneNumber("");
-    setName("")
-    // Close the popup window
-    closePopup();
+
+    // Add the contact to the database
+    const response = await createContact(name, extractPhoneNumber(phoneNumber));
+
+    if (response.code === 200) {
+      setMessage('Ваш номер телефона успешно добавлен, мы свяжемся с вами в ближайшее время')
+    }
+    
+    setTimeout(() => {
+      // Reset the phone number input
+      setPhoneNumber("");
+      setName("")
+      setMessage("")
+      // Close the popup window
+      closePopup();
+    }, 2000)
   };
 
   return (
@@ -110,6 +122,8 @@ export default function CallButton () {
               </Link>
             </div>
           </form>
+
+          <p className='text-white'>{message}</p>
         </div>
       </div>
     )}
