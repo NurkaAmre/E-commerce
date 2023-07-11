@@ -43,8 +43,11 @@ export default function Checkout({ user }: { user: UserType }) {
   useEffect(() => {
     setMinDeliveryDate(getMinDeliveryDate(city))
     setDeliveryFee(getDeliveryFee(city))
-    setTotalPrice(subTotal + deliveryFee)
   }, [city])
+
+  useEffect(() => {
+    setTotalPrice(subTotal + deliveryFee)
+  }, [deliveryFee])
 
   // Event handlers
   const handleNameChange = (e: React.FormEvent<HTMLInputElement>) => {
