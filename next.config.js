@@ -8,7 +8,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    domains: ['lh3.googleusercontent.com', 'cdn.sanity.io'],
+    domains: ['lh3.googleusercontent.com', 'cdn.sanity.io', 'platform-lookaside.fbsbx.com'],
   },
 };
 
