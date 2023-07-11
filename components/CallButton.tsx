@@ -47,7 +47,7 @@ export default function CallButton () {
     setName(e.currentTarget.value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Perform any necessary action with the phone number (e.g., send it to the server)
     // You can access the phone number value with the phoneNumber variable
