@@ -50,6 +50,9 @@ function Footer() {
               <Image src={visa} alt='icon-img' className='payment' />
             </div>
           </div>
+          <div className='mt-3'>
+            <Link href={'/privacy-policy'}>Политика конфиденциальности</Link>
+          </div>
           <h2 className='mb-2 mt-4'>Мы в соцсетях:</h2>
           <ul className="flex justify-center gap-3">
             <Link href="https://www.facebook.com/profile.php?id=100094086785165"
