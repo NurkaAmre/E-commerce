@@ -92,31 +92,31 @@ const Nav = ({ user }:  {user: UserType}) => {
 
     {/* Mobile Menu */}
     {showMobileMenu && (
-        <nav className="fixed top-0 left-0 bottom-0 text-white bg-slate-500 opacity-90 z-50">
+        <nav className="fixed top-0 left-0 bottom-45 right-0 text-gray-700 backdrop-blur opacity-90 z-50">
           <button className="absolute right-1 top-2 text-3xl" onClick={menuButtonClick}>
-          <AiOutlineClose></AiOutlineClose>
+            <AiOutlineClose className=" absolute top-2 right-3"></AiOutlineClose>
         </button>
 
         <Link href={'/'} className="block">
             <Image src={logo} width={80} height={80} alt="logo" />
         </Link>
 
-          <ul className="flex flex-col justify-center font-lobster ml-4 mt-[2rem]">
-            <li className="mr-6 cursor-pointer text-2xl whitespace-nowrap" onClick={categoriesButtonClick}>
+          <ul className="flex flex-row text-xl justify-center mb-4 font-castoro ml-4 mt-[1rem]">
+            <li className="mr-6 cursor-pointer  whitespace-nowrap" onClick={categoriesButtonClick}>
             <Link href={'#'} onClick={categoriesButtonClick}>Товары</Link>
             {showCategoriesMenu && (
-                <ul className="flex flex-col text-lg ml-8">
+                <ul className="flex text-sm flex-col ml-8">
                   <li><Link href={'/category/kitchens'} className="li-hover">Кухня</Link></li>
                   <li><Link href={'/category/chairs'} className="li-hover">Стул</Link></li>
                   <li><Link href={'/category/sofas'} className="li-hover">Диван</Link></li>
-                  <li><Link href={'/category/beds'} className="li-hover">Спальня</Link></li>
+                  <li><Link href={'/category/beds'} className="li-hover mb-4">Спальня</Link></li>
               </ul>
             )}
           </li>
-            <li className="mr-6 cursor-pointer text-2xl whitespace-nowrap">
+            <li className="mr-6 cursor-pointer whitespace-nowrap">
             <Link href={'/about'}>О Компании</Link>
           </li>
-            <li className="mr-6 cursor-pointer text-2xl whitespace-nowrap">
+            <li className="mr-6 cursor-pointer whitespace-nowrap">
             <Link href={'/sale'}>Акции</Link>
           </li>
         </ul>

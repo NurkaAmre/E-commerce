@@ -178,7 +178,7 @@ export default function Checkout({ user }: { user: UserType }) {
       <div className='flex flex-row relative justify-between'>
         <AiFillInfoCircle className='absolute text-[#8CCCC1] top-6 text-2xl' />
         <h2 className='my-4 font-lobster pl-8 text-2xl mb-4 text-gray-700'>
-          Информация о доставк
+          Информация о доставка
         </h2>
         <hr />
       </div>

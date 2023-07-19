@@ -61,7 +61,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   
           <div className="product-detail-desc">
             <div className="flex gap-20">
-              <h1 className="text-3xl md:text-6xl font-[dancingScript] text-gray-600">{product.name}</h1>
+              <h1 className="text-3xl md:text-6xl font-cormorant text-gray-600">{product.name}</h1>
               <div className="reviews">
                 <div className="review-stars">
                   <AiFillStar />
@@ -76,11 +76,11 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               </div>
             </div>
             <div className="product-desc">
-              <h6 className="text-lg md:texl-xl font-[castoro]">{product.description}</h6>
+              <h6 className="text-lg md:texl-xl font-castoro">{product.description}</h6>
             </div>
-            <h3>Характеристики</h3>
+            <h3 >Характеристики</h3>
             <hr />
-            <p className="font-roboto">{product.details}</p>
+            <p className="font-castoro font-xs">{product.details}</p>
             <div className="my-4">
               {
                 product.colors?.map((color: {hex: string}) => (

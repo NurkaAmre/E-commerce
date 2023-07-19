@@ -14,7 +14,7 @@ export default function Product({ product }: { product: ProductType }) {
           className="max-w-[250px] object-fill max-h-[130px] md:max-h-[230px] h-auto transform hover:scale-110 transition-transform duration-300 md:max-w-[300px]"
         />
         <div className="flex justify-center gap-5 items-center my-4 w-full max-w-[400px]">
-          <div className="flex text-lg gap-2  text-gray-600 font-[dancingScript]">
+          <div className="flex text-lg gap-2  text-gray-600 font-cormorant">
             <h3 >{product.name}</h3>
             <h2>{product.price}&#x20B8;</h2>
           </div>
