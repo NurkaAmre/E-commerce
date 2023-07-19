@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import { Roboto, Lobster_Two, Dancing_Script, Castoro, Pacifico } from 'next/font/google'
+import { Roboto, Lobster_Two, Dancing_Script, Castoro, Della_Respira } from 'next/font/google'
 import Nav from '../components/Nav'
 import SearchBarMobile from '@/components/SearchBarMobile'
 import Footer from '../components/Footer'
@@ -15,7 +15,7 @@ const roboto = Roboto({weight: ['400', '500', '700'], subsets: ['latin'], variab
 const dancing_script = Dancing_Script({weight: ['400', '500', '700'], subsets: ['latin'], variable: '--font-dancing'})
 const castoro = Castoro({weight: ['400'], subsets: ['latin'], variable: '--font-castoro'})
 const lobster = Lobster_Two({ weight: '700', subsets: ['latin'], variable: '--font-lobster' })
-const cormorant = Pacifico({ weight: '400', subsets: ['cyrillic'], variable: '--font-cormorant' })
+const cormorant = Della_Respira({ weight: '400', subsets: ['latin'], variable: '--font-cormorant' })
 
 export const metadata = {
   title: 'Interior Mebel',
