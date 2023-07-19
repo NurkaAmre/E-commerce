@@ -7,15 +7,15 @@ import about from '@/public/about-1.jpg'
 
 const AboutUs = () => {
   return (
-    <section className='my-[70px] mx-[2rem] md:mx-[6rem] sm:mx-[4rem]'>
+    <section className='my-[50px] md:mx-[6rem] mx-[2rem] font-castoro'>
       <div className='about-section md:mb-[3rem]'>
         <div className='flex-1 order-0 about-img'>
           <Image src={about} alt='about' className='mt-[8rem]' />
         </div>
         <div className='flex-1 order-0 about-text'>
 
-          <h2 className="section-title mt-[2rem] md:[mt-5rem]">О нас</h2>
-          <p className="section-description text-[0.7rem] sm:text-[1rem] md:text-[1.2rem] ">
+          <h2 className="text-center text-3xl text-gray-900 mt-[6rem] mb-5">О нас</h2>
+          <p>
             Добро пожаловать в нашу мебельную компанию! Мы лидирующий производитель и магазин мебели в Казахстане. У нас широкий выбор стильной и качественной мебели. Мы гордимся производством собственной мебели с использованием передовых технологий и высококачественных материалов. Наша цель - создавать функциональные и эстетически привлекательные предметы мебели, отражающие последние тенденции в дизайне интерьера. Мы также предлагаем мебель из Турции, известную своим элегантным и качественным дизайном. Наша команда профессионалов поможет вам выбрать идеальные решения для вашего дома или офиса. Мы ценим каждого клиента и предлагаем высокий уровень обслуживания. Спасибо за выбор нашей компании. Мы готовы предложить вам лучшую мебель и надежное обслуживание, чтобы помочь вам создать прекрасный и функциональный интерьер, который впечатлит вас и ваших гостей.
             <br /><br />
             С уважением,<br />
@@ -24,7 +24,7 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <h1 className="section-title text-center">Наши услуги</h1>
+      <h1 className="text-center text-3xl text-gray-900 my-[2rem]">Наши услуги</h1>
       <div className='gap-3 about-cards grid grid-cols-2 w-6/4 mx-auto md:grid-cols-2'>
         <div className="service-card">
           <AiFillCustomerService className='text-white text-6xl' />
@@ -50,7 +50,7 @@ const AboutUs = () => {
       </div>
 
 
-      <h2 className="section-title text-center">Отзывы наших клиентов</h2>
+      <h2 className="text-center text-3xl text-gray-900 my-[2rem]">Отзывы наших клиентов</h2>
       <div className='gap-3 about-cards grid grid-cols-2 w-6/4 mx-auto md:grid-cols-2'>
         <div className="testimonial-card">
           <FaUserCircle className='text-yellow-900 text-4xl' />
