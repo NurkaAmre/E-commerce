@@ -27,7 +27,7 @@ export default function Cart({ user }: { user: UserType }) {
       <motion.div 
         layout
         onClick={(e) => e.stopPropagation()} 
-        className='bg-base-200 bg-opacity-85 absolute right-0 top-0 w-full h-screen lg:w-2/5 p-9 overflow-y-scroll'
+        className='inset-0 backdrop-blur opacity-85 transition  absolute right-0 top-0 w-full h-screen lg:w-2/5 px-6 py-8 overflow-y-scroll'
       >
         {/* Exit Button */}
         {cartStore.onCheckout === 'cart' && (
@@ -40,7 +40,7 @@ export default function Cart({ user }: { user: UserType }) {
           <>
           {cartStore.cart.map((item) => (
             <motion.div layout key={item.id}
-              className='flex p-4 gap-4 bg-base-100 my-4 rounded-lg'>
+              className='flex px-2 py-4 gap-4 bg-base-100 my-4 rounded-lg'>
               <Image className='rounded-md h-24' src={item.imagesURL[0]} alt={item.name} width={120} height={120}/>
               <div>
                 <h2>{item.name}</h2>
