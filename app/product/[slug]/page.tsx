@@ -30,7 +30,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   if (product.id) {
     return (
       <div className="md:[my-150px]">
-        <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] my-[150px] text-[#324d67]">
+        <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] mt-[150px] md:mb-6 text-[#324d67]">
           <div className="md:h-[400px] md:w-1/2 md:mt-[3rem]">
             <Carousel
               renderThumbs={() => {
@@ -135,7 +135,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               {!isLiked ? (
                 <button 
                 type="button"
-                className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl cursor-pointer text-lg font-medium whitespace-nowrap hover:scale-110 transition-transform duration-500 ease-out px-4 py-2 min-w-[180px]"
+                  className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl cursor-pointer text-lg font-medium whitespace-nowrap hover:scale-110 transition-transform duration-500 ease-out px-4 py-2 min-w-full md:min-w-[180px]"
                 onClick={(e) => {
                   favStore.toggleProduct(product)
                 }}
@@ -145,7 +145,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
               </button>
               ) : (
                 <button
-                  className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-[180px]"
+                    className="bg-white text-[#8CCCC1] border-[1px] border-[#8CCCC1] rounded-3xl text-lg font-medium whitespace-nowrap px-4 py-2 min-w-full md:min-w-[180px]"
                   disabled={true}
                 >
                     Список желаний
