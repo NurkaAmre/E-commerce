@@ -27,7 +27,7 @@ export default function Cart({ user }: { user: UserType }) {
       <motion.div 
         layout
         onClick={(e) => e.stopPropagation()} 
-        className='inset-0 backdrop-blur opacity-85 transition  absolute right-0 top-0 w-full h-screen lg:w-2/5 px-6 py-8 overflow-y-scroll'
+        className='inset-0 backdrop-blur opacity-85 transition absolute right-0 top-0 w-full h-screen lg:w-2/5 px-6 py-8 overflow-y-scroll'
       >
         {/* Exit Button */}
         {cartStore.onCheckout === 'cart' && (
