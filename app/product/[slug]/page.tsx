@@ -30,7 +30,7 @@ export default function ProductDetails({ params }: { params: { slug: string } })
   if (product.id) {
     return (
       <div className="md:[my-150px]">
-        <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] my-[150px] text-[#324d67]">
+        <div className="flex flex-col md:flex-row md:gap-6 mx-[50px] mt-[150px] text-[#324d67]">
           <div className="md:h-[400px] md:w-1/2 md:mt-[3rem]">
             <Carousel
               renderThumbs={() => {
