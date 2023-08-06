@@ -183,7 +183,7 @@ export default function UserInfo({ user }: any) {
             className='btn mt-[2rem] w-full md:w-1/2 rounded-full'
             disabled={true}
           >
-            обновление...
+            Обновление...
           </button>
         )}
       </div>

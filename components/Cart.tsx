@@ -31,10 +31,10 @@ export default function Cart({ user }: { user: UserType }) {
       >
         {/* Exit Button */}
         {cartStore.onCheckout === 'cart' && (
-          <button onClick={() => cartStore.toggleCart()} className='text-xl text-white bg-[#8CCCC1] px-6 rounded-full border-gray-200 '>Назад</button>)}
+          <button onClick={() => cartStore.toggleCart()} className='text-xl text-white bg-[#8CCCC1] px-6 mb-4 rounded-full '>Назад</button>)}
         {/* Return to cart button */}
         {cartStore.onCheckout === 'checkout' && (
-          <button onClick={() => cartStore.setCheckout('cart')} className='text-sm font-bold pb-12'>Просмотреть корзину</button>)}
+          <button onClick={() => cartStore.setCheckout('cart')} className='text-xl text-white bg-[#8CCCC1] mb-4 px-6 rounded-full'>Просмотреть корзину</button>)}
         {/* Display cart items */}
         {cartStore.onCheckout === 'cart' && (
           <>
@@ -63,7 +63,7 @@ export default function Cart({ user }: { user: UserType }) {
 
         {cartStore.cart.length > 0 && cartStore.onCheckout === 'cart' ? (
         <motion.div layout>
-            <p className='font-bold text-gray-600 mt-6'>Сумма к оплате: {totalPrice}  <span className='text-teal-400'>KZT</span></p>
+            <p className='font-bold text-white mt-6'>Сумма к оплате: {totalPrice}  <span className='text-teal-400'>KZT</span></p>
           {/* cartStore.setCheckout('checkout') */}
           <button 
             onClick={() => cartStore.setCheckout('checkout')}
