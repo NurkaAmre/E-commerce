@@ -27,11 +27,11 @@ export default function Cart({ user }: { user: UserType }) {
       <motion.div 
         layout
         onClick={(e) => e.stopPropagation()} 
-        className='inset-0 backdrop-blur opacity-85 transition absolute right-0 top-0 w-full h-screen lg:w-2/5 px-6 py-8 overflow-y-scroll'
+        className=' backdrop-blur opacity-85 transition absolute right-0 top-0 w-full h-screen lg:w-2/5 px-6 py-8 overflow-y-scroll'
       >
         {/* Exit Button */}
         {cartStore.onCheckout === 'cart' && (
-          <button onClick={() => cartStore.toggleCart()} className='text-sm font-bold pb-12'>Вернуться в магазин</button>)}
+          <button onClick={() => cartStore.toggleCart()} className='text-xl text-white bg-[#8CCCC1] px-6 rounded-full border-gray-200 '>Назад</button>)}
         {/* Return to cart button */}
         {cartStore.onCheckout === 'checkout' && (
           <button onClick={() => cartStore.setCheckout('cart')} className='text-sm font-bold pb-12'>Просмотреть корзину</button>)}
