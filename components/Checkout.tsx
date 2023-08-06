@@ -148,43 +148,28 @@ export default function Checkout({ user }: { user: UserType }) {
                 <div className='flex gap-2'>
                   <h2 className='font-[lobster]'>Количество: {item.quantity} </h2>
                 </div>
-                <p className='font-semibold text-gray-400'>
+                <p className='font-semibold text-gray-600'>
                   {discountPrice(item.price, item.discount)}
-                  <span className='text-teal-400 text-xs'> KZT</span>
+                  <span className='text-teal-400 text-xs'> &#8376;</span>
                 </p>
               </div>
             </motion.div>
           ))}
-          <p className='font-roboto text-gray-600 mt-6'>
-            <div>
-              Промежуточный итог: {subTotal}
-              <span className='text-teal-400'> KZT</span>
-            </div>
-            <div>
-              Плата за доставку: {deliveryFee || <span className='italic'>
-                Стоимость доставки определяется независимой транспортной компанией и оплачивается при получении товара.
-                </span>} 
-              {deliveryFee > 0 && <span className='text-teal-400'> KZT</span>}
-            </div>
-          </p>
-          <p className='font-bold font-roboto text-gray-600 mt-6'>
-            Сумма к оплате: {totalPrice}
-            <span className='text-teal-400 text-xs'> KZT</span>
-          </p>
+
         </div>
       </div>
 
       {/* Shipping Information */}
       <div className='flex flex-row relative justify-between'>
         <AiFillInfoCircle className='absolute text-[#8CCCC1] top-6 text-2xl' />
-        <h2 className='my-4 font-lobster pl-8 text-2xl mb-4 text-gray-700'>
+        <h2 className='my-4 font-lobster pl-8 text-2xl mb-4 text-gray-900'>
           Информация о доставка
         </h2>
         <hr />
       </div>
       <div className='flex flex-col gap-4 justify-center relative'>
-        <div className='flex flex-col'>
-          <label className='head-little'>
+        <div className='flex flex-col text-gray-900'>
+          <label className='head-little text-white'>
             Имя<span className='text-red-600'>*</span> 
           </label>
           <input
@@ -194,8 +179,8 @@ export default function Checkout({ user }: { user: UserType }) {
             onChange={handleNameChange}
           />
         </div>
-        <div className='flex flex-col'>
-          <label className='head-little'>
+        <div className='flex flex-col text-gray-900'>
+          <label className='head-little text-white'>
             Тел<span className='text-red-600'>*</span>
           </label>
           <input
@@ -205,8 +190,8 @@ export default function Checkout({ user }: { user: UserType }) {
             onChange={handlePhoneChange}
           />
         </div>
-        <div className='flex flex-col'>
-          <label className='head-little'>
+        <div className='flex flex-col text-gray-900'>
+          <label className='head-little text-white'>
             Адрес доставки<span className='text-red-600'>*</span>
           </label>
           <input
@@ -216,8 +201,8 @@ export default function Checkout({ user }: { user: UserType }) {
             onChange={handleStreetChange}
           />
         </div>
-        <div className='flex flex-col'>
-          <label className='head-little'>
+        <div className='flex flex-col text-gray-900'>
+          <label className='head-little text-white'>
             Город<span className='text-red-600'>*</span>
           </label>
           <select
@@ -240,7 +225,7 @@ export default function Checkout({ user }: { user: UserType }) {
             }
           </select>
         </div>
-        <div className='flex flex-col text-gray-500'>
+        <div className='flex flex-col text-gray-900'>
           <label className='head-little'>
             Индекс<span className='text-red-600'>*</span>
           </label>
@@ -252,8 +237,8 @@ export default function Checkout({ user }: { user: UserType }) {
           />
         </div>
         <div>
-          <label className='text-base font-roboto text-gray-700'>
-            желаемая дата доставки (неконтрактный)
+          <label className='text-base font-roboto text-gray-900'>
+            Планируемая дата доставки
           </label>
           <input
             type="date"
@@ -266,7 +251,7 @@ export default function Checkout({ user }: { user: UserType }) {
         </div>
 
         <div>
-          <label className='text-base font-lobster text-gray-700'>
+          <label className='text-base font-lobster text-gray-900'>
             Требуется сборка
           </label>
           <input
@@ -278,6 +263,23 @@ export default function Checkout({ user }: { user: UserType }) {
             />
         </div>
       </div>
+
+      <p className='font-roboto font-light text-gray-900 mt-6'>
+        <div>
+          Общий сумма: {subTotal}
+          <span className='text-teal-400'> &#8376;</span>
+        </div>
+        <div>
+          Плата за доставку: {deliveryFee || <span className='italic'>
+            Стоимость доставки определяется независимой транспортной компанией и оплачивается при получении товара.
+          </span>}
+          {deliveryFee > 0 && <span className='text-teal-400'> &#8376;</span>}
+        </div>
+      </p>
+      <p className='font-bold font-roboto text-gray-850 mt-6'>
+        Сумма к оплате: {totalPrice}
+        <span className='text-teal-400 text-xs'> &#8376;</span>
+      </p>
 
       {/* Confirm Order Button */}
       <div className='my-3 flex justify-center items-center'>

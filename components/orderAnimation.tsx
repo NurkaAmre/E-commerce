@@ -9,7 +9,7 @@ export default function OrderAnimation() {
       initial={{opacity: 0, y: 10}} 
       animate={{opacity: 1, y:0}} 
       transition={{delay: 0.5}}>
-        Preparing your order
+        Готовим ваш заказ
       </motion.h1>
       <Player autoplay loop src={order}></Player>
     </div>
