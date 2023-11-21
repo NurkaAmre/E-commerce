@@ -10,7 +10,7 @@ class MyDocument extends Document {
           {/* Add your Google tag here */}
           <script
             async
-            src="https://www.googletagmanager.com/gtag/js?id=YOUR_GOOGLE_ANALYTICS_ID"
+            src="https://www.googletagmanager.com/gtag/js?id=AW-11418609479"
           ></script>
           <script
             dangerouslySetInnerHTML={{
